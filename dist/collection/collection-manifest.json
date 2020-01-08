@@ -1,0 +1,13 @@
+{
+  "entries": [
+    "components/my-component/my-component.js",
+    "components/navbar/navbar.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.8.3",
+    "typescriptVersion": "3.7.2"
+  },
+  "collections": [],
+  "bundles": []
+}

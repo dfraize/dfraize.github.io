@@ -1,0 +1,16 @@
+[navbar-wrapper] {
+  border: 2px solid black;
+  background-color: lightsteelblue;
+}
+[navbar-wrapper] ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+[navbar-wrapper] ul li {
+  display: inline;
+  margin-right: 20px;
+}
+[navbar-wrapper] ul li:last-child {
+  margin: 0;
+}
