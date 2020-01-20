@@ -1,1 +1,0 @@
-import{p,b as f}from"./p-f6469ecf.js";p().then(p=>f([["p-pglb8dmc",[[1,"df-navbar"]]],["p-flwo3cxt",[[1,"my-component",{first:[1],middle:[1],last:[1]}]]]],p));
