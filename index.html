@@ -1,32 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Douglas Fraize - Portfolio</title>
-
-  <style>
-    html, body {
-      padding: 0;
-      margin: 0;      
-    }
-.embed_documentation_footer--documentationFooter--2gpG4 {display: none !important;}
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douglas Fraize Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  
-  <div id="content">
-    <iframe
-      style="width: 100vw; height: 100vh; border: 0;"
-      src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FoA1wwgxhLXTecReYhhqWeY%2FPortfolio%3Fnode-id%3D594%253A2383%26scaling%3Dmin-zoom">
-    </iframe>
-  </div>
+<body class="bg-slate-100 flex flex-col min-h-screen overflow-x-hidden" data-page="home">
+    <!-- Header -->
+    <header></header>
 
+    <!-- Hero Section -->
+    <section class="relative w-full shadow-sm min-h-[320px] flex items-center justify-center bg-white overflow-hidden">
+        <img src="images/homepage hero.png" alt="Douglas Fraize" class="absolute inset-x-0 bottom-0 w-full h-full object-contain object-bottom z-0 max-h-[320px] md:max-h-[420px]" style="min-height:320px;" />
+        <div class="container mx-auto flex flex-row items-center justify-center px-2 sm:px-4 md:px-6 py-8 md:py-12 relative z-10 h-[320px] md:h-[420px]">
+            <!-- Designer Side -->
+            <div class="flex-1 flex flex-col justify-center items-end md:pl-8 h-full w-full md:w-auto">
+                <div class="flex flex-col justify-center h-full text-left max-w-xs">
+                    <h2 class="text-xl sm:text-2xl md:text-5xl font-bold mb-2 text-blue-500">designer</h2>
+                    <p class="text-slate-700 text-base sm:text-lg md:text-xl">UI/UX Designer with a passion for designing beautiful and functional user experiences.</p>
+                </div>
+            </div>
+            <!-- Spacer for image -->
+            <div class="flex-shrink-0 w-[80px] h-[80px] sm:w-[140px] sm:h-[140px] md:w-[380px] md:h-[380px] md:mx-4"></div>
+            <!-- Coder Side -->
+            <div class="flex-1 flex flex-col justify-center items-start md:pr-8 h-full w-full md:w-auto">
+                <div class="flex flex-col justify-center h-full text-right max-w-[220px] sm:max-w-xs">
+                    <h2 class="text-xl sm:text-2xl md:text-5xl font-bold mb-2 text-slate-800">&lt;coder&gt;</h2>
+                    <p class="text-slate-700 text-base sm:text-lg md:text-xl">Front End Developer who focuses on writing clean, elegant and efficient code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="pt-24 pb-16 relative bg-slate-900 overflow-hidden" id="expertise">
+        <div class="absolute inset-0 w-full h-full z-0" style="background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.12) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(168,85,247,0.10) 0%, transparent 60%), radial-gradient(circle at 40% 80%, rgba(34,197,94,0.10) 0%, transparent 60%);"></div>
+        <div class="container mx-auto text-center px-4 md:px-6 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-blue-500 bg-clip-text text-transparent mb-4">Expertise</h2>
+            <p class="text-slate-300 mb-12 text-lg max-w-2xl mx-auto">Transforming complex problems into elegant, scalable solutions through strategic design and technical implementation.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10 text-left shadow-lg transition overflow-hidden flex flex-col">
+                    <div class="text-4xl mb-4 text-blue-400 flex items-center justify-center">🎨</div>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Design Systems Leadership</h3>
+                    <p class="text-slate-300">Architecting comprehensive design systems with 80+ production-ready components, achieving 85% adoption across engineering teams and reducing UI development time by 40%.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10 text-left shadow-lg transition overflow-hidden flex flex-col">
+                    <div class="text-4xl mb-4 text-blue-400 flex items-center justify-center">🤖</div>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">AI & Modern Development Tools</h3>
+                    <p class="text-slate-300">Rapid web development using AI-assisted tools (Claude, Cursor) to translate UX concepts into functional HTML/CSS and accelerate project delivery. Generate custom visual assets and transform design thinking into working prototypes through modern development workflows and intelligent code optimization.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10 text-left shadow-lg transition overflow-hidden flex flex-col">
+                    <div class="text-4xl mb-4 text-blue-400 flex items-center justify-center">🔧</div>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">UX Engineering</h3>
+                    <p class="text-slate-300">Bridging design and development with prototyping, accessibility compliance (WCAG), and seamless handoff processes using modern tooling and methodologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section class="pt-24 pb-16 relative bg-slate-900 overflow-hidden" id="portfolio">
+        <div class="absolute inset-0 w-full h-full z-0" style="background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.12) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(168,85,247,0.10) 0%, transparent 60%), radial-gradient(circle at 40% 80%, rgba(34,197,94,0.10) 0%, transparent 60%);"></div>
+        <div class="container mx-auto px-4 md:px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-blue-500 bg-clip-text text-transparent mb-4">Featured Work</h2>
+            <p class="text-slate-300 mb-12 text-lg max-w-2xl mx-auto">Showcasing impactful projects across design systems, enterprise applications, and user experiences.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg text-left transition p-8 md:p-10 flex flex-col">
+                    <div class="text-4xl mb-4 text-blue-400 flex items-center justify-center">🎨</div>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Enterprise Design System</h3>
+                    <p class="text-slate-300 mb-4 flex-1">Comprehensive design system supporting 5 product lines and 300+ developers with unified React, Angular, and Sitecore integration.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">StencilJS</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Tailwind CSS</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Design Tokens</span>
+                    </div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg text-left transition p-8 md:p-10 flex flex-col">
+                    <div class="text-4xl mb-4 text-blue-400 flex items-center justify-center">📊</div>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Financial Services UX</h3>
+                    <p class="text-slate-300 mb-4 flex-1">Redesigned Salesforce instance and created strategic dashboard designs for institutional clients with focus on usability.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Salesforce</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Dashboard Design</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Figma</span>
+                    </div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-lg text-left transition p-8 md:p-10 flex flex-col">
+                    <div class="text-4xl mb-4 text-blue-400 flex items-center justify-center">🧩</div>
+                    <h3 class="text-lg md:text-xl font-semibold text-white mb-2">Global HR Platform</h3>
+                    <p class="text-slate-300 mb-4 flex-1">Led design system evolution across 30+ product lines, creating HTML/CSS and Angular-based component libraries.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Angular</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Web Components</span>
+                        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-medium">Multi-platform</span>
+                    </div>
+                </div>
+            </div>
+            <a href="portfolio.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow transition">View Full Portfolio</a>
+        </div>
+    </section>
+
+    <footer></footer>
+    <script src="js/footer-partial.js"></script>
+    <script src="js/navbar-partial.js"></script>
 </body>
 </html>
+

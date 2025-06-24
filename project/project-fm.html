@@ -1,0 +1,99 @@
+<!--
+Project Detail: Factory Mutual
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FM - Design System & Other Work</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col" data-page="portfolio">
+  <header></header>
+  <main class="flex-1 container mx-auto px-4 py-12 max-w-5xl">
+    <a href="../portfolio.html" class="inline-block mb-6 text-blue-600 dark:text-blue-400 hover:underline">&larr; Back to Portfolio</a>
+    <h1 class="text-2xl md:text-3xl font-semibold mb-6 text-blue-700">FM - Design System & Other Work</h1>
+    <p class="mb-10 text-base md:text-lg text-slate-800 max-w-4xl">I spearheaded the development and strategic rollout of the organization's first comprehensive design system, which established consistent user experiences across our digital products. By collaborating with stakeholders from both design and development teams, I facilitated key decisions that balanced user needs with technical scalability. This effort included advocating for the use of Figma to enhance design collaboration, creating a unified component library, and developing strong design patterns to maintain consistency. I also established governance frameworks and documentation strategies that promoted successful adoption across teams. As a result, the system significantly boosted design efficiency, shortened development time, and ensured a seamless user experience across all digital touchpoints.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <!-- My Role & Project Info -->
+      <div>
+        <div class="mb-6">
+          <div class="font-semibold text-slate-900 mb-1">My Role</div>
+          <div class="text-slate-800">Design System Manager</div>
+        </div>
+        <div class="mb-6">
+          <div class="font-semibold text-slate-900 mb-1">Project Team</div>
+          <div class="text-slate-800">1 Designer, 5 Developers, 1 Content Writer, 2 QA</div>
+        </div>
+        <div class="mb-6">
+          <div class="font-semibold text-slate-900 mb-1">Duration</div>
+          <div class="text-slate-800">Ongoing</div>
+        </div>
+        <div>
+          <div class="font-semibold text-slate-900 mb-1">Project Status</div>
+          <div class="text-slate-800">Continuous deployment</div>
+        </div>
+      </div>
+      <!-- Methodologies -->
+      <div>
+        <div class="font-semibold text-slate-900 mb-1">Methodologies</div>
+        <div class="text-slate-800">I developed and directed our design system methodology with a focus on user-centered strategies. Starting with a thorough design audit, I pinpointed patterns and opportunities to improve user experiences across various products. I spearheaded the creation of a scalable design language that encompassed systematic design principles, component patterns, and well-defined documentation standards. By managing cross-functional teams, I encouraged strong collaboration between design and development, ensuring our system adapted to meet both user needs and business goals. I established governance processes that upheld design quality and consistency while ensuring accessibility compliance across all platforms.</div>
+      </div>
+      <!-- Business Goals -->
+      <div>
+        <div class="font-semibold text-slate-900 mb-1">Business Goals</div>
+        <div class="text-slate-800">The primary objective was to establish a unified system that would accelerate product development and ensure consistency across new product lines throughout the organization.</div>
+      </div>
+    </div>
+    <section class="mb-16">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600">Project Work</h2>
+      <p class="text-slate-800 max-w-4xl">This collection showcases my expertise in developing design systems, custom components, and user interfaces across multiple projects. Each example demonstrates my comprehensive approach to creating cohesive design patterns and implementing them in production applications, from establishing system-wide guidelines to crafting reusable component libraries and executing complete project designs.</p>
+    </section>
+    <section class="mb-16">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600">Gallery</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Example screenshot placeholder -->
+        <img src="../images/screenshots/fm-overview.png" alt="Screenshot 1" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="../images/screenshots/fidelity-spark-overview.png" alt="Screenshot 2" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="../images/screenshots/fidelity-salesforce-overview.png" alt="Screenshot 3" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+      </div>
+      <!-- Modal -->
+      <div id="screenshot-modal" class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center hidden">
+        <div class="relative w-full h-full m-0 rounded-none md:max-w-3xl md:w-full md:mx-4 md:rounded-lg md:h-auto flex flex-col justify-center items-center">
+          <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/90 border border-slate-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition hover:text-blue-600 z-10 p-0 aspect-square" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-slate-700"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+          </button>
+          <img id="modal-img" src="" alt="" class="w-full flex-1 max-h-full md:max-h-[80vh] rounded-lg object-contain bg-slate-100" />
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/navbar-partial.js"></script>
+  <script src="../js/footer-partial.js"></script>
+  <script>
+    function openModal(src, alt) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal-img').alt = alt;
+      document.getElementById('screenshot-modal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('screenshot-modal').classList.add('hidden');
+      document.getElementById('modal-img').src = '';
+      document.getElementById('modal-img').alt = '';
+    }
+    // Close modal when clicking outside the image
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('screenshot-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
+      // Optional: close on Esc key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    });
+  </script>
+</body>
+</html> 
