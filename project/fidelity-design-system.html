@@ -1,0 +1,100 @@
+<!--
+Project Detail: Fidelity - Design System
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fidelity - Design System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col" data-page="portfolio">
+  <header></header>
+  <main class="flex-1 container mx-auto px-4 py-12 max-w-5xl">
+    <a href="../portfolio.html" class="inline-block mb-6 text-blue-600 dark:text-blue-400 hover:underline">&larr; Back to Portfolio</a>
+    <h1 class="text-2xl md:text-3xl font-semibold mb-6 text-blue-700">Fidelity - Design System</h1>
+    <p class="mb-10 text-base md:text-lg text-slate-800 max-w-4xl">Led the effort to create a design system for Fidelity Institutional called "FXD" using Figma. The design system contained color palettes, themes, typography, iconography, grids, and components. Contributed to the user experience discovery, ideation and specification phases. Documented components in detail for developers.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <!-- My Role & Project Info -->
+      <div>
+        <div class="mb-6">
+          <div class="font-semibold text-slate-900 mb-1">My Role</div>
+          <div class="text-slate-800">UX/UI Designer (lead)</div>
+        </div>
+        <div class="mb-6">
+          <div class="font-semibold text-slate-900 mb-1">Project Team</div>
+          <div class="text-slate-800">2 UX Designer, 2 Front-end Developers</div>
+        </div>
+        <div class="mb-6">
+          <div class="font-semibold text-slate-900 mb-1">Duration</div>
+          <div class="text-slate-800">Ongoing</div>
+        </div>
+        <div>
+          <div class="font-semibold text-slate-900 mb-1">Project Status</div>
+          <div class="text-slate-800">Continuous deployment</div>
+        </div>
+      </div>
+      <!-- Design Methodologies -->
+      <div>
+        <div class="font-semibold text-slate-900 mb-1">Design Methodologies</div>
+        <div class="text-slate-800">The approach was to take brand guidelines, use those in combination with user experience guidelines to create a robust design system within Figma. This approach would centralize all work into one collaborative toolset that would be easier to deploy updates and share design approaches in one single environment.<br><br>The output of this was to provide components that would be well documented and abstract enough to allow for a variety of use cases.</div>
+      </div>
+      <!-- Business Goals -->
+      <div>
+        <div class="font-semibold text-slate-900 mb-1">Business Goals</div>
+        <div class="text-slate-800 mb-6">To setup an environment that would allow business analysts, consultants, user experience designers, UI designers and developers to centralize on product designs and have a centralized code based that match what was in the design system.</div>
+      </div>
+    </div>
+    <!-- Divider line above Gallery section -->
+    <hr class="my-16 border-t-0 h-px bg-slate-200" />
+    <section class="mb-16">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600">Gallery</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <img src="https://via.placeholder.com/600x338?text=Screenshot+1" alt="Fidelity Design System Screenshot 1" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="https://via.placeholder.com/600x338?text=Screenshot+2" alt="Fidelity Design System Screenshot 2" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="https://via.placeholder.com/600x338?text=Screenshot+3" alt="Fidelity Design System Screenshot 3" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="https://via.placeholder.com/600x338?text=Screenshot+4" alt="Fidelity Design System Screenshot 4" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="https://via.placeholder.com/600x338?text=Screenshot+5" alt="Fidelity Design System Screenshot 5" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+        <img src="https://via.placeholder.com/600x338?text=Screenshot+6" alt="Fidelity Design System Screenshot 6" class="rounded-lg aspect-video object-cover w-full max-w-full h-auto cursor-pointer hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-200 bg-slate-100 border border-slate-200" onclick="openModal(this.src, this.alt)" />
+      </div>
+      <!-- Modal -->
+      <div id="screenshot-modal" class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center hidden">
+        <div class="relative w-full h-full m-0 rounded-none md:max-w-3xl md:w-full md:mx-4 md:rounded-lg md:h-auto flex flex-col justify-center items-center">
+          <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/90 border border-slate-300 rounded-full w-12 h-12 flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition hover:text-blue-600 z-10 p-0 aspect-square" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-slate-700"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+          </button>
+          <img id="modal-img" src="" alt="" class="w-full flex-1 max-h-full md:max-h-[80vh] rounded-lg object-contain bg-slate-100" />
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/navbar-partial.js"></script>
+  <script src="../js/footer-partial.js"></script>
+  <script>
+    function openModal(src, alt) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal-img').alt = alt;
+      document.getElementById('screenshot-modal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('screenshot-modal').classList.add('hidden');
+      document.getElementById('modal-img').src = '';
+      document.getElementById('modal-img').alt = '';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var modal = document.getElementById('screenshot-modal');
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === this) closeModal();
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    });
+  </script>
+</body>
+</html> 
