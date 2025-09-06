@@ -1,0 +1,743 @@
+/* ===== COMPONENTS ===== */
+
+/* Font loading optimization */
+.portfolio-card h3,
+.portfolio-card p,
+.work-card h3,
+.work-card p {
+    font-display: swap;
+}
+
+/* ===== PROJECT PAGES ===== */
+.project-main {
+    background-color: #ffffff;
+    margin-top: 100px;
+    /* Bottom spacing standardized via footer margin-top; avoid double spacing here */
+    margin-bottom: 0;
+    padding: 32px 0;
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Removed decorative plate styles - no longer needed with standardized layout */
+
+.project-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1039.7px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.project-intro {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    flex-shrink: 0;
+    color: #666666;
+    width: 100%;
+}
+
+.project-title {
+    position: relative;
+    flex-shrink: 0;
+    font-size: 48px;
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1;
+    margin: 0;
+}
+
+.project-description {
+    min-height: 57px;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 16px;
+    width: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.project-details {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.project-info-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+.project-methodology-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.4;
+    min-width: 0;
+}
+
+.project-methodology-column h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    line-height: 1;
+}
+
+.project-methodology-column p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.project-results-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    position: relative;
+    height: 500px;
+    background-color: var(--color-white);
+    background-image: url('../images/hero-bg.svg');
+    background-size: 80%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    box-shadow: var(--shadow-light);
+    margin-top: 100px;
+    padding-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+}
+
+.hero-text {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    right: 80px;
+    height: 166px;
+    z-index: 3;
+}
+
+.designer-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 290px;
+}
+
+.designer-title {
+    font-family: var(--font-family-primary);
+    font-size: 67px;
+    font-weight: 600;
+    color: var(--color-black);
+    line-height: 1;
+    margin-bottom: 0;
+    margin-left: 13px;
+}
+
+.designer-desc {
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-black);
+    line-height: 1.4;
+    margin-top: 20px;
+    width: 290px;
+}
+
+.coder-text {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 284px;
+    text-align: right;
+}
+
+.coder-title {
+    font-family: var(--font-family-primary);
+    font-size: 67px;
+    font-weight: 600;
+    color: var(--color-black);
+    line-height: 1;
+    margin-bottom: 0;
+    letter-spacing: -4.02px;
+}
+
+.coder-desc {
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-black);
+    line-height: 1.4;
+    margin-top: 20px;
+}
+
+/* ===== BUTTONS ===== */
+.portfolio-btn {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
+    font-size: 24px;
+    font-weight: 700;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    text-decoration: none;
+    text-align: center;
+    width: auto;
+}
+
+.portfolio-btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ===== LATEST WORK SECTION ===== */
+.latest-work {
+    background-color: var(--color-gray-light);
+    padding: 0;
+}
+
+.latest-work-container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 200px;
+    text-align: center;
+}
+
+.section-title {
+    display: flex;
+    gap: 30px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.title-line {
+    width: 370px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gray-border), transparent);
+}
+
+.section-title h2 {
+    font-family: var(--font-family-primary);
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.work-cards {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.work-card {
+    width: 330px;
+    height: 261px;
+    background-color: var(--color-white);
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.work-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-image {
+    width: 100%;
+    height: 184px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-fast);
+}
+
+.portfolio-card:hover .card-image img,
+.work-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.portfolio-card h3 {
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-black);
+    margin: 0;
+    position: absolute;
+    left: 8px;
+    top: 200px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.portfolio-card p {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaaaaa;
+    margin: 0;
+    position: absolute;
+    left: 8px;
+    top: 222px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.work-card h3 {
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-black);
+    margin: 0;
+    position: absolute;
+    left: 8px;
+    top: 200px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.work-card p {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaaaaa;
+    margin: 0;
+    position: absolute;
+    left: 8px;
+    top: 222px;
+    line-height: 1;
+    z-index: 2;
+}
+
+/* ===== PORTFOLIO CARDS ===== */
+.portfolio-grid {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 200px;
+}
+
+.portfolio-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.portfolio-row.single {
+    justify-content: flex-start;
+}
+
+.portfolio-row.triple {
+    justify-content: space-between;
+}
+
+.portfolio-card {
+    width: 330px;
+    height: 261px;
+    background-color: var(--color-white);
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.portfolio-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.portfolio-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== PROJECT VIEWS SECTIONS ===== */
+.project-views {
+    padding: 64px 0;
+}
+
+.views-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1160px;
+}
+
+.views-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1;
+    margin: 0 0 32px 0;
+    text-align: left;
+}
+
+/* Desktop Grid */
+.desktop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+/* Mobile Grid */
+.mobile-grid {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.mobile-grid .factory-mutual-card {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+/* Divider Line */
+.divider-line {
+    margin: 64px auto;
+    max-width: 1039.7px;
+    width: 100%;
+}
+
+.divider-line hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0;
+}
+
+/* ===== PROJECT CARDS ===== */
+.view-card {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.view-card picture {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.view-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ===== PROJECT DETAILS ===== */
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-item h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    line-height: 1;
+}
+
+.info-item p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.results-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.results-item h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    line-height: 1;
+}
+
+.results-item p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ===== FACTORY MUTUAL SPECIFIC LAYOUT ===== */
+.factory-mutual-work {
+    margin-top: 64px;
+    /* Remove extra bottom margin to standardize 64px gap via footer */
+    margin-bottom: 0;
+}
+
+.factory-mutual-container {
+    max-width: 1039.7px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.factory-mutual-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1;
+    margin: 0 0 32px 0;
+    text-align: left;
+}
+
+.factory-mutual-description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.75;
+    margin: 0 0 64px 0;
+    text-align: left;
+}
+
+.factory-mutual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    justify-content: center;
+}
+
+.factory-mutual-card {
+    width: 100%;
+    max-width: 564px;
+    aspect-ratio: 1;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.factory-mutual-card picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.factory-mutual-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== OTHER PROJECTS ===== */
+.other-projects {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+/* ===== OTHER WORK SPECIFIC STYLES ===== */
+.other-work-row {
+    margin-bottom: 48px;
+}
+
+.other-work-row:last-child {
+    margin-bottom: 0;
+}
+
+.other-work-header {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0 0 16px 0;
+    text-align: left;
+}
+
+/* ===== RESPONSIVE COMPONENTS ===== */
+@media (max-width: 1200px) {
+    .latest-work-container,
+    .portfolio-grid {
+        padding: 0 50px;
+    }
+
+    .hero {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .work-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .portfolio-row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .latest-work-container,
+    .portfolio-grid {
+        padding: 0 20px;
+    }
+
+    .hero {
+        height: 400px;
+        margin-top: 80px;
+        padding-top: var(--spacing-lg);
+    }
+
+    .hero-text {
+        position: static;
+        height: auto;
+        text-align: center;
+    }
+
+    .designer-text,
+    .coder-text {
+        position: static;
+        width: 100%;
+        text-align: center;
+    }
+
+    .designer-title,
+    .coder-title {
+        font-size: 48px;
+    }
+
+    .designer-desc,
+    .coder-desc {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto 0;
+    }
+
+    .work-cards,
+    .portfolio-row {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .work-card,
+    .portfolio-card {
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .section-title {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
+    }
+
+    .title-line {
+        width: 200px;
+    }
+}

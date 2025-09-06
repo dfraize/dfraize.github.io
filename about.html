@@ -1,44 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me - Douglas Fraize</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Douglas Fraize</title>
+    <meta name="description" content="About Douglas Fraize - UX Designer and Front End Developer">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-slate-100 text-slate-900 flex flex-col min-h-screen overflow-x-hidden" data-page="about">
-  <header></header>
-  <main class="flex-1 container mx-auto px-6 py-16 max-w-3xl">
-    <h1 class="text-4xl font-bold text-slate-900 mb-8">About Me</h1>
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-blue-500 mb-4">Highlights</h2>
-      <ul class="list-disc pl-6 text-slate-800 space-y-2">
-        <li>Technology experience at places like Factory Mutual (FM), Mercer, Fidelity, SimpleTuition, and Experience.</li>
-        <li>Practical experience with user experience design, creating personas, prioritizing application goals, and writing user journeys</li>
-        <li>Vast experience with design software including: Figma, Sketch, Photoshop, Illustrator, InVision, and Zeplin</li>
-        <li>Expert skill level building UI with the following: HTML5, CSS3/SCSS, JavaScript and Web Components</li>
-      </ul>
-    </section>
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-blue-500 mb-4">My Specialties</h2>
-      <ul class="list-disc pl-6 text-slate-800 space-y-2">
-        <li>User experience designer/developer hybrid</li>
-        <li>Front-end web developer (HTML, CSS/SCSS, JavaScript)</li>
-        <li>Creation of design systems and custom UI frameworks</li>
-        <li>CrossFit Level 1 Trainer and fitness coach</li>
-      </ul>
-    </section>
-    <section>
-      <h2 class="text-2xl font-semibold text-blue-500 mb-4">My Background</h2>
-      <p class="text-slate-800 mb-4">During the summer of 1999, I participated in a certificate program at Boston University where I really became proficient at HTML. I began my new position in May of 2000 after my college graduation. The development side came pretty natural. I have a knack for picking up new things (like programming languages) quickly. Once I completed my first and website build I knew I was in trouble – I liked both design and development equally. In a business world that wants efficient moving pieces that contribute unique portions to the company as a whole, I was going against the grain by embracing two skill sets.</p>
-      <p class="text-slate-800 mb-4">The experience and skill that I developed in college helped me to acquire my first position in the field. After working for a couple of start ups I landed a role as design/developer at Experience.com. I spent five years doing design and development work which I found to be a big interest playing this dual role.</p>
-      <p class="text-slate-800 mb-4">After Experience, I started a new role at SimpleTuition as the Lead UX/UI Design another startup focused on student load comparison. It was at SimpleTuition that I was introduced And lead the concepts of design systems and custom UI frameworks. I lead the the design and development of SimpleTuitions UI framework until I left the company in 2012.</p>
-      <p class="text-slate-800 mb-4">I then brought my knowledge of design systems and custom UI frameworks to Mercer, the worlds largest HR consulting company. I was hired to lead and contributed to the design and building of the companies first UI framework and multiple design systems.</p>
-      <p class="text-slate-800">I have the ability to span across different areas of expertise. Over my professional career I've been able to use my experience in both design and development to help identify and prioritize the goals of projects to improve the overall experience for their end-users while also being able to design those experiences and implement them in code.</p>
-    </section>
-  </main>
-  <footer></footer>
-  <script src="js/footer-partial.js"></script>
-  <script src="js/navbar-partial.js"></script>
+<body>
+    <!-- Header Include -->
+    <div id="header-include"></div>
+
+    <!-- Main Content -->
+    <main class="about-main">
+        <div class="about-container">
+            <!-- Intro Section -->
+            <section class="about-intro">
+                <div class="about-intro-container">
+                    <div class="intro-content">
+                        <h1 class="about-header">about.</h1>
+                        <p class="intro-tagline">I'm a UX designer based in Lincoln, Rhode Island.</p>
+                        <p class="intro-description">Since 2000, I've enjoyed turning complex problems into simple, beautiful and intuitive designs. When I'm not pushing pixels, you'll find me cooking, hiking, working out or spending time with family.</p>
+                    </div>
+                    <div class="hero-image">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/about/hero-image.png" alt="Douglas Fraize" loading="lazy">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Design Coder Section - Full Width Background -->
+        <section class="design-coder-section">
+            <div class="design-coder-container">
+                <div class="left-column">
+                    <h2 class="section-title">Part designer</h2>
+                    <div class="skills-list">
+                        <p>UI design</p>
+                        <p>UX design</p>
+                        <p>Design Systems</p>
+                        <p>Interaction design</p>
+                    </div>
+                </div>
+                <div class="pie-chart">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/about/pie-chart.png" alt="Skills pie chart" loading="lazy">
+                </div>
+                <div class="right-column">
+                    <h2 class="section-title">Part coder</h2>
+                    <div class="skills-list">
+                        <p>Front-end development</p>
+                        <p>HTML / CSS</p>
+                        <p>JavaScript (kinda)</p>
+                        <p>Tailwind</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="about-container">
+            <!-- Random Facts Section -->
+            <section class="random-facts-section">
+                <div class="random-facts-container">
+                    <div class="facts-image">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/about/random-facts-image.png" alt="Random facts" loading="lazy">
+                    </div>
+                    <div class="facts-content">
+                        <h2 class="section-title">Random facts</h2>
+                        <div class="facts-list">
+                            <p>Enjoy boating</p>
+                            <p>I like skiing</p>
+                            <p>I'm a bit of a clean freak</p>
+                            <p>I love to cook (and eat)</p>
+                            <p>I like trying new restaurants</p>
+                            <p>I enjoy creating things</p>
+                            <p>Watching a good movie</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Designer Who Speaks Developer Section - Full Width Background -->
+        <section class="designer-developer-section">
+            <div class="designer-developer-container">
+                <h2 class="section-title">The Designer Who Speaks Developer</h2>
+                <div class="developer-content">
+                    <p>What started as a simple HTML course in 1999 accidentally launched a 25-year journey at the intersection of design and code. I discovered something rare: I love solving user problems through design and I have a knack for understanding how to build those solutions at scale.</p>
+                    <p>This unique perspective has made me a "bridge-builder" someone who can envision beautiful, user-centered experiences while architecting the design systems that make them sustainable. At FM Global, I pioneered a comprehensive design system that achieved 85% adoption across 300+ developers and reduced UI development time by 40%. But the real win? Consistent, accessible experiences that actually serve user needs.</p>
+                    <p>Now as a UX Designer at Fidelity, I'm focused on what I've always been passionate about: creating intuitive experiences that help people navigate complex decisions with confidence. Whether I'm designing for institutional clients or reimagining internal tools, I bring systematic thinking and deep technical fluency to every user challenge.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Include -->
+    <div id="footer-include"></div>
+
+    <!-- JavaScript -->
+    <script src="js/includes.js"></script>
+    <script src="js/lazy-loading.js"></script>
+    <script src="js/main.js"></script>
 </body>
-</html> 
+</html>

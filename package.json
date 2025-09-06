@@ -1,0 +1,31 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "Douglas Fraize's Portfolio Site",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html --watch=.",
+    "start": "live-server --port=3000 --open=/index.html",
+    "build": "echo 'No build process needed for static site'",
+    "optimize-images": "node optimize-images.js",
+    "update-images": "node update-images.js",
+    "fix-html": "node fix-html.js",
+    "deploy:safe": "bash ./deploy-safe.sh"
+  },
+  "keywords": [
+    "portfolio",
+    "ux",
+    "design",
+    "developer"
+  ],
+  "author": "Douglas Fraize",
+  "license": "MIT",
+  "devDependencies": {
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
+    "live-server": "^1.2.2",
+    "sharp": "^0.34.3"
+  }
+}

@@ -1,49 +1,88 @@
-# Portfolio Website
+# Portfolio Site
 
-A modern portfolio website built with HTML and Tailwind CSS.
+A simple HTML/CSS/JavaScript portfolio site with HMR (Hot Module Replacement) development server.
 
-## Features
+## 🚀 Quick Start
 
-- Responsive design
-- Modern UI with Tailwind CSS
-- Mobile-friendly navigation
-- Clean and professional layout
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Getting Started
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
 
-1. Clone this repository
-2. Open `index.html` in your browser
-3. Customize the content to make it your own
+3. **View the site:**
+   Open your browser to `http://localhost:3000`
 
-## Customization
-
-### Personal Information
-- Update the name in the navigation bar
-- Change the profession in the hero section
-- Add your own content to each section
-
-### Styling
-- The website uses Tailwind CSS for styling
-- Custom styles can be added in `css/styles.css`
-- Colors and spacing can be modified using Tailwind classes
-
-## File Structure
+## 📁 Project Structure
 
 ```
-portfolio/
+Portfolio Site/
 ├── index.html          # Main HTML file
+├── package.json        # Dependencies and scripts
 ├── css/
-│   └── styles.css      # Custom CSS styles
-├── js/                 # JavaScript files (if needed)
-└── images/            # Image assets
+│   └── style.css      # Main stylesheet
+├── js/
+│   └── main.js        # JavaScript functionality
+├── images/            # Image assets
+└── README.md          # This file
 ```
 
-## Technologies Used
+## 🛠️ Development
 
-- HTML5
-- Tailwind CSS
-- Custom CSS
+- **HMR Enabled:** Changes reflect immediately in the browser
+- **Live Server:** Automatic browser refresh on file changes
+- **Port 3000:** Access at `http://localhost:3000`
 
-## License
+## 📝 Scripts
 
-This project is open source and available under the MIT License.
+- `npm run dev` - Start development server with HMR
+- `npm start` - Start production server
+- `npm run build` - No build process needed (static site)
+ - `npm run deploy:safe` - Safely deploys to GitHub by cloning the remote, replacing contents, committing, and pushing
+
+## 🚢 Deploy (Safe, preserves history)
+
+You can deploy your site to GitHub with one command from Cursor.
+
+1. One-time setup (choose one):
+   - Create a `.deploy.env` file in the project root with:
+     ```bash
+     DEPLOY_REPO="https://github.com/USER/REPO.git"
+     DEPLOY_BRANCH="main"
+     ```
+     Then run:
+     ```bash
+     npm run deploy:safe
+     ```
+   - Or pass arguments directly each time:
+     ```bash
+     npm run deploy:safe -- https://github.com/USER/REPO.git main
+     ```
+
+This method clones your remote repo, wipes everything except `.git`, copies the local site, commits, and pushes to the specified branch.
+
+## 🎨 Features
+
+- Clean, modern design
+- Responsive layout
+- Google Fonts integration
+- Simple and fast loading
+- Easy to customize
+
+## 📱 Responsive Design
+
+The site is fully responsive and works on:
+- Desktop computers
+- Tablets
+- Mobile phones
+
+## 🔧 Customization
+
+Edit the files in their respective directories:
+- `index.html` - Main content
+- `css/style.css` - Styling
+- `js/main.js` - Functionality 

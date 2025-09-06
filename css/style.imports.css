@@ -1,0 +1,19 @@
+ /* ===== MODULAR CSS IMPORTS ===== */
+
+ /* Base styles - reset, typography, utilities */
+@import url('base.css');
+
+/* Layout styles - footer, main layout */
+@import url('layout.css');
+
+/* Navigation styles */
+@import url('navigation.css');
+
+/* Component styles - hero, cards, buttons */
+@import url('components.css');
+
+/* Page-specific styles - about, resume, project pages */
+@import url('pages.css');
+
+/* Responsive design - media queries */
+@import url('responsive.css');
