@@ -2979,3 +2979,12 @@ main > :last-child {
         padding: 0 10px;
     }
 }
+
+/* Prevent "MY LATEST WORK" from wrapping on small screens */
+@media (max-width: 768px) {
+    #latest-work-heading {
+        white-space: nowrap;
+        word-break: normal;
+        overflow-wrap: normal;
+    }
+}
