@@ -2,65 +2,42 @@
 
 set -euo pipefail
 
-# Safe deploy script: clones remote repo, replaces contents with local site, commits, and pushes.
+# Simple deploy script: commit and push the current repository
 # Usage:
-#   ./deploy-safe.sh <repo-url> [branch]
-# Or set environment variables/optional .deploy.env file:
-#   DEPLOY_REPO, DEPLOY_BRANCH (default: main), DEPLOY_MESSAGE
+#   ./deploy-safe.sh [commit-message] [branch]
+# Notes:
+# - If no branch is provided, the current branch is used.
+# - If there are no changes to commit, the script will still push.
+# - Requires a configured remote (e.g., origin).
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
-source_dir="$script_dir"
-
-# Load optional config from .deploy.env if present
-if [[ -f "$source_dir/.deploy.env" ]]; then
-  # shellcheck disable=SC1091
-  source "$source_dir/.deploy.env"
-fi
-
-REPO_URL="${1:-${DEPLOY_REPO:-}}"
-BRANCH="${2:-${DEPLOY_BRANCH:-main}}"
-COMMIT_MSG="${DEPLOY_MESSAGE:-Deploy: $(date '+%Y-%m-%d %H:%M')}"
-
-if [[ -z "$REPO_URL" ]]; then
-  echo "Error: Repository URL not provided."
-  echo "Provide it as the first argument, set DEPLOY_REPO, or create .deploy.env."
-  echo "Example: ./deploy-safe.sh https://github.com/USER/REPO.git main"
-  exit 1
-fi
+cd "$script_dir"
 
 command -v git >/dev/null 2>&1 || { echo "Error: git is required."; exit 1; }
-command -v rsync >/dev/null 2>&1 || { echo "Error: rsync is required."; exit 1; }
 
-temp_dir="$(mktemp -d -t deploy-XXXXXXXX)"
-cleanup() { rm -rf "$temp_dir"; }
-trap cleanup EXIT
+branch="${2:-$(git rev-parse --abbrev-ref HEAD)}"
+commit_msg="${1:-Deploy: $(date '+%Y-%m-%d %H:%M')}"
 
-echo "Cloning $REPO_URL (branch: $BRANCH) into $temp_dir..."
-git -c advice.detachedHead=false clone --branch "$BRANCH" --single-branch "$REPO_URL" "$temp_dir/repo" >/dev/null 2>&1 || {
-  echo "Branch '$BRANCH' not found. Attempting to clone default branch and create '$BRANCH'."
-  git clone "$REPO_URL" "$temp_dir/repo"
-  cd "$temp_dir/repo"
-  git checkout -b "$BRANCH"
-}
+echo "Deploying branch '$branch'..."
 
-cd "$temp_dir/repo"
-
-echo "Removing existing repo contents (except .git)..."
-find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
-
-echo "Copying site files from $source_dir ..."
-rsync -av --delete --exclude ".git" "$source_dir"/ ./
-
-echo "Preparing commit..."
+# Stage all changes
 git add -A
+
+# Commit if there are staged changes
 if git diff --cached --quiet; then
-  echo "No changes to deploy. Exiting."
-  exit 0
+  echo "No changes to commit."
+else
+  git commit -m "$commit_msg"
 fi
 
-git commit -m "$COMMIT_MSG"
-echo "Pushing to origin/$BRANCH ..."
-git push origin "$BRANCH"
+# Push to upstream if configured; otherwise set it to origin/<branch>
+if git rev-parse --abbrev-ref --symbolic-full-name "@{u}" >/dev/null 2>&1; then
+  echo "Pushing to tracked upstream ..."
+  git push
+else
+  echo "No upstream configured. Pushing to origin/$branch and setting upstream ..."
+  git push -u origin "$branch"
+fi
 
 echo "Deployment complete."
 
