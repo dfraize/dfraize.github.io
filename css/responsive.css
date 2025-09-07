@@ -86,29 +86,7 @@
         margin-top: 15px;
     }
 
-    /* About page */
-    .about-intro-container {
-        gap: 64px;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
-    .intro-content {
-        width: 350px;
-        max-width: 100%;
-        min-width: 0;
-    }
-
-    .about-header {
-        font-size: 84px;
-    }
-
-    .hero-image {
-        width: 350px;
-        height: 300px;
-        max-width: 100%;
-        min-width: 0;
-    }
+    /* About page: keep layout same as large (no overrides) */
 
     /* Design coder section */
     .design-coder-container {
@@ -416,6 +394,14 @@
         max-width: 400px;
         height: 300px;
         flex-shrink: 1;
+        align-self: center; /* center at sm */
+    }
+
+    /* Ensure override wins over base specificity */
+    .about-intro-container .hero-image {
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .about-header {
@@ -428,6 +414,25 @@
 
     .intro-description {
         font-size: 16px;
+    }
+
+    /* About intro: match portfolio intro typography and spacing */
+    .about-intro .about-header {
+        font-size: 64px;
+        margin: 0;
+    }
+
+    .about-intro .intro-tagline {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0 0 var(--spacing-md) 0;
+    }
+
+    .about-intro .intro-description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
     }
 
     .hero-image {
@@ -995,6 +1000,7 @@
         max-width: 300px;
         height: 250px;
         flex-shrink: 0;
+        align-self: flex-start; /* not centered at xs */
     }
 
     .about-header {

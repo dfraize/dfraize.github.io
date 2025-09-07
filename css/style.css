@@ -1199,7 +1199,7 @@ main > :last-child {
 }
 
 .about-intro {
-    margin: 0 0 var(--spacing-xl) 0;
+    margin: 0;
 }
 
 .about-intro-container {
@@ -1210,6 +1210,11 @@ main > :last-child {
     height: 100%;
     max-width: 100%;
     overflow: hidden;
+}
+
+/* Ensure image sits on the bottom edge of the intro section on row layouts */
+.about-intro-container .hero-image {
+    align-self: flex-end;
 }
 
 .intro-content {
@@ -1882,29 +1887,8 @@ main > :last-child {
         margin-top: 15px;
     }
 
-    /* About page */
-    .about-intro-container {
-        gap: 64px;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
-    .intro-content {
-        width: 350px;
-        max-width: 100%;
-        min-width: 0;
-    }
-
-    .about-header {
-        font-size: 84px;
-    }
-
-    .hero-image {
-        width: 350px;
-        height: 300px;
-        max-width: 100%;
-        min-width: 0;
-    }
+    /* About page: keep large layout/typography at medium breakpoint */
+    /* (No overrides for .about-intro at this size) */
 
     /* Design coder section */
     .design-coder-container {
@@ -2195,16 +2179,31 @@ main > :last-child {
         flex-shrink: 1;
     }
 
+    /* Ensure image centers at sm breakpoint, overriding base bottom-align */
+    .about-intro-container .hero-image {
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Removed global margin already; no extra override needed */
+
     .about-header {
         font-size: 64px;
     }
 
-    .intro-tagline {
-        font-size: 20px;
+    /* About intro: match portfolio intro typography and spacing */
+    .about-intro .intro-tagline {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0 0 var(--spacing-md) 0;
     }
 
-    .intro-description {
+    .about-intro .intro-description {
         font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
     }
 
     .hero-image {
