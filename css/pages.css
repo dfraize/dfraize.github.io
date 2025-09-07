@@ -48,10 +48,10 @@
 .intro-tagline {
     font-family: var(--font-family-primary);
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--color-text-body);
-    line-height: 1.3;
-    margin: 0 0 var(--spacing-sm) 0;
+    line-height: 1.4;
+    margin: 0 0 var(--spacing-md) 0;
     text-align: left;
 }
 
@@ -60,7 +60,7 @@
     font-size: 18px;
     font-weight: 400;
     color: var(--color-text-body);
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
     text-align: left;
 }

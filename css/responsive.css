@@ -607,7 +607,7 @@
 
     /* Portfolio page */
     .portfolio-header {
-        padding: 32px 20px 46px;
+        padding: 32px 0 46px;
     }
 
     .portfolio-header-content {
@@ -620,10 +620,27 @@
 
     .portfolio-desc-large {
         font-size: 18px;
+        line-height: 1.4;
+        margin: 0 0 var(--spacing-md) 0;
+        max-width: 500px;
     }
 
     .portfolio-desc-small {
         font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        max-width: 500px;
+    }
+
+    /* Align portfolio header intro start with About at small breakpoint */
+    .portfolio-header {
+        justify-content: flex-start;
+        min-height: 0;
+    }
+
+    /* Normalize group spacing below portfolio intro */
+    .portfolio-description {
+        margin-bottom: 0;
     }
 
     /* Project pages */
@@ -769,6 +786,10 @@
 
     /* About page */
     .about-header {
+        font-size: 48px;
+    }
+
+    .portfolio-title {
         font-size: 48px;
     }
 
