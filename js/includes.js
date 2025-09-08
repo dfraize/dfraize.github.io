@@ -1,6 +1,7 @@
 // Determine base prefix for assets/partials depending on path depth
 function getBasePrefix() {
-    return window.location.pathname.includes('/projects/') ? '../' : '';
+    const path = window.location.pathname;
+    return (path.includes('/projects/') || path.includes('/workouts/')) ? '../' : '';
 }
 
 // Prefix helper for relative URLs
