@@ -59,7 +59,7 @@ function initializeLogoLongPressSecret() {
 
         let pressTimerId = null;
         let longPressed = false;
-        const holdMs = 1600;
+        const holdMs = 2000;
 
         const start = () => {
             clearTimeout(pressTimerId);
