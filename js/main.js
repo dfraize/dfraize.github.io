@@ -36,4 +36,73 @@ document.addEventListener('DOMContentLoaded', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    // Initialize secret long-press on header logo to open workouts page
+    initializeLogoLongPressSecret();
 });
+
+// Long-press easter egg on header logo (mobile-friendly)
+function initializeLogoLongPressSecret() {
+    // Use existing helper to resolve correct path depth across pages
+    const resolveSecretUrl = () => {
+        try {
+            if (typeof prefixIfRelative === 'function') {
+                return prefixIfRelative('workouts/workout-list.html');
+            }
+        } catch (e) {}
+        return 'workouts/workout-list.html';
+    };
+
+    const attachHandlers = () => {
+        const logoLink = document.querySelector('.logo-link');
+        if (!logoLink) return false;
+
+        let pressTimerId = null;
+        let longPressed = false;
+        const holdMs = 1600;
+
+        const start = () => {
+            clearTimeout(pressTimerId);
+            longPressed = false;
+            pressTimerId = setTimeout(() => {
+                longPressed = true;
+                window.location.href = resolveSecretUrl();
+            }, holdMs);
+        };
+
+        const cancel = (e) => {
+            if (pressTimerId) clearTimeout(pressTimerId);
+            if (longPressed && e && typeof e.preventDefault === 'function') {
+                e.preventDefault();
+            }
+        };
+
+        // Prevent normal click after long press triggers
+        logoLink.addEventListener('click', function(e) {
+            if (longPressed) {
+                e.preventDefault();
+                longPressed = false;
+            }
+        }, { capture: true });
+
+        // Touch handlers for long press
+        logoLink.addEventListener('touchstart', start, { passive: true });
+        logoLink.addEventListener('touchend', cancel, { passive: false });
+        logoLink.addEventListener('touchcancel', cancel, { passive: true });
+        logoLink.addEventListener('touchmove', cancel, { passive: true });
+
+        return true;
+    };
+
+    if (attachHandlers()) return;
+
+    // Header is injected asynchronously; observe until logo is available
+    const headerInclude = document.getElementById('header-include');
+    if (!headerInclude) return;
+    const observer = new MutationObserver(() => {
+        if (attachHandlers()) {
+            observer.disconnect();
+        }
+    });
+    observer.observe(headerInclude, { childList: true, subtree: true });
+}

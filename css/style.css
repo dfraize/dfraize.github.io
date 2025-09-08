@@ -330,6 +330,13 @@ main > :last-child {
     text-decoration: none;
 }
 
+/* Suppress iOS touch callout/selection on logo to make long-press clean */
+.logo-link, .logo-img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .logo-img {
     width: 100%;
     height: 100%;
