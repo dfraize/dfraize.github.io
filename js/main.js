@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize secret triple-tap on header logo to open workouts page (mobile-only)
-    initializeLogoTripleTapSecret();
+    // Initialize secret long-press on header logo to open workouts page (mobile-friendly)
+    initializeLogoLongPressSecret();
 });
 
 // Long-press easter egg on header logo (mobile-friendly)
