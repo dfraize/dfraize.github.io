@@ -60,13 +60,25 @@ function initializeLogoLongPressSecret() {
         let pressTimerId = null;
         let longPressed = false;
         const holdMs = 2000;
+        let startX = 0;
+        let startY = 0;
+        let movedTooFar = false;
+        const moveThresholdPx = 10; // allow slight finger jitter
 
-        const start = () => {
+        const start = (e) => {
             clearTimeout(pressTimerId);
             longPressed = false;
+            movedTooFar = false;
+            if (e && e.touches && e.touches.length > 0) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }
             pressTimerId = setTimeout(() => {
-                longPressed = true;
-                window.location.href = resolveSecretUrl();
+                // Only trigger if finger hasn't moved too far
+                if (!movedTooFar) {
+                    longPressed = true;
+                    window.location.href = resolveSecretUrl();
+                }
             }, holdMs);
         };
 
@@ -74,6 +86,18 @@ function initializeLogoLongPressSecret() {
             if (pressTimerId) clearTimeout(pressTimerId);
             if (longPressed && e && typeof e.preventDefault === 'function') {
                 e.preventDefault();
+            }
+        };
+
+        const onMove = (e) => {
+            if (!pressTimerId || movedTooFar) return;
+            if (e && e.touches && e.touches.length > 0) {
+                const dx = e.touches[0].clientX - startX;
+                const dy = e.touches[0].clientY - startY;
+                if (Math.hypot(dx, dy) > moveThresholdPx) {
+                    movedTooFar = true;
+                    clearTimeout(pressTimerId);
+                }
             }
         };
 
@@ -89,7 +113,12 @@ function initializeLogoLongPressSecret() {
         logoLink.addEventListener('touchstart', start, { passive: true });
         logoLink.addEventListener('touchend', cancel, { passive: false });
         logoLink.addEventListener('touchcancel', cancel, { passive: true });
-        logoLink.addEventListener('touchmove', cancel, { passive: true });
+        logoLink.addEventListener('touchmove', onMove, { passive: true });
+
+        // Prevent long-press context menu on some browsers
+        logoLink.addEventListener('contextmenu', function(e) {
+            if (pressTimerId) e.preventDefault();
+        });
 
         return true;
     };
