@@ -5,6 +5,36 @@
     box-sizing: border-box;
 }
 
+/* FINAL: Ensure small-screen spacing for portfolio header content wins cascade */
+@media (max-width: 768px) {
+    .portfolio-header-content {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Ensure small breakpoint spacing for portfolio header content wins last */
+@media (max-width: 768px) {
+    .portfolio-header-content {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Final small-breakpoint override to ensure spacing is applied */
+@media (max-width: 768px) {
+    .portfolio-header-content {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
 html {
     font-size: 62.5%; /* 1rem = 10px */
     scroll-behavior: smooth;
@@ -47,6 +77,17 @@ html {
 
     /* Transitions */
     --transition-fast: 0.3s ease;
+
+    /* Additional semantic tokens */
+    --color-muted: #757575;
+    --color-nav-bg: #111111;
+    --color-mobile-menu-bg: #222222;
+    --color-mobile-menu-hover-bg: #333333;
+    --color-divider-dark: #444444;
+
+    --nav-height: 100px;
+    --max-width-views: 1160px;
+    --spacing-2xl: 96px;
 }
 
 body {
@@ -92,7 +133,7 @@ body {
 
 /* ===== GLOBAL HEADING STYLES ===== */
 h1, h2, h3, h4, h5, h6 {
-    color: #000000;
+    color: var(--color-black);
     font-family: var(--font-family-primary);
     margin: 0;
     padding: 0;
@@ -209,7 +250,7 @@ main > :last-child {
     font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 600;
-    color: #757575;
+    color: var(--color-muted);
 }
 
 .footer-links {
@@ -222,11 +263,11 @@ main > :last-child {
     font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 600;
-    color: #757575;
+    color: var(--color-muted);
 }
 
 .footer-links a {
-    color: #757575;
+    color: var(--color-muted);
     text-decoration: none;
 }
 
@@ -241,11 +282,11 @@ main > :last-child {
     font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 600;
-    color: #757575;
+    color: var(--color-muted);
 }
 
 .footer-contact a {
-    color: #757575;
+    color: var(--color-muted);
     text-decoration: none;
     margin-left: 20px;
 }
@@ -255,29 +296,13 @@ main > :last-child {
 }
 
 /* ===== MAIN CONTENT ===== */
-.main-content {
-    margin-top: 100px;
-    padding: 50px 0;
-    min-height: calc(100vh - 254px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+/* (removed unused .main-content styles) */
 
-.main-content h1 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 4.8rem;
-    font-weight: 700;
-    color: #000;
-    text-align: center;
-}/* ===== NAVIGATION ===== */
+/* ===== NAVIGATION ===== */
 .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background-color: #111111;
+    position: relative;
+    height: var(--nav-height);
+    background-color: var(--color-nav-bg);
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.15);
     z-index: 1000;
 }
@@ -318,14 +343,14 @@ main > :last-child {
 }
 
 .nav-item {
-    background: #111111;
+    background: var(--color-nav-bg);
     border: none;
     color: var(--color-white);
     font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 600;
     padding: 10px;
-    height: 100px;
+    height: var(--nav-height);
     cursor: pointer;
     transition: all var(--transition-fast);
     position: relative;
@@ -335,11 +360,11 @@ main > :last-child {
 }
 
 .nav-item:hover {
-    color: #666666;
+    color: var(--color-text-body);
 }
 
 .nav-item.active {
-    color: #666666;
+    color: var(--color-text-body);
     box-shadow: inset 0px -2px 0px 0px #ffffff;
 }
 
@@ -383,7 +408,7 @@ main > :last-child {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #222222;
+    background-color: var(--color-mobile-menu-bg);
     z-index: 999;
     visibility: hidden;
     opacity: 0;
@@ -414,38 +439,32 @@ main > :last-child {
     text-align: center;
     padding: 20px;
     width: 100%;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid var(--color-divider-dark);
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .mobile-nav-item:hover {
-    color: #666666;
-    background-color: #333333;
+    color: var(--color-text-body);
+    background-color: var(--color-mobile-menu-hover-bg);
 }
 
 .mobile-nav-item.active {
-    color: #666666;
-    background-color: #333333;
+    color: var(--color-text-body);
+    background-color: var(--color-mobile-menu-hover-bg);
 }
 /* ===== COMPONENTS ===== */
 
-/* Font loading optimization */
-.portfolio-card h3,
-.portfolio-card p,
-.work-card h3,
-.work-card p {
-    font-display: swap;
-}
+/* Removed invalid font-display: swap from element selectors (belongs in @font-face) */
 
 /* ===== PROJECT PAGES ===== */
 .project-main {
-    background-color: #ffffff;
-    margin-top: 100px;
+    background-color: var(--color-white);
+    margin-top: 0;
     /* Bottom spacing standardized via footer margin-top; avoid double spacing here */
     margin-bottom: 0;
     padding: 32px 0;
     position: relative;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--color-gray-border);
 }
 
 /* Removed decorative plate styles - no longer needed with standardized layout */
@@ -457,7 +476,7 @@ main > :last-child {
     gap: var(--spacing-xl);
     align-items: flex-start;
     justify-content: flex-start;
-    max-width: 1039.7px;
+    max-width: var(--max-width-content);
     margin: 0 auto;
     z-index: 1;
 }
@@ -472,7 +491,7 @@ main > :last-child {
     justify-content: flex-start;
     position: relative;
     flex-shrink: 0;
-    color: #666666;
+    color: var(--color-text-body);
     width: 100%;
 }
 
@@ -483,7 +502,7 @@ main > :last-child {
     width: 100%;
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
-    color: #000000;
+    color: var(--color-black);
     line-height: 1;
     margin: 0;
 }
@@ -495,9 +514,8 @@ main > :last-child {
     font-size: 16px;
     width: 100%;
     font-family: 'Nunito', sans-serif;
-    font-size: 16px;
     font-weight: 400;
-    color: #666666;
+    color: var(--color-text-body);
     line-height: 1.4;
     margin: 0;
 }
@@ -572,10 +590,11 @@ main > :last-child {
     background-color: var(--color-white);
     background-image: url('../images/hero-bg.svg');
     background-size: 80%;
-    background-position: center bottom;
+    /* Nudge background down to counter inner whitespace in SVG so it sits on the bottom edge */
+    background-position: center calc(100% + 18px);
     background-repeat: no-repeat;
     box-shadow: var(--shadow-light);
-    margin-top: 100px;
+    margin-top: 0;
     padding-top: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
     overflow: hidden;
@@ -613,7 +632,7 @@ main > :last-child {
     color: var(--color-black);
     line-height: 1;
     margin-bottom: 0;
-    margin-left: 13px;
+    margin-left: 0;
 }
 
 .designer-desc {
@@ -705,7 +724,7 @@ main > :last-child {
     font-family: var(--font-family-primary);
     font-size: 16px;
     font-weight: 600;
-    color: #000000;
+    color: var(--color-black);
     white-space: nowrap;
 }
 
@@ -717,12 +736,12 @@ main > :last-child {
     justify-content: center;
 }
 
-.work-card {
+.work-card, .portfolio-card {
     width: 330px;
     height: 261px;
     background-color: var(--color-white);
     border-radius: 4px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-gray-border);
     overflow: hidden;
     position: relative;
     text-decoration: none;
@@ -733,8 +752,7 @@ main > :last-child {
     flex-shrink: 0;
     min-width: 0;
 }
-
-.work-card:hover {
+.work-card:hover, .portfolio-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-card);
 }
@@ -763,7 +781,7 @@ main > :last-child {
     transform: scale(1.05);
 }
 
-.portfolio-card h3 {
+.work-card h3, .portfolio-card h3 {
     font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 600;
@@ -775,38 +793,11 @@ main > :last-child {
     line-height: 1;
     z-index: 2;
 }
-
-.portfolio-card p {
+.work-card p, .portfolio-card p {
     font-family: var(--font-family-primary);
     font-size: 14px;
     font-weight: 400;
-    color: #aaaaaa;
-    margin: 0;
-    position: absolute;
-    left: 8px;
-    top: 222px;
-    line-height: 1;
-    z-index: 2;
-}
-
-.work-card h3 {
-    font-family: var(--font-family-primary);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-black);
-    margin: 0;
-    position: absolute;
-    left: 8px;
-    top: 200px;
-    line-height: 1;
-    z-index: 2;
-}
-
-.work-card p {
-    font-family: var(--font-family-primary);
-    font-size: 14px;
-    font-weight: 400;
-    color: #aaaaaa;
+    color: var(--color-gray-text);
     margin: 0;
     position: absolute;
     left: 8px;
@@ -840,23 +831,7 @@ main > :last-child {
     justify-content: space-between;
 }
 
-.portfolio-card {
-    width: 330px;
-    height: 261px;
-    background-color: var(--color-white);
-    border-radius: 4px;
-    border: 1px solid #e0e0e0;
-    overflow: hidden;
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.portfolio-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-card);
-}
+/* consolidated with .work-card above */
 
 .portfolio-card-link {
     text-decoration: none;
@@ -864,88 +839,7 @@ main > :last-child {
 }
 
 /* ===== PROJECT VIEWS SECTIONS ===== */
-.project-views {
-    padding: 64px 0;
-}
-
-.views-container {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1160px;
-}
-
-.views-title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    color: #000000;
-    line-height: 1;
-    margin: 0 0 32px 0;
-    text-align: left;
-}
-
-/* Desktop Grid */
-.desktop-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 32px;
-}
-
-/* Mobile Grid */
-.mobile-grid {
-    display: flex;
-    gap: 32px;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-}
-
-.mobile-grid .factory-mutual-card {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
-/* Divider Line */
-.divider-line {
-    margin: 64px auto;
-    max-width: 1039.7px;
-    width: 100%;
-}
-
-.divider-line hr {
-    border: none;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 0;
-}
-
-/* ===== PROJECT CARDS ===== */
-.view-card {
-    width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-    padding: 8px;
-}
-
-.view-card picture {
-    display: block;
-    width: 100%;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.view-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
+/* (removed unused project-views, views-container, views-title, desktop-grid, mobile-grid, and view-card styles) */
 
 /* ===== PROJECT DETAILS ===== */
 .project-info {
@@ -964,7 +858,7 @@ main > :last-child {
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: #000000;
+    color: var(--color-black);
     margin: 0;
     line-height: 1;
 }
@@ -973,7 +867,7 @@ main > :last-child {
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #666666;
+    color: var(--color-text-body);
     margin: 0;
     line-height: 1.4;
 }
@@ -1010,7 +904,7 @@ main > :last-child {
 }
 
 .factory-mutual-container {
-    max-width: 1039.7px;
+    max-width: var(--max-width-content);
     margin: 0 auto;
     position: relative;
 }
@@ -1019,7 +913,7 @@ main > :last-child {
     font-family: 'Nunito', sans-serif;
     font-size: 24px;
     font-weight: 600;
-    color: #000000;
+    color: var(--color-black);
     line-height: 1;
     margin: 0 0 32px 0;
     text-align: left;
@@ -1029,7 +923,7 @@ main > :last-child {
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #666666;
+    color: var(--color-text-body);
     line-height: 1.75;
     margin: 0 0 64px 0;
     text-align: left;
@@ -1119,15 +1013,37 @@ main > :last-child {
 }
 
 @media (max-width: 768px) {
+    .about-intro {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .portfolio-header {
+        margin-top: 0;
+        padding: 0;
+    }
     .latest-work-container,
     .portfolio-grid {
         padding: 0 20px;
     }
 
+    /* Portfolio header spacing on small screens */
+    .portfolio-header-content {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Ensure no extra spacing after header on small */
+    .portfolio-content {
+        padding-top: 0;
+    }
+
     .hero {
         height: 400px;
-        margin-top: 80px;
-        padding-top: var(--spacing-lg);
+        margin-top: 0;
+        padding-top: 0;
     }
 
     .hero-text {
@@ -1187,9 +1103,9 @@ main > :last-child {
 
 /* ===== ABOUT PAGE ===== */
 .about-main {
-    margin-top: 100px;
+    margin-top: 0;
     background-color: var(--color-gray-light);
-    padding-top: var(--spacing-xl);
+    padding: 0;
 }
 
 .about-container {
@@ -1200,21 +1116,28 @@ main > :last-child {
 
 .about-intro {
     margin: 0;
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    /* Match hero image height so content centers visually */
+    min-height: 0;
 }
 
 .about-intro-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 128px;
     width: 100%;
-    height: 100%;
+    height: auto;
     max-width: 100%;
     overflow: hidden;
 }
 
 /* Ensure image sits on the bottom edge of the intro section on row layouts */
+/* Center content vertically at md+; adjust at smaller in media queries */
 .about-intro-container .hero-image {
-    align-self: flex-end;
+    align-self: center;
 }
 
 .intro-content {
@@ -1417,7 +1340,7 @@ main > :last-child {
 /* ===== PORTFOLIO PAGE ===== */
 .portfolio-main {
     background-color: var(--color-gray-light);
-    margin-top: 100px;
+    margin-top: 0;
 }
 
 .portfolio-content {
@@ -1426,10 +1349,11 @@ main > :last-child {
 
 .portfolio-header {
     background-color: var(--color-white);
-    padding: 64px 0;
+    margin-top: 0;
+    padding: 0;
     text-align: left;
     box-shadow: 0px 0px 12px 0px rgba(30, 32, 34, 0.1), 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-    min-height: 250px;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1439,8 +1363,10 @@ main > :last-child {
 .portfolio-header-content {
     width: 100%;
     max-width: var(--max-width-content);
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
+    display: grid;
 }
 
 .portfolio-title {
@@ -1450,12 +1376,14 @@ main > :last-child {
     color: var(--color-black);
     line-height: 1;
     margin: 0 0 var(--spacing-sm) 0;
-    max-width: 400px;
+    margin-right: 0;
+    max-width: 100%;
 }
 
 .portfolio-description {
     margin-bottom: 0;
-    max-width: 400px;
+    margin-right: 0;
+    max-width: 100%;
 }
 
 .portfolio-desc-large {
@@ -1465,7 +1393,8 @@ main > :last-child {
     color: var(--color-text-body);
     line-height: 1.4;
     margin: 0 0 var(--spacing-md) 0;
-    max-width: 400px;
+    margin-right: 0;
+    max-width: 100%;
 }
 
 .portfolio-desc-small {
@@ -1475,14 +1404,29 @@ main > :last-child {
     color: var(--color-text-body);
     line-height: 1.5;
     margin: 0;
-    max-width: 400px;
+    margin-right: 0;
+    max-width: 100%;
+}
+
+/* Portfolio header image (right column at md+) */
+.portfolio-header-image {
+    width: 100%;
+    max-width: 100%;
+}
+
+.portfolio-header-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 /* ===== RESUME PAGE ===== */
 .resume-main {
     background-color: var(--color-gray-light);
     padding: 0;
-    margin-top: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* 404 page */
@@ -1493,7 +1437,7 @@ main > :last-child {
 
 .resume-intro-section {
     background-color: var(--color-white);
-    padding: 64px 0 64px;
+    padding: 88px 0 0;
     box-shadow: 0px 0px 12px 0px rgba(30, 32, 34, 0.1), 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     min-height: 330px;
     display: flex;
@@ -1503,9 +1447,9 @@ main > :last-child {
 }
 
 .resume-intro-content {
-    max-width: var(--max-width-container);
+    max-width: var(--max-width-content);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .resume-intro-content .intro-text {
@@ -1824,11 +1768,12 @@ main > :last-child {
 
     /* Portfolio page */
     .portfolio-header {
-        padding: 32px 50px 46px;
+        padding: 0;
     }
 
     .portfolio-header-content {
-        padding: 0 50px;
+        padding: 0;
+        display: block;
     }
 
     .portfolio-desc-large {
@@ -1868,8 +1813,8 @@ main > :last-child {
     /* Hero section */
     .hero {
         height: 450px;
-        margin-top: 80px;
-        padding-top: var(--spacing-lg);
+        margin-top: 0;
+        padding-top: 0;
     }
 
     .hero-text {
@@ -1960,6 +1905,21 @@ main > :last-child {
     .developer-content p {
         text-align: left;
     }
+
+    /* About page: reduce vertical section spacing to 32px at small breakpoint */
+    .design-coder-section,
+    .random-facts-section,
+    .designer-developer-section {
+        padding: 32px 0;
+    }
+
+    /* Resume: ensure list bullets are indented and visible at md */
+    .resume-main .resume-list,
+    .resume-main .achievement-list {
+        padding-left: 28px;
+        list-style: disc;
+        list-style-position: outside;
+    }
 }
 
 /* ===== TABLET PORTRAIT (600px to 767px) ===== */
@@ -1972,8 +1932,8 @@ main > :last-child {
     /* Hero section */
     .hero {
         height: 400px;
-        margin-top: 70px;
-        padding-top: var(--spacing-md);
+        margin-top: 0;
+        padding-top: 0;
         margin-left: 0;
         width: 100%;
         margin-right: 0;
@@ -2114,7 +2074,8 @@ main > :last-child {
 
     /* About page */
     .about-main {
-        padding-top: var(--spacing-lg);
+        margin: 0;
+        padding: 0;
         overflow-x: hidden;
     }
 
@@ -2157,6 +2118,8 @@ main > :last-child {
         flex-shrink: 1;
         text-align: left;
         align-self: flex-start;
+        margin-top: 32px;
+        margin-bottom: 0;
     }
 
     .about-header {
@@ -2177,7 +2140,7 @@ main > :last-child {
         align-items: center;
         width: 100%;
         max-width: 400px;
-        height: 300px;
+        height: auto;
         flex-shrink: 1;
     }
 
@@ -2211,7 +2174,7 @@ main > :last-child {
     .hero-image {
         width: 100%;
         max-width: 400px;
-        height: 300px;
+        height: auto;
     }
 
     /* Design coder section */
@@ -2290,8 +2253,9 @@ main > :last-child {
 
     .pie-chart {
         order: 3;
-        width: 300px;
-        height: 250px;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2334,7 +2298,7 @@ main > :last-child {
     .facts-image {
         width: 100%;
         max-width: 400px;
-        height: 300px;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2380,22 +2344,30 @@ main > :last-child {
 
     /* Portfolio page */
     .portfolio-header {
-        padding: 32px 0 46px;
+        padding: 0;
         justify-content: flex-start;
         min-height: 0;
     }
 
     .portfolio-header-content {
-        padding: 0 20px;
+        padding: 0;
     }
 
     .portfolio-title {
         font-size: 64px;
+        margin-right: 0;
+    }
+
+    .portfolio-header-image {
+        margin-top: 32px;
+        max-width: 100%;
     }
 
     /* Match resume top spacing with About/Portfolio at sm */
     .resume-intro-section {
-        padding-top: var(--spacing-lg);
+        padding-top: calc(var(--spacing-lg) + 24px);
+        padding-bottom: 0;
+        min-height: 0;
     }
 
     .resume-title {
@@ -2414,6 +2386,7 @@ main > :last-child {
 
     .portfolio-description {
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     /* Project pages */
@@ -2469,10 +2442,21 @@ main > :last-child {
 
 /* ===== MOBILE LARGE (480px to 599px) ===== */
 @media (max-width: 599px) {
+    /* Resume: ensure bullets remain visibly indented on small screens */
+    .resume-main .resume-list,
+    .resume-main .achievement-list {
+        padding-left: 28px;
+        list-style: disc;
+        list-style-position: outside;
+    }
+    .resume-main .resume-list li,
+    .resume-main .achievement-list li {
+        margin-left: 0;
+    }
     /* Hero section */
     .hero {
         height: 350px;
-        margin-top: 60px;
+        margin-top: 0;
     }
 
     .designer-title,
@@ -2568,12 +2552,17 @@ main > :last-child {
 
     /* Hero section */
     .hero {
-        height: 300px;
-        margin-top: 50px;
-        padding-top: var(--spacing-sm);
+        height: 220px;
+        margin-top: 0;
+        padding-top: 0;
+        background-size: 100%;
         width: 100%;
         margin-left: 0;
         margin-right: 0;
+    }
+    /* Bring headline closer when hero height is reduced */
+    .hero-text {
+        top: 60px;
     }
 
     .designer-title,
@@ -2610,26 +2599,27 @@ main > :last-child {
 
     /* About page */
     .about-main {
-        margin-top: 80px;
-        padding-top: var(--spacing-md);
+        margin: 0;
+        padding: 0;
         overflow-x: hidden;
     }
 
     /* Align Portfolio/Resume top spacing with About at xs */
     .portfolio-main {
-        margin-top: 80px;
+        margin: 0;
     }
 
     .portfolio-header {
-        padding-top: var(--spacing-md);
+        padding: 0;
     }
 
     .resume-main {
-        margin-top: 80px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     .resume-intro-section {
-        padding-top: var(--spacing-md);
+        padding-top: calc(var(--spacing-md) + 24px);
     }
 
     .about-container {
@@ -2792,7 +2782,7 @@ main > :last-child {
         order: 3;
         width: 100%;
         max-width: 300px;
-        height: 200px;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2863,7 +2853,7 @@ main > :last-child {
     .facts-image {
         width: 100%;
         max-width: 300px;
-        height: 250px;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2916,11 +2906,12 @@ main > :last-child {
 
     /* Portfolio page */
     .portfolio-header-content {
-        padding: 0 15px;
+        padding: 0;
     }
 
     .portfolio-title {
         font-size: 36px;
+        margin-right: 0;
     }
 
     /* Project pages */
@@ -2947,12 +2938,39 @@ main > :last-child {
 
     /* Resume page */
     .resume-title {
-        font-size: 48px;
+        font-size: 36px;
         margin-top: 0;
     }
 
     .job-title {
         font-size: 16px;
+    }
+}
+
+/* ===== Small breakpoint unified intro spacing ===== */
+@media (max-width: 767px) {
+    /* Top/bottom 32px; Left/right 20px */
+    .portfolio-header-content,
+    .resume-intro-content {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    .portfolio-header-content,
+    .resume-intro-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Remove extra padding on resume section so margins control spacing */
+    .resume-intro-section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    /* Ensure no bottom margin on resume main at small breakpoint */
+    .resume-main {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -2965,7 +2983,7 @@ main > :last-child {
     }
 
     .resume-intro-content {
-        padding: 0 20px;
+        padding: 0;
     }
 
     .experience-section,
@@ -2988,7 +3006,7 @@ main > :last-child {
     }
 
     .resume-intro-content {
-        padding: 0 15px;
+        padding: 0 20px;
     }
 
     .resume-intro-content .skills-grid {
@@ -3011,7 +3029,7 @@ main > :last-child {
     }
 
     .resume-intro-content {
-        padding: 0 15px;
+        padding: 0 20px;
     }
 }
 
@@ -3023,7 +3041,7 @@ main > :last-child {
     }
 
     .resume-intro-content {
-        padding: 0 10px;
+        padding: 0 15px;
     }
 }
 
@@ -3033,5 +3051,79 @@ main > :last-child {
         white-space: nowrap;
         word-break: normal;
         overflow-wrap: normal;
+    }
+}
+
+/* md+ layout refinement: reliably center about intro content */
+@media (min-width: 768px) {
+    .about-intro-container {
+        display: grid;
+        grid-template-columns: minmax(320px, 400px) 1fr;
+        align-items: center;
+        gap: 128px;
+        min-height: 0;
+    }
+    /* Center text vertically; keep headshot pinned to bottom */
+    .about-intro-container .intro-content {
+        align-self: center;
+        margin-top: 64px;
+        margin-bottom: 64px;
+    }
+    /* Remove bottom padding so image can sit on the bottom edge */
+    .about-main {
+        padding: 0;
+    }
+    /* Ensure portfolio header content has consistent spacing on md+ */
+    /* Unify intro vertical spacing at md+ */
+    .about-intro .intro-content,
+    .portfolio-header-content,
+    .resume-intro-content {
+        margin-top: 64px;
+        margin-bottom: 64px;
+    }
+    /* Remove extra padding so content margins define spacing */
+    .resume-intro-section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    /* Unify intro container margins across About, Portfolio, and Resume at md+ */
+    .about-container,
+    .portfolio-header-content,
+    .resume-intro-content {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+        max-width: var(--max-width-content);
+    }
+    /* Portfolio header: two-column layout with image on the right */
+    .portfolio-header-content {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        grid-auto-rows: auto;
+        align-items: center;
+        gap: 64px;
+    }
+    .portfolio-header-image {
+        max-width: 400px;
+        justify-self: end;
+    }
+    /* Keep text on the left column, image on the right */
+    .portfolio-title,
+    .portfolio-description {
+        grid-column: 1;
+    }
+    .portfolio-header-image {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+    }
+    /* Pin the headshot to the bottom of the intro row */
+    .about-intro-container .hero-image {
+        align-self: end;
+    }
+    /* Restore spacing to the next section since about-main bottom padding is 0 */
+    .design-coder-section {
+        margin-top: 0;
     }
 }
