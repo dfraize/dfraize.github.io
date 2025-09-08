@@ -1553,10 +1553,20 @@ main > :last-child {
     text-align: left;
 }
 
-.resume-list,
-.achievement-list {
+.resume-main .resume-list,
+.resume-main .achievement-list {
     margin: 0 0 16px 0;
-    padding-left: 24px;
+    padding-left: 28px;
+    list-style: disc;
+    list-style-position: outside;
+}
+
+/* Ensure all unordered lists on resume page are indented across breakpoints */
+.resume-main ul {
+    padding-left: 28px;
+    list-style: disc;
+    list-style-position: outside;
+    margin-left: 0;
 }
 
 .resume-list li,
