@@ -4,7 +4,7 @@
   "description": "Douglas Fraize's Portfolio Site",
   "main": "index.html",
   "scripts": {
-    "dev": "live-server --port=3000 --open=/index.html --watch=.",
+    "dev": "live-server --port=3000 --open=/index.html --watch=index.html,about.html,portfolio.html,resume.html,projects,workouts,css,js,partials --ignore=.git,node_modules,images/optimized",
     "start": "live-server --port=3000 --open=/index.html",
     "build": "echo 'No build process needed for static site'",
     "optimize-images": "node optimize-images.js",

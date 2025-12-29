@@ -813,6 +813,30 @@ main > :last-child {
     z-index: 2;
 }
 
+/* Latest Work card text layout overrides (scope to latest-work section only) */
+.latest-work .work-card h3,
+.latest-work .work-card p {
+    position: static;
+    left: auto;
+    top: auto;
+    text-align: left;
+}
+.latest-work .work-card h3 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+.latest-work .work-card p {
+    margin: 0; /* spacing handled by h3 bottom margin and container padding */
+    line-height: 1.4;
+}
+.latest-work .work-card { height: auto; }
+.latest-work .work-card .card-body {
+    padding: 16px;
+    text-align: left;
+}
+
 /* ===== PORTFOLIO CARDS ===== */
 .portfolio-grid {
     max-width: var(--max-width-container);
@@ -1116,9 +1140,15 @@ main > :last-child {
 }
 
 .about-container {
-    width: var(--max-width-content);
+    width: 100%;
+    max-width: var(--max-width-content);
     margin: 0 auto;
     padding: 0;
+}
+/* Ensure inner content spans the full width of the about-container */
+.about-container > * {
+    width: 100%;
+    max-width: 100%;
 }
 
 .about-intro {
@@ -1148,13 +1178,15 @@ main > :last-child {
 }
 
 .intro-content {
-    width: 400px;
+    width: auto;
     flex-shrink: 1;
     min-width: 0;
     max-width: 100%;
 }
 
 .about-header {
+    width: auto;
+    max-width: 100%;
     font-family: var(--font-family-primary);
     font-size: 102px;
     font-weight: 600;
@@ -1165,6 +1197,8 @@ main > :last-child {
 }
 
 .intro-tagline {
+    width: auto;
+    max-width: 100%;
     font-family: var(--font-family-primary);
     font-size: 24px;
     font-weight: 400;
@@ -1175,6 +1209,8 @@ main > :last-child {
 }
 
 .intro-description {
+    width: auto;
+    max-width: 100%;
     font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 400;
@@ -1182,6 +1218,14 @@ main > :last-child {
     line-height: 1.5;
     margin: 0;
     text-align: left;
+}
+
+/* Ensure About intro text elements have no fixed widths */
+.about-intro .intro-content h1,
+.about-intro .intro-content p {
+    width: auto;
+    max-width: 100%;
+    flex: 1 1 auto;
 }
 
 .hero-image {
@@ -3074,10 +3118,8 @@ main > :last-child {
 /* md+ layout refinement: reliably center about intro content */
 @media (min-width: 768px) {
     .about-intro-container {
-        display: grid;
-        grid-template-columns: minmax(320px, 400px) 1fr;
-        align-items: center;
-        gap: 128px;
+        display: block;
+        /* Single-column layout; allow content to span full container width */
         min-height: 0;
     }
     /* Center text vertically; keep headshot pinned to bottom */
@@ -3103,8 +3145,7 @@ main > :last-child {
         padding-top: 0;
         padding-bottom: 0;
     }
-    /* Unify intro container margins across About, Portfolio, and Resume at md+ */
-    .about-container,
+    /* Unify intro container margins across Portfolio and Resume at md+ */
     .portfolio-header-content,
     .resume-intro-content {
         margin-left: auto;
@@ -3143,4 +3184,11 @@ main > :last-child {
     .design-coder-section {
         margin-top: 0;
     }
+}
+
+/* Make all direct children of about-intro-container flexible width */
+.about-intro-container > * {
+    width: auto;
+    max-width: 100%;
+    flex: 1 1 auto;
 }
