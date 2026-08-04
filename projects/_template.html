@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{PAGE_TITLE}} - Douglas Fraize</title>
+    <meta name="description" content="{{PAGE_TITLE}} - Douglas Fraize's Portfolio">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header Include -->
+    <div id="header-include"></div>
+
+    <!-- Main Section -->
+    <section class="project-main">
+        <div class="project-content">
+            <div class="project-intro">
+                <div class="project-title">{{PAGE_TITLE}}</div>
+                <div class="project-description">{{PROJECT_DESCRIPTION}}</div>
+            </div>
+
+            <div class="project-details">
+                <div class="project-info-column">
+                    <div class="info-item">
+                        <h3>My Role</h3>
+                        <p>{{MY_ROLE}}</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Project Team</h3>
+                        <p>{{PROJECT_TEAM}}</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Duration</h3>
+                        <p>{{DURATION}}</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Project Status</h3>
+                        <p>{{PROJECT_STATUS}}</p>
+                    </div>
+                </div>
+
+                <div class="project-methodology-column">
+                    <h3>Design Methodologies</h3>
+                    <p>{{METHODOLOGY}}</p>
+                </div>
+
+                <div class="project-results-column">
+                    <div class="results-item">
+                        <h3>Business Goals</h3>
+                        <p>{{BUSINESS_GOALS}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desktop Views Section -->
+    <section class="factory-mutual-work">
+        <div class="factory-mutual-container">
+            <h2 class="factory-mutual-title">Desktop Views</h2>
+            <div class="factory-mutual-grid">
+                {{DESKTOP_IMAGE_CARDS}}
+            </div>
+        </div>
+    </section>
+
+    {{MOBILE_VIEWS_SECTION}}
+
+    <!-- Footer Include -->
+    <div id="footer-include"></div>
+
+    <!-- JavaScript -->
+    <script src="../js/includes.js"></script>
+    <script src="../js/lazy-loading.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
