@@ -8,10 +8,53 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+<!-- BEGIN:head -->
+<!-- Head partial limited to fonts only to avoid duplicate CSS/meta -->
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- END:head -->
 </head>
 <body>
     <!-- Header Include -->
-    <div id="header-include"></div>
+    <!-- BEGIN:header -->
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img data-src="images/logo.svg" loading="lazy" alt="DF Logo" class="logo-img">
+            </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="nav-menu">
+            <a href="index.html" class="nav-item" data-page="home">Home</a>
+            <a href="portfolio.html" class="nav-item" data-page="portfolio">Portfolio</a>
+            <a href="about.html" class="nav-item" data-page="about">About</a>
+            <a href="resume.html" class="nav-item" data-page="resume">Resume</a>
+        </div>
+        
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-item" data-page="home">Home</a>
+            <a href="portfolio.html" class="mobile-nav-item" data-page="portfolio">Portfolio</a>
+                            <a href="about.html" class="mobile-nav-item" data-page="about">About</a>
+            <a href="resume.html" class="mobile-nav-item" data-page="resume">Resume</a>
+        </div>
+    </div>
+</nav>
+<!-- END:header -->
 
     <!-- Main Content -->
     <main class="portfolio-main">
@@ -36,7 +79,10 @@
             <div class="portfolio-row single">
                 <a href="projects/factory-mutual.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/fm-global.png" alt="FM Global" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fm-global.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fm-global.png" alt="FM Global" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>FM Global</h3>
                     <p>Full Work</p>
@@ -47,7 +93,10 @@
             <div class="portfolio-row triple">
                 <a href="projects/fidelity-spark.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/fidelity-spark.png" alt="Fidelity Spark" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-spark.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-spark.png" alt="Fidelity Spark" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Fidelity Spark</h3>
                     <p>Website</p>
@@ -55,7 +104,10 @@
 
                 <a href="projects/fidelity-salesforce.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/fidelity-salesforce.png" alt="Fidelity - Salesforce" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-salesforce.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-salesforce.png" alt="Fidelity - Salesforce" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Fidelity - Salesforce</h3>
                     <p>Salesforce application</p>
@@ -63,7 +115,10 @@
 
                 <a href="projects/fidelity-design-system.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/fidelity-design-system.png" alt="Fidelity - Design System" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-design-system.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-design-system.png" alt="Fidelity - Design System" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Fidelity - Design System</h3>
                     <p>Design System</p>
@@ -74,7 +129,10 @@
             <div class="portfolio-row triple">
                 <a href="projects/fidelity-dashboards.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/fidelity-dashboard.png" alt="Fidelity - Dashboard" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-dashboard.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-dashboard.png" alt="Fidelity - Dashboard" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Fidelity - Dashboard</h3>
                     <p>Internal dashboard</p>
@@ -82,7 +140,10 @@
 
                 <a href="projects/picasso.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/picasso-design-system.png" alt="Picasso Design System" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/picasso-design-system.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/picasso-design-system.png" alt="Picasso Design System" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Picasso Design System</h3>
                     <p>Design System</p>
@@ -90,7 +151,10 @@
 
                 <a href="projects/choice-auto.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/choice-auto-redesign.png" alt="Choice Auto Redesign" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/choice-auto-redesign.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/choice-auto-redesign.png" alt="Choice Auto Redesign" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Choice Auto Redesign</h3>
                     <p>Web Application</p>
@@ -101,7 +165,10 @@
             <div class="portfolio-row triple">
                 <a href="projects/mercer-evolution.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/evolution-ui-framework.png" alt="Evolution: UI Framework" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/evolution-ui-framework.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/evolution-ui-framework.png" alt="Evolution: UI Framework" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Evolution: UI Framework</h3>
                     <p>Framework & Design Guide</p>
@@ -109,7 +176,10 @@
 
                 <a href="projects/mercer-worklife.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/mercer-worklife.png" alt="Mercer Worklife" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/mercer-worklife.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/mercer-worklife.png" alt="Mercer Worklife" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Mercer Worklife</h3>
                     <p>Website</p>
@@ -117,7 +187,10 @@
 
                 <a href="projects/mercer-fsmpro.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/fsm-pro.png" alt="FSM Pro" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fsm-pro.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fsm-pro.png" alt="FSM Pro" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>FSM Pro</h3>
                     <p>Web Application</p>
@@ -128,7 +201,10 @@
             <div class="portfolio-row triple">
                 <a href="projects/balance-sheet-calc.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/balance-sheet-calculator.png" alt="Balance Sheet Calculator" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/balance-sheet-calculator.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/balance-sheet-calculator.png" alt="Balance Sheet Calculator" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>Balance Sheet Calculator</h3>
                     <p>Application</p>
@@ -136,7 +212,10 @@
 
                 <a href="projects/simpletuition.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/simpletuition.png" alt="SimpleTuition" loading="lazy">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/simpletuition.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/simpletuition.png" alt="SimpleTuition" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
                     </div>
                     <h3>SimpleTuition</h3>
                     <p>Website design</p>
@@ -155,7 +234,31 @@
     </main>
 
     <!-- Footer Include -->
-    <div id="footer-include"></div>
+    <!-- BEGIN:footer -->
+<!-- Footer -->
+<footer class="footer">
+    <a href="#" class="footer-logo" aria-label="Scroll to top" id="scroll-to-top">
+        <img src="images/ui/footer-logo.svg" loading="lazy" alt="Scroll to top" class="footer-logo-img">
+    </a>
+    
+    <div class="footer-bar"></div>
+    
+    <div class="footer-copyright">
+        <p>@ 2024 Douglas Fraize</p>
+    </div>
+    
+            <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="resume.html">Resume</a>
+        </div>
+    
+    <div class="footer-contact">
+        <a href="mailto:dug.fraize@gmail.com?subject=Portfolio%20site">dug.fraize@gmail.com</a>
+        <a href="https://www.linkedin.com/in/dfraize" target="_blank" rel="noopener noreferrer">· LinkedIn Profile</a>
+    </div>
+</footer>
+<!-- END:footer -->
 
     <!-- JavaScript -->
     <script src="js/includes.js"></script>

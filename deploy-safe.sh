@@ -20,6 +20,18 @@ commit_msg="${1:-Deploy: $(date '+%Y-%m-%d %H:%M')}"
 
 echo "Deploying branch '$branch'..."
 
+# Re-optimize portfolio thumbnails / hero background before staging changes
+if [ -f "optimize-images.js" ] && command -v node >/dev/null 2>&1; then
+  echo "Running image optimization..."
+  node optimize-images.js
+fi
+
+# Re-bake header/footer/head partials into every page before staging changes
+if [ -f "sync-partials.js" ] && command -v node >/dev/null 2>&1; then
+  echo "Syncing partials..."
+  node sync-partials.js
+fi
+
 # Stage all changes
 git add -A
 

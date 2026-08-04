@@ -595,7 +595,11 @@ main > :last-child {
     position: relative;
     height: 500px;
     background-color: var(--color-white);
-    background-image: url('../images/hero-bg.svg');
+    background-image: url('../images/optimized/hero-bg.png');
+    background-image: image-set(
+        url('../images/optimized/hero-bg.webp') type('image/webp'),
+        url('../images/optimized/hero-bg.png') type('image/png')
+    );
     background-size: 80%;
     /* Nudge background down to counter inner whitespace in SVG so it sits on the bottom edge */
     background-position: center calc(100% + 18px);

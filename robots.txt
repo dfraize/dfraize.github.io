@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /workouts/
 
-Sitemap: https://YOUR_GITHUB_USERNAME.github.io/sitemap.xml
+Sitemap: https://dfraize.github.io/sitemap.xml
 

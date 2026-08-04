@@ -6,9 +6,52 @@
     <title>Workout List</title>
     <meta name="description" content="Workout list">
     <link rel="stylesheet" href="../css/style.css">
+<!-- BEGIN:head -->
+<!-- Head partial limited to fonts only to avoid duplicate CSS/meta -->
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- END:head -->
 </head>
 <body>
-    <div id="header-include"></div>
+    <!-- BEGIN:header -->
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <img data-src="../images/logo.svg" loading="lazy" alt="DF Logo" class="logo-img">
+            </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="nav-menu">
+            <a href="../index.html" class="nav-item" data-page="home">Home</a>
+            <a href="../portfolio.html" class="nav-item" data-page="portfolio">Portfolio</a>
+            <a href="../about.html" class="nav-item" data-page="about">About</a>
+            <a href="../resume.html" class="nav-item" data-page="resume">Resume</a>
+        </div>
+        
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-nav-links">
+            <a href="../index.html" class="mobile-nav-item" data-page="home">Home</a>
+            <a href="../portfolio.html" class="mobile-nav-item" data-page="portfolio">Portfolio</a>
+                            <a href="../about.html" class="mobile-nav-item" data-page="about">About</a>
+            <a href="../resume.html" class="mobile-nav-item" data-page="resume">Resume</a>
+        </div>
+    </div>
+</nav>
+<!-- END:header -->
 
     <main class="index-main" style="min-height: 40vh; padding: 32px 0;">
         <section aria-labelledby="workouts-heading" style="max-width: var(--max-width-content); margin: 0 auto; padding: 0 20px;">
@@ -16,7 +59,31 @@
         </section>
     </main>
 
-    <div id="footer-include"></div>
+    <!-- BEGIN:footer -->
+<!-- Footer -->
+<footer class="footer">
+    <a href="#" class="footer-logo" aria-label="Scroll to top" id="scroll-to-top">
+        <img src="../images/ui/footer-logo.svg" loading="lazy" alt="Scroll to top" class="footer-logo-img">
+    </a>
+    
+    <div class="footer-bar"></div>
+    
+    <div class="footer-copyright">
+        <p>@ 2024 Douglas Fraize</p>
+    </div>
+    
+            <div class="footer-links">
+            <a href="../about.html">About</a>
+            <a href="../portfolio.html">Portfolio</a>
+            <a href="../resume.html">Resume</a>
+        </div>
+    
+    <div class="footer-contact">
+        <a href="mailto:dug.fraize@gmail.com?subject=Portfolio%20site">dug.fraize@gmail.com</a>
+        <a href="https://www.linkedin.com/in/dfraize" target="_blank" rel="noopener noreferrer">· LinkedIn Profile</a>
+    </div>
+</footer>
+<!-- END:footer -->
 
     <script src="../js/includes.js?v=2"></script>
     <script src="../js/lazy-loading.js?v=2"></script>

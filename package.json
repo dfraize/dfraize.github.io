@@ -8,6 +8,7 @@
     "start": "live-server --port=3000 --open=/index.html",
     "build": "echo 'No build process needed for static site'",
     "optimize-images": "node optimize-images.js",
+    "sync-partials": "node sync-partials.js",
     "update-images": "node update-images.js",
     "fix-html": "node fix-html.js",
     "deploy:safe": "bash ./deploy-safe.sh"
