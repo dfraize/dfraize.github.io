@@ -23,7 +23,8 @@ function setActiveNavItem() {
         'portfolio.html', 'simpletuition.html', 'factory-mutual.html', 'picasso.html',
         'balance-sheet-calc.html', 'choice-auto.html', 'fidelity-spark.html',
         'fidelity-salesforce.html', 'fidelity-dashboards.html', 'fidelity-design-system.html',
-        'mercer-evolution.html', 'mercer-worklife.html', 'mercer-fsmpro.html', 'other-work.html'
+        'mercer-evolution.html', 'mercer-worklife.html', 'mercer-fsmpro.html', 'other-work.html',
+        'hsa-landing-page.html'
     ];
 
     navItems.forEach(item => {
