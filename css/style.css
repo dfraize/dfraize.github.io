@@ -5,35 +5,14 @@
     box-sizing: border-box;
 }
 
-/* FINAL: Ensure small-screen spacing for portfolio header content wins cascade */
-@media (max-width: 768px) {
-    .portfolio-header-content {
-        margin-top: 32px;
-        margin-bottom: 32px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-/* Ensure small breakpoint spacing for portfolio header content wins last */
-@media (max-width: 768px) {
-    .portfolio-header-content {
-        margin-top: 32px;
-        margin-bottom: 32px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-/* Final small-breakpoint override to ensure spacing is applied */
-@media (max-width: 768px) {
-    .portfolio-header-content {
-        margin-top: 32px;
-        margin-bottom: 32px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
+/* ===== BREAKPOINT SCALE =====
+   Use these exact values for any new @media rule so tiers never overlap:
+   max-width: 479px   -- mobile small
+   max-width: 599px   -- mobile large
+   max-width: 767px   -- mobile / tablet portrait (pairs with min-width: 768px)
+   max-width: 1199px  -- tablet landscape
+   max-width: 1439px  -- desktop medium
+   (1440px and up is the unqualified desktop-large base, no query needed) */
 
 html {
     font-size: 62.5%; /* 1rem = 10px */
@@ -1025,7 +1004,7 @@ main > :last-child {
 }
 
 /* ===== RESPONSIVE COMPONENTS ===== */
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
     .latest-work-container,
     .portfolio-grid {
         padding: 0 50px;
@@ -1047,7 +1026,7 @@ main > :last-child {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .about-intro {
         margin-top: 0;
         padding-top: 0;
@@ -1060,14 +1039,6 @@ main > :last-child {
     .latest-work-container,
     .portfolio-grid {
         padding: 0 20px;
-    }
-
-    /* Portfolio header spacing on small screens */
-    .portfolio-header-content {
-        margin-top: 32px;
-        margin-bottom: 32px;
-        padding-left: 20px;
-        padding-right: 20px;
     }
 
     /* Ensure no extra spacing after header on small */
@@ -3111,7 +3082,7 @@ main > :last-child {
 }
 
 /* Prevent "MY LATEST WORK" from wrapping on small screens */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     #latest-work-heading {
         white-space: nowrap;
         word-break: normal;
