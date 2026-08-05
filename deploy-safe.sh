@@ -32,6 +32,12 @@ if [ -f "sync-partials.js" ] && command -v node >/dev/null 2>&1; then
   node sync-partials.js
 fi
 
+# Regenerate the downloadable resume PDF from the latest resume.html
+if [ -f "generate-resume-pdf.js" ] && command -v node >/dev/null 2>&1; then
+  echo "Generating resume PDF..."
+  node generate-resume-pdf.js
+fi
+
 # Stage all changes
 git add -A
 

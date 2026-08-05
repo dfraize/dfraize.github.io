@@ -1587,6 +1587,11 @@ main > :last-child {
     text-align: left;
 }
 
+.resume-download-btn {
+    margin: var(--spacing-lg) 0 0 0;
+    font-size: 18px;
+}
+
 .resume-container {
     width: 100%;
     max-width: var(--max-width-content);
@@ -1836,8 +1841,79 @@ main > :last-child {
 }
 
 @media print {
-    .resume-main .experience-item {
+    /* System font stack for print only, keeping every element's existing
+       size/weight so the visual hierarchy (title > section header > body) is unchanged */
+    .resume-main,
+    .resume-main * {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important;
+    }
+
+    .nav,
+    .footer,
+    .resume-download-btn {
+        display: none !important;
+    }
+
+    body {
+        background: var(--color-white);
+    }
+
+    .resume-main {
+        max-width: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* The PDF's printable width lands inside this site's tablet/mobile
+       breakpoints, so pin the layout to fixed print-appropriate values
+       instead of leaving it to whichever responsive rule matches by width */
+    .resume-intro-content,
+    .resume-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .resume-title {
+        font-size: 48px !important;
+        margin: 0 0 12px 0 !important;
+    }
+
+    .resume-intro-content .intro-text {
+        margin-bottom: 24px;
+    }
+
+    .resume-intro-content .skills-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+
+    .resume-content {
+        gap: 32px !important;
+        padding: 24px 0 0 !important;
+    }
+
+    .resume-container {
+        box-shadow: none;
+    }
+
+    /* Only avoid-break the small header block, not the whole (often
+       page-plus-tall) experience item, which just pushes the entire item
+       (and the "Experience" heading above it) onto the next page and
+       leaves a blank gap behind */
+    .resume-main .company-header,
+    .education-item {
         break-inside: avoid;
+    }
+
+    .resume-main .experience-section .section-header {
+        break-after: avoid;
+    }
+
+    .resume-main,
+    .resume-content,
+    .resume-container {
+        background: var(--color-white) !important;
     }
 }
 

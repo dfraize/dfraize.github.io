@@ -27,5 +27,6 @@ Running list of outstanding work on the portfolio site. Add to this whenever som
 
 ## Reference
 
-- Deploy: `bash deploy-safe.sh "commit message"` — runs `optimize-images.js` and `sync-partials.js` automatically, then commits and pushes.
+- Deploy: `bash deploy-safe.sh "commit message"` — runs `optimize-images.js`, `sync-partials.js`, and `generate-resume-pdf.js` automatically, then commits and pushes.
 - New project page: ask Claude to use the `new-portfolio-page` skill, or just say "create a new portfolio page."
+- Resume PDF: `resume.html`'s "Download PDF" button links to `Douglas-Fraize-Resume.pdf`, which `generate-resume-pdf.js` (Puppeteer) regenerates from `resume.html` on every deploy — edit the HTML, not the PDF.
