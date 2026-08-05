@@ -10,6 +10,7 @@ Running list of outstanding work on the portfolio site. Add to this whenever som
   - (Agent Desktop and Design System process documentation already have their one-liners ready, provided earlier.)
   - Note: this page intentionally does NOT get the full case-study template (Challenge/Meta/Methodology/Goals/Closing) — it's a multi-project gallery, not a single project.
 - [ ] **Mobile-view image audit** — double-check that the "Mobile Views" screenshots on `projects/choice-auto.html` and `projects/simpletuition.html` actually belong to those projects. (Precedent: FM Global's mobile screenshots turned out to belong to a different project and were removed entirely.)
+- [ ] **`puppeteer` dependency vulnerabilities** — adding `puppeteer` (for resume PDF generation) pulled in 11 npm-audit flagged vulnerabilities (2 critical, 4 high, 5 moderate) per GitHub's push warning. It's a devDependency used only for local/deploy-time PDF generation, not shipped to the live site, so no visitor-facing risk, but run `npm audit fix` (or review `npm audit`) when there's time to clean it up.
 
 ## Done
 
