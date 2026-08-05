@@ -2496,6 +2496,10 @@ main > :last-child {
         padding: 0 20px;
     }
 
+    .project-closing-content {
+        padding: 0 20px;
+    }
+
     .project-intro {
         padding: var(--spacing-lg) 0 0;
     }
@@ -3018,6 +3022,10 @@ main > :last-child {
 
     /* Project pages */
     .project-content {
+        padding: 0 15px;
+    }
+
+    .project-closing-content {
         padding: 0 15px;
     }
 
