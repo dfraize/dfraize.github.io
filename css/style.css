@@ -481,6 +481,22 @@ main > :last-child {
     width: 100%;
 }
 
+.back-to-portfolio {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-body);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.back-to-portfolio:hover {
+    color: var(--color-black);
+}
+
 .project-title {
     position: relative;
     flex-shrink: 0;
@@ -567,6 +583,51 @@ main > :last-child {
     align-items: flex-start;
     justify-content: flex-start;
     min-width: 0;
+}
+
+/* ===== PROJECT CHALLENGE & CLOSING NOTE ===== */
+.project-challenge {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.project-challenge h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-black);
+    margin: 0;
+    line-height: 1;
+}
+
+.project-challenge p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-body);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.project-closing {
+    background: none;
+    padding: var(--spacing-xl) 0 32px;
+}
+
+.project-closing-content {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+}
+
+.project-closing-content p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-body);
+    line-height: 1.4;
+    margin: 0;
 }
 
 /* ===== HERO SECTION ===== */
@@ -843,6 +904,11 @@ main > :last-child {
 
 .portfolio-row.triple {
     justify-content: space-between;
+}
+
+.portfolio-row.flow {
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 /* consolidated with .work-card above */

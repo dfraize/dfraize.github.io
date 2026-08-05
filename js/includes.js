@@ -58,7 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setActiveNavItem();
     initializeHamburgerMenu();
     initializeSmoothScrollToTop();
-    initializePageFadeLeave();
+    // initializePageFadeLeave(); // disabled: added a 250ms delay before every
+    // internal navigation, which read as sluggish. Function kept below in case
+    // we want to re-enable it later.
 });
 
 // Initialize hamburger menu functionality

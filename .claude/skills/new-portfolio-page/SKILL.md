@@ -7,30 +7,54 @@ description: Create a new project page for Douglas Fraize's portfolio site — b
 
 Adding one project touches **three files** plus an **images folder**. Do not skip any of them — a page that exists but has no portfolio.html card, or a card that links to a 404, is a broken result.
 
+## 0. Voice & tone
+
+All project-page copy (intro, Challenge, Design Methodology, Business Goals, Closing note) should read like this:
+
+- Professional and candid, with a friendly undercurrent
+- Confident, not corporate — avoid buzzword-stacking ("synergized," "leveraged," overused "spearheaded")
+- First-person and direct: "I audited," "I found," "I decided" — not passive voice
+- Honest about real challenges — a little candor about what was messy or hard builds more credibility than a highlight reel
+- Concise — short paragraphs, no filler, every sentence earns its place
+- **No em dashes.** Use a period, comma, or colon instead. Em dashes had crept into nearly every page's copy and read as a repetitive tic once there were a dozen pages of it.
+
+If the user hands you rough/bullet-point notes for a section, write it up in this voice rather than pasting their notes verbatim or padding it out.
+
 ## 1. Gather the info
 
 Ask for (or extract from a pasted brief) all of this in one pass — don't interrogate one field at a time:
 
 - **Page title** — shown in `<title>` and the big intro heading (e.g. "Mercer - Picasso Design System")
 - **Slug** — derive a kebab-case filename from the title if not given (e.g. `picasso`, `fidelity-spark`). Confirm it doesn't already exist in `projects/`.
-- **Project description** — 2-4 sentence paragraph for the intro block
+- **Project description (intro)** — 2-4 sentences, lead with impact: state what you did AND the outcome/metric in the same paragraph, don't save the payoff for the end
+- **The Challenge** — 1-3 sentences on what was broken/fragmented/slow/inconsistent before this project. Required on every page going forward.
 - **My Role** (e.g. "UX/UI Designer")
 - **Project Team** (e.g. "1 Art Director, 1 UX/UI Designer and 2 UI Developers")
 - **Duration** (e.g. "3 months", "Was ongoing")
 - **Project Status** (e.g. "Version 1 released...")
-- **Design Methodologies** — paragraph
-- **Business Goals** — paragraph
+- **Design Methodology** — paragraph: audit/process/key decisions/cross-functional collaboration, tradeoffs if relevant
+- **Business Goals** — paragraph: what the project set out to achieve organizationally
+- **Closing/Impact Note** — 1-2 sentences after the visuals wrapping up current state or ongoing impact. Not a repeat of the intro. Optional but recommended — ask if they want one.
 - **Portfolio card copy** — the short `<h3>` title and one-line `<p>` category shown on the grid card (e.g. "Picasso Design System" / "Design System"). Can default to the page title / a category you infer.
-- **Screenshots** — ask where the source images are (a folder path the user gives you, or files they'll drop in). Ask desktop-only, or desktop + mobile views. Get a short descriptive alt-text base if the title doesn't cover it.
+- **Screenshots** — ask where the source images are (a folder path the user gives you, or files they'll drop in). Ask desktop-only, or desktop + mobile views — **don't assume mobile views exist just because other pages have them, and don't reuse another project's screenshots to fill the section.** Get a short descriptive alt-text base if the title doesn't cover it.
 - **Portfolio thumbnail image** — one image for the grid card on portfolio.html (can reuse the first desktop screenshot if nothing else is supplied).
 
-If the user gives you a rough brief instead of answering point by point, extract what you can and only ask about genuine gaps (e.g. missing team info, missing images).
+If the user gives you a rough brief instead of answering point by point, extract what you can and only ask about genuine gaps (e.g. missing team info, missing images). If the user says to use placeholder copy for now (e.g. during a structure-only pass across existing pages), use lorem ipsum for the paragraph fields but still ask for real Role/Team/Duration/Status/card-copy, since those are short factual fields, not prose.
 
 ## 2. Build `projects/<slug>.html`
 
-Copy `projects/_template.html` to `projects/<slug>.html` and fill in the placeholders:
+Copy `projects/_template.html` to `projects/<slug>.html` and fill in the placeholders. Section order matters and is baked into the template already — don't reorder it:
 
-- `{{PAGE_TITLE}}`, `{{PROJECT_DESCRIPTION}}`, `{{MY_ROLE}}`, `{{PROJECT_TEAM}}`, `{{DURATION}}`, `{{PROJECT_STATUS}}`, `{{METHODOLOGY}}`, `{{BUSINESS_GOALS}}`
+1. Title (`{{PAGE_TITLE}}`)
+2. Intro (`{{PROJECT_DESCRIPTION}}`)
+3. The Challenge (`{{CHALLENGE}}`)
+4. Meta Block — My Role / Project Team / Duration / Project Status (unchanged format)
+5. Design Methodology (`{{METHODOLOGY}}`)
+6. Business Goals (`{{BUSINESS_GOALS}}`)
+7. Visuals — Desktop Views, then Mobile Views only if real mobile screenshots exist for this project
+8. Closing/Impact Note (`{{CLOSING_NOTE}}`) — if the user skipped this, delete the whole `<section class="project-closing">` block rather than leaving an empty paragraph
+
+Placeholders: `{{PAGE_TITLE}}`, `{{PROJECT_DESCRIPTION}}`, `{{CHALLENGE}}`, `{{MY_ROLE}}`, `{{PROJECT_TEAM}}`, `{{DURATION}}`, `{{PROJECT_STATUS}}`, `{{METHODOLOGY}}`, `{{BUSINESS_GOALS}}`, `{{CLOSING_NOTE}}`
 
 - `{{DESKTOP_IMAGE_CARDS}}` — repeat this block per desktop screenshot (numbered `desktop-1`, `desktop-2`, ...):
 
@@ -43,7 +67,7 @@ Copy `projects/_template.html` to `projects/<slug>.html` and fill in the placeho
 </div>
 ```
 
-- `{{MOBILE_VIEWS_SECTION}}` — if the user has mobile screenshots too, insert (else delete this placeholder entirely, leaving nothing):
+- `{{MOBILE_VIEWS_SECTION}}` — only insert this if the user actually has mobile screenshots **for this specific project**. Never carry over or reuse another project's mobile images to fill this section, and don't assume a project has mobile views just because a neighboring page does — confirm with the user. If there are none, delete this placeholder entirely, leaving nothing:
 
 ```html
 <!-- Divider Line -->
@@ -66,7 +90,9 @@ Reference an existing page like `projects/picasso.html` or `projects/choice-auto
 
 ## 3. Process and place the images
 
-Optimized images live at `images/optimized/projects/<slug>/` as `desktop-1.png` + `desktop-1.webp` pairs (and `mobile-1.png`/`.webp` if applicable). There is no working build script for this in the repo (`optimize-images.js` referenced in `package.json` no longer exists) — generate the pair directly with `sharp`, which is already a devDependency:
+Run `node optimize-images.js` from the repo root (or `npm run optimize-images`) — it reads every file in `images/portfolio/` and generates resized WebP+PNG pairs into `images/optimized/portfolio/`, sized for the 330x184 card display. So: place the thumbnail source at `images/portfolio/<slug>.png` first, then run the script.
+
+For the project-page gallery images (`images/optimized/projects/<slug>/desktop-1.png` + `.webp`, and `mobile-N` if applicable), generate them directly with `sharp` (already a devDependency), since those aren't part of the generic thumbnail pipeline:
 
 ```bash
 node -e "
@@ -78,23 +104,32 @@ sharp(src).webp({ quality: 85 }).toFile(out + '.webp');
 "
 ```
 
-Run this once per screenshot (desktop and mobile), naming sequentially. Also copy or generate one thumbnail into `images/portfolio/<slug-thumbnail>.png` for the portfolio grid card (a resized/cropped version of the best screenshot works, or ask the user for a dedicated thumbnail).
+If the source screenshot is unusually tall (e.g. a full-page scrolling capture) rather than a normal single-viewport screenshot, don't resize it naively — `object-fit: cover` on both the gallery card (square) and the portfolio thumbnail (330x184) will crop to some arbitrary vertical slice. Ask the user, or default to cropping from the top (`sharp().extract({ left: 0, top: 0, width, height })` before resizing) so the hero/header area is what shows, not a random middle section.
+
+**Clean up after**: verify no stray copies of the raw source screenshot ended up inside `images/portfolio/` under an unexpected filename — `optimize-images.js` processes everything in that directory, so an accidental duplicate will get silently "optimized" into unwanted output. `ls images/portfolio/ | wc -l` before and after should only grow by exactly one (the new thumbnail).
 
 ## 4. Add the card to `portfolio.html`
 
-Insert a new card into one of the `<div class="portfolio-row ...">` grids (rows come in `triple` or other groupings — put the new card wherever fits, or start a new row):
+**New cards always go first** — insert a new `<div class="portfolio-row single">` containing just the new card, as the very first row inside `.portfolio-grid` (right after the opening `<div class="portfolio-grid">` tag), pushing every existing row down. This is a standing preference: newest project always appears first, oldest projects drift toward the end, "Other Projects" stays last no matter what.
+
+Match the current `<picture>` + WebP + explicit dimensions pattern used by every existing card (not a plain `<img>`):
 
 ```html
-<a href="projects/<slug>.html" class="portfolio-card portfolio-card-link">
-    <div class="card-image">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/portfolio/<thumbnail>.png" alt="<Card Title>" loading="lazy">
-    </div>
-    <h3><Card Title></h3>
-    <p><Card Category></p>
-</a>
+<div class="portfolio-row single">
+    <a href="projects/<slug>.html" class="portfolio-card portfolio-card-link">
+        <div class="card-image">
+            <picture>
+                <source data-srcset="images/optimized/portfolio/<slug>.webp" type="image/webp">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/<slug>.png" alt="<Card Title>" loading="lazy" decoding="async" width="330" height="184">
+            </picture>
+        </div>
+        <h3><Card Title></h3>
+        <p><Card Category></p>
+    </a>
+</div>
 ```
 
-Match the existing base64 placeholder `src` exactly — it's the lazy-load blur-up placeholder used by `js/lazy-loading.js`, not a mistake to clean up.
+Match the existing base64 placeholder `src` exactly — it's the lazy-load blur-up placeholder used by `js/lazy-loading.js`, not a mistake to clean up. Note the thumbnail path is `images/optimized/portfolio/`, not `images/portfolio/` — that's the resized/compressed output from step 3, not the raw source.
 
 ## 5. Register the page in `js/includes.js`
 
@@ -106,12 +141,18 @@ const portfolioPages = [
 ];
 ```
 
-## 6. Verify
+## 6. Add the page to `sitemap.xml`
+
+Add `<url><loc>https://dfraize.github.io/projects/<slug>.html</loc></url>` alongside the other project entries.
+
+## 7. Verify
 
 If a local preview server is running, load `http://localhost:<port>/projects/<slug>.html` and `http://localhost:<port>/portfolio.html` in the browser pane and confirm:
 
 - The new project page renders with header/footer, intro content, and images loading correctly
-- The new card appears on the portfolio grid and links to the right page
+- Sections appear in order: Title, Intro, The Challenge, Meta Block, Design Methodology, Business Goals, Visuals, Closing note (if present)
+- The new card appears **first** on the portfolio grid and links to the right page
 - The nav bar highlights "Portfolio" as active on the new project page
+- No console errors
 
 Report back a summary of files changed/created — do not just say "done."
