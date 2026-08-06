@@ -11,6 +11,7 @@
     "sync-partials": "node sync-partials.js",
     "update-images": "node update-images.js",
     "fix-html": "node fix-html.js",
+    "generate-cards": "node generate-cards.js",
     "generate-resume-pdf": "node generate-resume-pdf.js",
     "deploy:safe": "bash ./deploy-safe.sh"
   },

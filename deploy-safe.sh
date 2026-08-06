@@ -32,6 +32,12 @@ if [ -f "sync-partials.js" ] && command -v node >/dev/null 2>&1; then
   node sync-partials.js
 fi
 
+# Regenerate the portfolio cards on index.html and portfolio.html from projects-data.json
+if [ -f "generate-cards.js" ] && command -v node >/dev/null 2>&1; then
+  echo "Generating portfolio cards..."
+  node generate-cards.js
+fi
+
 # Regenerate the downloadable resume PDF from the latest resume.html
 if [ -f "generate-resume-pdf.js" ] && command -v node >/dev/null 2>&1; then
   echo "Generating resume PDF..."

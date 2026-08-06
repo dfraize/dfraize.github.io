@@ -79,13 +79,32 @@
         <!-- Latest Work Section -->
         <section class="latest-work" aria-labelledby="latest-work-heading">
             <div class="latest-work-container">
-                <header class="section-title">
-                    <div class="title-line" aria-hidden="true"></div>
+                <header class="section-title latest-work-title">
                     <h2 id="latest-work-heading">MY LATEST WORK</h2>
-                    <div class="title-line" aria-hidden="true"></div>
+                    <p class="latest-work-current">Currently: UX Designer at Fidelity Investments</p>
                 </header>
 
+                <!-- Featured cards are generated from projects-data.json by generate-cards.js
+                     (the 3 most recently dated projects). Do not hand-edit the cards below,
+                     edit projects-data.json and run `npm run generate-cards`. -->
                 <ul class="work-cards">
+<!-- BEGIN:latest-work-cards -->
+                    <li>
+                    <a href="projects/hsa-landing-page.html" class="work-card work-card-link">
+                        <div class="card-image">
+                            <picture>
+                                <source data-srcset="images/optimized/portfolio/hsa-landing-page.webp" type="image/webp">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/hsa-landing-page.png" alt="Fidelity - HSA Landing Page" loading="lazy" decoding="async" width="330" height="184">
+                            </picture>
+                        </div>
+                        <div class="card-body">
+                            <h3>Fidelity - HSA Landing Page</h3>
+                            <p>Landing Page</p>
+                            <p class="card-meta">Fidelity Investments · 2025–Present</p>
+                        </div>
+                    </a>
+                    </li>
+
                     <li>
                     <a href="projects/factory-mutual.html" class="work-card work-card-link">
                         <div class="card-image">
@@ -97,21 +116,7 @@
                         <div class="card-body">
                             <h3>FM Global – Full Work</h3>
                             <p>Improving clarity and usability across complex, enterprise insurance workflows.</p>
-                        </div>
-                    </a>
-                    </li>
-
-                    <li>
-                    <a href="projects/fidelity-salesforce.html" class="work-card work-card-link">
-                        <div class="card-image">
-                            <picture>
-                                <source data-srcset="images/optimized/portfolio/fidelity-salesforce.webp" type="image/webp">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-salesforce.png" alt="Fidelity Salesforce - Financial services application interface" loading="lazy" decoding="async" width="330" height="184">
-                            </picture>
-                        </div>
-                        <div class="card-body">
-                            <h3>Fidelity – Salesforce Application</h3>
-                            <p>Enhancing internal Salesforce workflows for efficiency, clarity, and scale.</p>
+                            <p class="card-meta">FM Global · 2021–2025</p>
                         </div>
                     </a>
                     </li>
@@ -127,9 +132,11 @@
                         <div class="card-body">
                             <h3>Fidelity – Design System</h3>
                             <p>Design system work focused on usability, accessibility, and scalable patterns.</p>
+                            <p class="card-meta">Fidelity Investments · 2020</p>
                         </div>
                     </a>
                     </li>
+<!-- END:latest-work-cards -->
                 </ul>
 
                 <a href="portfolio.html" class="portfolio-btn" aria-label="View full portfolio list">Portfolio List</a>

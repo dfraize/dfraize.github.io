@@ -75,8 +75,11 @@
     <!-- Portfolio Content -->
     <section class="portfolio-content">
         <div class="portfolio-grid">
-            <!-- Portfolio cards flow continuously; newest first, "Other Projects" always last -->
+            <!-- Portfolio cards are generated from projects-data.json by generate-cards.js.
+                 Do not hand-edit the cards below, edit projects-data.json and run
+                 `npm run generate-cards` (or `npm run deploy:safe`). -->
             <div class="portfolio-row flow">
+<!-- BEGIN:portfolio-cards -->
                 <a href="projects/hsa-landing-page.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
                         <picture>
@@ -86,116 +89,19 @@
                     </div>
                     <h3>Fidelity - HSA Landing Page</h3>
                     <p>Landing Page</p>
+                    <p class="card-meta">Fidelity Investments · 2025–Present</p>
                 </a>
 
                 <a href="projects/factory-mutual.html" class="portfolio-card portfolio-card-link">
                     <div class="card-image">
                         <picture>
                             <source data-srcset="images/optimized/portfolio/fm-global.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fm-global.png" alt="FM Global" loading="lazy" decoding="async" width="330" height="184">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fm-global.png" alt="FM Global - Enterprise insurance platform redesign" loading="lazy" decoding="async" width="330" height="184">
                         </picture>
                     </div>
                     <h3>FM Global</h3>
                     <p>Full Work</p>
-                </a>
-
-                <a href="projects/fidelity-spark.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/fidelity-spark.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-spark.png" alt="Fidelity Spark" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Fidelity Spark</h3>
-                    <p>Website</p>
-                </a>
-
-                <a href="projects/fidelity-salesforce.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/fidelity-salesforce.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-salesforce.png" alt="Fidelity - Salesforce" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Fidelity - Salesforce</h3>
-                    <p>Salesforce application</p>
-                </a>
-
-                <a href="projects/fidelity-design-system.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/fidelity-design-system.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-design-system.png" alt="Fidelity - Design System" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Fidelity - Design System</h3>
-                    <p>Design System</p>
-                </a>
-
-                <a href="projects/fidelity-dashboards.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/fidelity-dashboard.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-dashboard.png" alt="Fidelity - Dashboard" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Fidelity - Dashboard</h3>
-                    <p>Internal dashboard</p>
-                </a>
-
-                <a href="projects/picasso.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/picasso-design-system.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/picasso-design-system.png" alt="Picasso Design System" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Picasso Design System</h3>
-                    <p>Design System</p>
-                </a>
-
-                <a href="projects/mercer-evolution.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/evolution-ui-framework.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/evolution-ui-framework.png" alt="Evolution: UI Framework" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Evolution: UI Framework</h3>
-                    <p>Framework & Design Guide</p>
-                </a>
-
-                <a href="projects/mercer-worklife.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/mercer-worklife.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/mercer-worklife.png" alt="Mercer Worklife" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Mercer Worklife</h3>
-                    <p>Website</p>
-                </a>
-
-                <a href="projects/mercer-fsmpro.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/fsm-pro.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fsm-pro.png" alt="FSM Pro" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>FSM Pro</h3>
-                    <p>Web Application</p>
-                </a>
-
-                <a href="projects/choice-auto.html" class="portfolio-card portfolio-card-link">
-                    <div class="card-image">
-                        <picture>
-                            <source data-srcset="images/optimized/portfolio/choice-auto-redesign.webp" type="image/webp">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/choice-auto-redesign.png" alt="Choice Auto Redesign" loading="lazy" decoding="async" width="330" height="184">
-                        </picture>
-                    </div>
-                    <h3>Choice Auto Redesign</h3>
-                    <p>Web Application</p>
+                    <p class="card-meta">FM Global · 2021–2025</p>
                 </a>
 
                 <a href="projects/balance-sheet-calc.html" class="portfolio-card portfolio-card-link">
@@ -207,6 +113,115 @@
                     </div>
                     <h3>Balance Sheet Calculator</h3>
                     <p>Application</p>
+                    <p class="card-meta">Mercer · 2013–2020</p>
+                </a>
+
+                <a href="projects/choice-auto.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/choice-auto-redesign.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/choice-auto-redesign.png" alt="Choice Auto Redesign" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Choice Auto Redesign</h3>
+                    <p>Web Application</p>
+                    <p class="card-meta">Mercer · 2013–2020</p>
+                </a>
+
+                <a href="projects/mercer-evolution.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/evolution-ui-framework.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/evolution-ui-framework.png" alt="Evolution: UI Framework" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Evolution: UI Framework</h3>
+                    <p>Framework & Design Guide</p>
+                    <p class="card-meta">Mercer · 2013–2020</p>
+                </a>
+
+                <a href="projects/fidelity-dashboards.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-dashboard.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-dashboard.png" alt="Fidelity - Dashboard" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Fidelity - Dashboard</h3>
+                    <p>Internal dashboard</p>
+                    <p class="card-meta">Fidelity Investments · 2020</p>
+                </a>
+
+                <a href="projects/fidelity-design-system.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-design-system.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-design-system.png" alt="Fidelity Design System - Comprehensive design system for enterprise applications" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Fidelity - Design System</h3>
+                    <p>Design System</p>
+                    <p class="card-meta">Fidelity Investments · 2020</p>
+                </a>
+
+                <a href="projects/fidelity-salesforce.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-salesforce.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-salesforce.png" alt="Fidelity Salesforce - Financial services application interface" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Fidelity - Salesforce</h3>
+                    <p>Salesforce application</p>
+                    <p class="card-meta">Fidelity Investments · 2020</p>
+                </a>
+
+                <a href="projects/fidelity-spark.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fidelity-spark.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fidelity-spark.png" alt="Fidelity Spark" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Fidelity Spark</h3>
+                    <p>Website</p>
+                    <p class="card-meta">Fidelity Investments · 2020</p>
+                </a>
+
+                <a href="projects/mercer-fsmpro.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/fsm-pro.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/fsm-pro.png" alt="FSM Pro" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>FSM Pro</h3>
+                    <p>Web Application</p>
+                    <p class="card-meta">Mercer · 2013–2020</p>
+                </a>
+
+                <a href="projects/mercer-worklife.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/mercer-worklife.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/mercer-worklife.png" alt="Mercer Worklife" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Mercer Worklife</h3>
+                    <p>Website</p>
+                    <p class="card-meta">Mercer · 2013–2020</p>
+                </a>
+
+                <a href="projects/picasso.html" class="portfolio-card portfolio-card-link">
+                    <div class="card-image">
+                        <picture>
+                            <source data-srcset="images/optimized/portfolio/picasso-design-system.webp" type="image/webp">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/picasso-design-system.png" alt="Picasso Design System" loading="lazy" decoding="async" width="330" height="184">
+                        </picture>
+                    </div>
+                    <h3>Picasso Design System</h3>
+                    <p>Design System</p>
+                    <p class="card-meta">Mercer · 2013–2020</p>
                 </a>
 
                 <a href="projects/simpletuition.html" class="portfolio-card portfolio-card-link">
@@ -218,6 +233,7 @@
                     </div>
                     <h3>SimpleTuition</h3>
                     <p>Website design</p>
+                    <p class="card-meta">SimpleTuition · 2007–2013</p>
                 </a>
 
                 <a href="projects/other-work.html" class="portfolio-card portfolio-card-link">
@@ -227,6 +243,7 @@
                     <h3>Other Projects</h3>
                     <p>Various items</p>
                 </a>
+<!-- END:portfolio-cards -->
             </div>
         </div>
     </section>

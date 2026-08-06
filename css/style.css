@@ -779,6 +779,25 @@ main > :last-child {
     white-space: nowrap;
 }
 
+.latest-work-title {
+    /* Match .work-cards' own centered width (330px * 3 cards + 25px * 2 gaps)
+       so the right edge here always lines up with the last card's right edge,
+       instead of the wider container edge */
+    max-width: 1040px;
+    margin: 0 auto var(--spacing-lg);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.latest-work-current {
+    font-family: var(--font-family-primary);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-black);
+    white-space: nowrap;
+    margin: 0;
+}
+
 .work-cards {
     display: flex;
     gap: 25px;
@@ -789,7 +808,7 @@ main > :last-child {
 
 .work-card, .portfolio-card {
     width: 330px;
-    height: 261px;
+    height: 272px;
     background-color: var(--color-white);
     border-radius: 4px;
     border: 1px solid var(--color-gray-border);
@@ -857,6 +876,15 @@ main > :last-child {
     z-index: 2;
 }
 
+/* Meta line (company · timeframe): a third, quieter line under the subtitle.
+   Optional per project, so absent for cards without a "meta" value. */
+.work-card p.card-meta, .portfolio-card p.card-meta {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-gray-medium);
+    top: 242px;
+}
+
 /* Latest Work card text layout overrides (scope to latest-work section only) */
 .latest-work .work-card h3,
 .latest-work .work-card p {
@@ -874,6 +902,9 @@ main > :last-child {
 .latest-work .work-card p {
     margin: 0; /* spacing handled by h3 bottom margin and container padding */
     line-height: 1.4;
+}
+.latest-work .work-card p.card-meta {
+    margin-top: 4px;
 }
 .latest-work .work-card { height: auto; }
 .latest-work .work-card .card-body {
@@ -2126,6 +2157,11 @@ main > :last-child {
         word-wrap: break-word;
     }
 
+    .latest-work-current {
+        white-space: normal;
+        text-align: center;
+    }
+
     .title-line {
         width: 100%;
         max-width: 200px;
@@ -2220,6 +2256,14 @@ main > :last-child {
         gap: 30px;
         align-items: center;
         justify-content: flex-start;
+    }
+
+    /* "MY LATEST WORK" + "Currently: ..." is too long to share a row at this
+       width; stack them instead of inheriting the generic row override above */
+    .latest-work-title.section-title {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
     }
 
     /* Override for design-coder-section */
@@ -2719,6 +2763,11 @@ main > :last-child {
     .section-title h2 {
         white-space: normal;
         word-wrap: break-word;
+    }
+
+    .latest-work-current {
+        white-space: normal;
+        text-align: center;
     }
 
     .title-line {

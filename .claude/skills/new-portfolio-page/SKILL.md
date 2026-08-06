@@ -1,11 +1,11 @@
 ---
 name: new-portfolio-page
-description: Create a new project page for Douglas Fraize's portfolio site — builds projects/<slug>.html from the template, adds the card to portfolio.html, registers the page in js/includes.js for nav highlighting, and optimizes/places screenshot images. Use when the user asks to add, create, or build a new portfolio/project page.
+description: Create a new project page for Douglas Fraize's portfolio site — builds projects/<slug>.html from the template, adds an entry to projects-data.json (which generates the card on both portfolio.html and, if featured, index.html), registers the page in js/includes.js for nav highlighting, and optimizes/places screenshot images. Use when the user asks to add, create, or build a new portfolio/project page.
 ---
 
 # New Portfolio Page
 
-Adding one project touches **three files** plus an **images folder**. Do not skip any of them — a page that exists but has no portfolio.html card, or a card that links to a 404, is a broken result.
+Adding one project touches **the project page, `projects-data.json`, and `js/includes.js`**, plus an **images folder**. Do not skip any of them — a page that exists but has no portfolio.html card, or a card that links to a 404, is a broken result.
 
 ## 0. Voice & tone
 
@@ -108,28 +108,28 @@ If the source screenshot is unusually tall (e.g. a full-page scrolling capture) 
 
 **Clean up after**: verify no stray copies of the raw source screenshot ended up inside `images/portfolio/` under an unexpected filename — `optimize-images.js` processes everything in that directory, so an accidental duplicate will get silently "optimized" into unwanted output. `ls images/portfolio/ | wc -l` before and after should only grow by exactly one (the new thumbnail).
 
-## 4. Add the card to `portfolio.html`
+## 4. Add the card to `projects-data.json`
 
-**New cards always go first** — insert a new `<div class="portfolio-row single">` containing just the new card, as the very first row inside `.portfolio-grid` (right after the opening `<div class="portfolio-grid">` tag), pushing every existing row down. This is a standing preference: newest project always appears first, oldest projects drift toward the end, "Other Projects" stays last no matter what.
+Portfolio cards on both `portfolio.html` and `index.html` are generated from `projects-data.json` by `generate-cards.js` — never hand-edit the `<a class="portfolio-card...">` or `<a class="work-card...">` markup directly, it gets overwritten on the next generate. Add a new entry to the `"projects"` array (see the file's `_schema` block for field docs):
 
-Match the current `<picture>` + WebP + explicit dimensions pattern used by every existing card (not a plain `<img>`):
-
-```html
-<div class="portfolio-row single">
-    <a href="projects/<slug>.html" class="portfolio-card portfolio-card-link">
-        <div class="card-image">
-            <picture>
-                <source data-srcset="images/optimized/portfolio/<slug>.webp" type="image/webp">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/optimized/portfolio/<slug>.png" alt="<Card Title>" loading="lazy" decoding="async" width="330" height="184">
-            </picture>
-        </div>
-        <h3><Card Title></h3>
-        <p><Card Category></p>
-    </a>
-</div>
+```json
+{
+  "id": "<slug>",
+  "href": "projects/<slug>.html",
+  "image": "<slug>",
+  "alt": "<Card Title>",
+  "title": "<Card Title>",
+  "description": "<Card Category>",
+  "date": null
+}
 ```
 
-Match the existing base64 placeholder `src` exactly — it's the lazy-load blur-up placeholder used by `js/lazy-loading.js`, not a mistake to clean up. Note the thumbnail path is `images/optimized/portfolio/`, not `images/portfolio/` — that's the resized/compressed output from step 3, not the raw source.
+- `image` is the basename under `images/optimized/portfolio/` (no extension) — the WebP/PNG pair produced in step 3.
+- Leave `date` as `null` if the actual year isn't known yet; ask the user for it if they have one, since it drives sort order on both the grid (newest first) and which 3 projects appear as the homepage's featured cards (most recent by date). A project without a date sorts to the bottom of the grid and is never auto-featured.
+- Only set `featured: true` if the user explicitly wants this project pinned to the homepage as a manual override before it has a real date (rare — normally just let the date drive it once known).
+- `featuredTitle`/`featuredDescription` are optional overrides used only when this project becomes one of the homepage's 3 featured cards, if you want different copy there than the terse grid title/description (see existing entries like `factory-mutual` for the pattern).
+
+Then run `npm run generate-cards` (or it happens automatically as part of `npm run deploy:safe`) to regenerate both pages.
 
 ## 5. Register the page in `js/includes.js`
 
@@ -151,7 +151,7 @@ If a local preview server is running, load `http://localhost:<port>/projects/<sl
 
 - The new project page renders with header/footer, intro content, and images loading correctly
 - Sections appear in order: Title, Intro, The Challenge, Meta Block, Design Methodology, Business Goals, Visuals, Closing note (if present)
-- The new card appears **first** on the portfolio grid and links to the right page
+- The new card appears on the portfolio grid (position depends on its `date` relative to other projects) and links to the right page
 - The nav bar highlights "Portfolio" as active on the new project page
 - No console errors
 
