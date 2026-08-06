@@ -16,7 +16,7 @@ All project-page copy (intro, Challenge, Design Methodology, Business Goals, Clo
 - First-person and direct: "I audited," "I found," "I decided" — not passive voice
 - Honest about real challenges — a little candor about what was messy or hard builds more credibility than a highlight reel
 - Concise — short paragraphs, no filler, every sentence earns its place
-- **No em dashes.** Use a period, comma, or colon instead. Em dashes had crept into nearly every page's copy and read as a repetitive tic once there were a dozen pages of it.
+- **No em dashes.** This is a site-wide rule (see `CLAUDE.md`), not just project pages — use a period, comma, or colon instead.
 
 If the user hands you rough/bullet-point notes for a section, write it up in this voice rather than pasting their notes verbatim or padding it out.
 

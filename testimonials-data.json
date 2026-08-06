@@ -1,0 +1,25 @@
+{
+  "_comment": "Single source of truth for the 'What people say' section on index.html. Edit this file and run `npm run generate-testimonials` (or `npm run deploy:safe`, which runs it automatically) to regenerate the markup. Do not hand-edit the cards between the BEGIN:testimonials/END:testimonials markers in index.html, it will be overwritten.",
+  "_schema": {
+    "quote": "the testimonial text, without surrounding quotation marks (added by markup/CSS)",
+    "name": "person's full name",
+    "title": "person's title/role, shown under their name"
+  },
+  "testimonials": [
+    {
+      "quote": "Doug provided mentorship and empowerment, giving me the autonomy to learn web components, design systems, and even design itself, always keeping our focus on the user experience for our colleagues.",
+      "name": "Charlie Hogland",
+      "title": "Lead Principal UI Engineer, FM"
+    },
+    {
+      "quote": "Doug's efforts had a tremendous positive impact on my daily work as a Lead UX Designer, managing a design system component library in Figma that significantly improved the speed and efficiency of my UX deliverables.",
+      "name": "John Stammerman",
+      "title": "Design Systems Expert · Product Designer"
+    },
+    {
+      "quote": "Doug is the lynchpin between product design and engineering, always seeking to improve existing processes and find new technologies to supplement them.",
+      "name": "Nirvana Tikku",
+      "title": "Software Architect at Microsoft"
+    }
+  ]
+}

@@ -749,7 +749,7 @@ main > :last-child {
 /* ===== LATEST WORK SECTION ===== */
 .latest-work {
     background-color: var(--color-gray-light);
-    padding: 0;
+    padding: 0 0 var(--spacing-xl);
 }
 
 .latest-work-container {
@@ -910,6 +910,83 @@ main > :last-child {
 .latest-work .work-card .card-body {
     padding: 16px;
     text-align: left;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+    background-color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+}
+
+.testimonials-container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 200px;
+    text-align: center;
+}
+
+.testimonials-title {
+    max-width: 1040px;
+    margin: 0 auto var(--spacing-lg);
+    justify-content: center;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1040px;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.testimonial-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-border);
+    border-radius: 4px;
+    padding: 28px 24px 24px;
+    text-align: left;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: "\201C";
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--color-gray-border);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.testimonial-quote {
+    font-family: var(--font-family-primary);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.testimonial-attribution {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0 0;
+}
+
+.testimonial-name {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.testimonial-title {
+    font-family: var(--font-family-primary);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-gray-medium);
+    margin-top: 2px;
 }
 
 /* ===== PORTFOLIO CARDS ===== */
@@ -1103,7 +1180,8 @@ main > :last-child {
 /* ===== RESPONSIVE COMPONENTS ===== */
 @media (max-width: 1199px) {
     .latest-work-container,
-    .portfolio-grid {
+    .portfolio-grid,
+    .testimonials-container {
         padding: 0 50px;
     }
 
@@ -1121,6 +1199,10 @@ main > :last-child {
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 767px) {
@@ -1134,7 +1216,8 @@ main > :last-child {
         padding: 0;
     }
     .latest-work-container,
-    .portfolio-grid {
+    .portfolio-grid,
+    .testimonials-container {
         padding: 0 20px;
     }
 
@@ -2012,7 +2095,8 @@ main > :last-child {
 
     /* Latest work section */
     .latest-work-container,
-    .portfolio-grid {
+    .portfolio-grid,
+    .testimonials-container {
         padding: 0 50px;
     }
 }
@@ -2234,7 +2318,8 @@ main > :last-child {
 
     /* Latest work section */
     .latest-work-container,
-    .portfolio-grid {
+    .portfolio-grid,
+    .testimonials-container {
         padding: 0 20px;
     }
 
@@ -2243,6 +2328,10 @@ main > :last-child {
         flex-direction: column;
         align-items: center;
         gap: var(--spacing-md);
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
     }
 
     .work-card,

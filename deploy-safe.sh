@@ -38,6 +38,12 @@ if [ -f "generate-cards.js" ] && command -v node >/dev/null 2>&1; then
   node generate-cards.js
 fi
 
+# Regenerate the testimonial cards on index.html from testimonials-data.json
+if [ -f "generate-testimonials.js" ] && command -v node >/dev/null 2>&1; then
+  echo "Generating testimonial cards..."
+  node generate-testimonials.js
+fi
+
 # Regenerate the downloadable resume PDF from the latest resume.html
 if [ -f "generate-resume-pdf.js" ] && command -v node >/dev/null 2>&1; then
   echo "Generating resume PDF..."
