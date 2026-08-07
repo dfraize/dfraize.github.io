@@ -27,6 +27,20 @@ async function main() {
   try {
     const page = await browser.newPage();
     await page.goto(`file://${resumePath}`, { waitUntil: 'networkidle0' });
+    // Force a system font explicitly rather than relying on style.css's
+    // @media print block (page.emulateMediaType('print') proved unreliable
+    // here) or on Nunito silently failing to load in headless Chromium,
+    // which is what was actually happening already: inspecting the PDF's
+    // embedded font descriptors confirms text renders as San Francisco
+    // (.SF NS), not Nunito, even without this override. This just makes
+    // that explicit instead of leaving it to an implicit fallback.
+    await page.addStyleTag({
+      content: `
+        .resume-main, .resume-main * {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important;
+        }
+      `,
+    });
     await page.pdf({
       path: outputPath,
       format: 'Letter',

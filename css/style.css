@@ -816,15 +816,6 @@ main > :last-child {
     align-items: center;
 }
 
-.latest-work-current {
-    font-family: var(--font-family-primary);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-black);
-    white-space: nowrap;
-    margin: 0;
-}
-
 .work-cards {
     display: flex;
     gap: 25px;
@@ -935,73 +926,25 @@ main > :last-child {
     text-align: left;
 }
 
-/* ===== AI CALLOUT (quiet banner between Latest Work and Testimonials) ===== */
-.ai-callout {
-    background-color: var(--color-gray-light);
+/* ===== HOME INTRO (quiet body-text paragraph between hero and Latest Work) ===== */
+.home-intro {
     padding: 0 0 var(--spacing-xl);
 }
 
-.ai-callout-container {
-    max-width: var(--max-width-container);
+.home-intro-container {
+    max-width: var(--max-width-content);
     margin: 0 auto;
-    padding: 0 200px;
 }
 
-.ai-callout-card {
-    max-width: 760px;
-    margin: 0 auto;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-gray-border);
-    border-radius: 4px;
-    padding: 24px 32px;
-    text-align: center;
-}
-
-.ai-callout-heading {
-    font-family: var(--font-family-primary);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--color-black);
-    margin: 0 0 8px 0;
-}
-
-.ai-callout-text {
-    font-family: var(--font-family-primary);
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--color-text-body);
-    line-height: 1.5;
-    margin: 0 0 12px 0;
-}
-
-.ai-callout-link {
-    font-family: var(--font-family-primary);
-    font-size: 14px;
-    font-weight: 600;
+.home-intro-link {
     color: var(--color-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
 
-.ai-callout-link:hover {
+.home-intro-link:hover {
     color: var(--color-primary-hover);
     text-decoration: underline;
-}
-
-@media (max-width: 1199px) {
-    .ai-callout-container {
-        padding: 0 50px;
-    }
-}
-
-@media (max-width: 767px) {
-    .ai-callout-container {
-        padding: 0 20px;
-    }
-
-    .ai-callout-card {
-        padding: 20px 24px;
-    }
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -2216,11 +2159,6 @@ main > :last-child {
         word-wrap: break-word;
     }
 
-    .latest-work-current {
-        white-space: normal;
-        text-align: center;
-    }
-
     .work-card,
     .portfolio-card {
         width: 100%;
@@ -2727,11 +2665,6 @@ main > :last-child {
     .section-title h2 {
         white-space: normal;
         word-wrap: break-word;
-    }
-
-    .latest-work-current {
-        white-space: normal;
-        text-align: center;
     }
 
     .work-card,
