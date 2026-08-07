@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working With AI - Douglas Fraize</title>
+    <meta name="description" content="How Douglas Fraize uses AI in his design practice, professionally and on his own projects.">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+<!-- BEGIN:head -->
+<!-- Head partial limited to fonts only to avoid duplicate CSS/meta -->
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- END:head -->
+</head>
+<body>
+    <!-- Header Include -->
+    <!-- BEGIN:header -->
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img data-src="images/logo.svg" loading="lazy" alt="DF Logo" class="logo-img">
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="nav-menu">
+            <a href="index.html" class="nav-item" data-page="home">Home</a>
+            <a href="portfolio.html" class="nav-item" data-page="portfolio">Portfolio</a>
+            <a href="about.html" class="nav-item" data-page="about">About</a>
+            <a href="resume.html" class="nav-item" data-page="resume">Resume</a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-item" data-page="home">Home</a>
+            <a href="portfolio.html" class="mobile-nav-item" data-page="portfolio">Portfolio</a>
+                            <a href="about.html" class="mobile-nav-item" data-page="about">About</a>
+            <a href="resume.html" class="mobile-nav-item" data-page="resume">Resume</a>
+        </div>
+    </div>
+</nav>
+<!-- END:header -->
+
+    <!-- Main Content -->
+    <main class="about-main">
+        <!-- Intro Section (same layout as portfolio.html header) -->
+        <section class="portfolio-header">
+            <div class="portfolio-header-content">
+                <h1 class="portfolio-title ai-page-title">working with ai.</h1>
+                <div class="portfolio-description">
+                    <p class="portfolio-desc-large">A look at how AI has become part of how I design and build, at work and on my own.</p>
+                    <p class="portfolio-desc-small">I've been hands-on with AI across both professional and personal work: piloting new workflows in my day-to-day design practice, and personally designing and building this site using Claude Code, Cursor, and an MCP server.</p>
+                </div>
+                <div class="portfolio-header-image">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/ai-hero-section.svg" alt="AI in my design practice" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <div class="about-container">
+            <div class="content-sections">
+                <section class="content-section">
+                    <h2 class="content-section-title">In my professional work</h2>
+                    <p class="intro-description">I've explored a few different ways AI can help close the gap between design and code within a design system. One project involved investigating how to auto-generate Figma components directly from coded components, running a build that created the Figma equivalent whenever a component was published in code, so designers always had an up-to-date match to work from. I also looked at the reverse: publishing Figma tokens directly into the coded component library, so updates could flow both ways instead of relying on manual syncing.</p>
+                    <p class="intro-description">More recently, I've been piloting AI-assisted workflows to solve real design ops problems in a large, regulated environment, work that's since expanded into broader AI initiatives on the design team I'm part of. Regulated environments come with real constraints on how AI tools can be used, which has made this as much about judgment and process as it has been about the tools themselves.</p>
+                </section>
+
+                <section class="content-section">
+                    <h2 class="content-section-title">On my own time</h2>
+                    <p class="intro-description">This site is a direct product of that exploration. I designed it in Figma, then built and continue to enhance it using Cursor and Claude Code, with an MCP server supporting the workflow, from page structure and content updates to the very outline you're reading now. It's been a hands-on way to understand not just how AI tools assist design, but how they can meaningfully change a designer's day-to-day process.</p>
+                </section>
+
+                <section class="content-section">
+                    <h2 class="content-section-title">Where I stand on it</h2>
+                    <p class="intro-description">I think a lot of the noise around AI in design misses something: the shift toward designers acting as orchestrators, defining systems and guardrails rather than hand-building every piece, isn't new to me. It's been the core of my work for over a decade, long before AI entered the picture. Design systems work has always meant designing the rules other people build within, not designing every screen myself. AI just extends how far those rules can reach.</p>
+                    <p class="intro-description">The Figma-to-code project is the clearest example. I wasn't manually rebuilding components on either side of the design-dev handoff. I was defining the system that kept them in sync automatically, in both directions. That's the same instinct driving a lot of the "AI in design" conversation right now, just applied a few years earlier and without the label.</p>
+                    <p class="intro-description">More recently, piloting AI-assisted workflows in a regulated environment has reinforced something I already believed: the tools matter less than the judgment behind them. Regulated environments don't let you move fast and figure out the guardrails later, you have to know upfront what shouldn't change, what needs a human decision, and where automation actually earns its place. That's design work, not a technical decision, and it's the part I don't think AI changes.</p>
+                    <p class="intro-description">So I'm not approaching AI as a new skill to bolt on. It's a more capable version of a question I've been asking my whole career: what should be systematized, and what should stay a deliberate human choice?</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Include -->
+    <!-- BEGIN:footer -->
+<!-- Footer -->
+<footer class="footer">
+    <a href="#" class="footer-logo" aria-label="Scroll to top" id="scroll-to-top">
+        <img src="images/ui/footer-logo.svg" loading="lazy" alt="Scroll to top" class="footer-logo-img">
+    </a>
+
+    <div class="footer-bar"></div>
+
+    <div class="footer-copyright">
+        <p>@ <span id="footer-year">2024</span> Douglas Fraize</p>
+    </div>
+
+            <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="resume.html">Resume</a>
+        </div>
+
+    <div class="footer-contact">
+        <a href="https://www.linkedin.com/in/dfraize" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+    </div>
+</footer>
+<!-- END:footer -->
+
+    <!-- JavaScript -->
+    <script src="js/includes.js"></script>
+    <script src="js/lazy-loading.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

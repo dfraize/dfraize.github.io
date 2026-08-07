@@ -935,6 +935,75 @@ main > :last-child {
     text-align: left;
 }
 
+/* ===== AI CALLOUT (quiet banner between Latest Work and Testimonials) ===== */
+.ai-callout {
+    background-color: var(--color-gray-light);
+    padding: 0 0 var(--spacing-xl);
+}
+
+.ai-callout-container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 200px;
+}
+
+.ai-callout-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-border);
+    border-radius: 4px;
+    padding: 24px 32px;
+    text-align: center;
+}
+
+.ai-callout-heading {
+    font-family: var(--font-family-primary);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin: 0 0 8px 0;
+}
+
+.ai-callout-text {
+    font-family: var(--font-family-primary);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-text-body);
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+}
+
+.ai-callout-link {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.ai-callout-link:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+@media (max-width: 1199px) {
+    .ai-callout-container {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ai-callout-container {
+        padding: 0 20px;
+    }
+
+    .ai-callout-card {
+        padding: 20px 24px;
+    }
+}
+
 /* ===== TESTIMONIALS ===== */
 .testimonials {
     background-color: var(--color-white);
@@ -1379,6 +1448,64 @@ main > :last-child {
     width: auto;
     max-width: 100%;
     flex: 1 1 auto;
+}
+
+/* Smaller title override so a multi-word title (e.g. ai-in-design.html) stays on
+   one line inside the portfolio-header two-column layout without touching
+   .portfolio-title's own size, which portfolio.html still relies on. */
+.portfolio-title.ai-page-title {
+    font-size: 74px;
+}
+
+@media (max-width: 1439px) {
+    .portfolio-title.ai-page-title {
+        font-size: 38px;
+    }
+}
+
+/* Placeholder box for a header image not yet in place (e.g. ai-in-design.html) */
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-gray-border);
+    border-radius: 4px;
+    background-color: var(--color-gray-light);
+    color: var(--color-gray-medium);
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ===== CONTENT PAGE SECTIONS (e.g. ai-in-design.html) ===== */
+.content-sections {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-xl) 0;
+}
+
+.content-section {
+    padding: var(--spacing-lg) 0;
+}
+
+.content-section + .content-section {
+    border-top: 1px solid var(--color-gray-border);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+}
+
+.content-section-title {
+    font-family: var(--font-family-primary);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1.2;
+    margin: 0 0 var(--spacing-sm) 0;
+    text-align: left;
 }
 
 /* ===== DESIGN CODER SECTION ===== */
