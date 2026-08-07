@@ -28,15 +28,6 @@ window.PortfolioApp = {
 document.addEventListener('DOMContentLoaded', function() {
     window.PortfolioApp.init();
 
-    // Scroll to top handler for footer logo
-    const scrollLink = document.getElementById('scroll-to-top');
-    if (scrollLink) {
-        scrollLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
     // Initialize secret long-press on header logo to open workouts page (mobile-friendly)
     initializeLogoLongPressSecret();
 });

@@ -19,8 +19,8 @@ function cardImageHtml(project, indent) {
   }
   return `${indent}<div class="card-image">
 ${indent}    <picture>
-${indent}        <source data-srcset="images/optimized/portfolio/${project.image}.webp" type="image/webp">
-${indent}        <img src="${PLACEHOLDER_SRC}" data-src="images/optimized/portfolio/${project.image}.png" alt="${project.alt}" loading="lazy" decoding="async" width="330" height="184">
+${indent}        <source data-srcset="images/optimized/projects/${project.id}/thumbnail.webp" type="image/webp">
+${indent}        <img src="${PLACEHOLDER_SRC}" data-src="images/optimized/projects/${project.id}/thumbnail.png" alt="${project.alt}" loading="lazy" decoding="async" width="330" height="184">
 ${indent}    </picture>
 ${indent}</div>`;
 }

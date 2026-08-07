@@ -2,10 +2,13 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-// Portfolio grid thumbnails: source PNGs, output resized WebP+PNG pairs
-// sized for the 330x184 card (2x for retina displays).
-const PORTFOLIO_SRC_DIR = path.join(__dirname, 'images', 'portfolio');
-const PORTFOLIO_OUT_DIR = path.join(__dirname, 'images', 'optimized', 'portfolio');
+// Project images: each images/projects/<slug>/ folder holds that project's
+// screenshots plus one thumbnail.png, which doubles as the portfolio card
+// image. thumbnail.png is resized for the 330x184 card (2x for retina);
+// every other file is compressed at its native size for the project's
+// detail page.
+const PROJECTS_SRC_DIR = path.join(__dirname, 'images', 'projects');
+const PROJECTS_OUT_DIR = path.join(__dirname, 'images', 'optimized', 'projects');
 const CARD_WIDTH = 660;
 const CARD_HEIGHT = 368;
 
@@ -16,24 +19,37 @@ const HERO_OUT_DIR = path.join(__dirname, 'images', 'optimized');
 const HERO_WIDTH = 1440;
 const HERO_HEIGHT = 612;
 
-async function optimizePortfolioThumbnails() {
-    if (!fs.existsSync(PORTFOLIO_SRC_DIR)) return;
-    fs.mkdirSync(PORTFOLIO_OUT_DIR, { recursive: true });
+async function optimizeProjectImages() {
+    if (!fs.existsSync(PROJECTS_SRC_DIR)) return;
 
-    const files = fs.readdirSync(PORTFOLIO_SRC_DIR).filter(f => /\.(png|jpe?g)$/i.test(f));
+    const slugs = fs.readdirSync(PROJECTS_SRC_DIR).filter(f =>
+        fs.statSync(path.join(PROJECTS_SRC_DIR, f)).isDirectory()
+    );
 
-    for (const file of files) {
-        const name = path.parse(file).name;
-        const srcPath = path.join(PORTFOLIO_SRC_DIR, file);
-        const pngOut = path.join(PORTFOLIO_OUT_DIR, `${name}.png`);
-        const webpOut = path.join(PORTFOLIO_OUT_DIR, `${name}.webp`);
+    for (const slug of slugs) {
+        const srcDir = path.join(PROJECTS_SRC_DIR, slug);
+        const outDir = path.join(PROJECTS_OUT_DIR, slug);
+        fs.mkdirSync(outDir, { recursive: true });
 
-        const resize = { width: CARD_WIDTH, height: CARD_HEIGHT, fit: 'cover' };
+        const files = fs.readdirSync(srcDir).filter(f => /\.(png|jpe?g)$/i.test(f));
 
-        await sharp(srcPath).resize(resize).png({ quality: 85, compressionLevel: 9 }).toFile(pngOut);
-        await sharp(srcPath).resize(resize).webp({ quality: 80 }).toFile(webpOut);
+        for (const file of files) {
+            const name = path.parse(file).name;
+            const srcPath = path.join(srcDir, file);
+            const pngOut = path.join(outDir, `${name}.png`);
+            const webpOut = path.join(outDir, `${name}.webp`);
 
-        console.log(`Optimized ${file} -> optimized/portfolio/${name}.{png,webp}`);
+            const resize = name === 'thumbnail'
+                ? { width: CARD_WIDTH, height: CARD_HEIGHT, fit: 'cover' }
+                : null;
+
+            const pngPipeline = () => resize ? sharp(srcPath).resize(resize) : sharp(srcPath);
+
+            await pngPipeline().png({ quality: 85, compressionLevel: 9 }).toFile(pngOut);
+            await pngPipeline().webp({ quality: 80 }).toFile(webpOut);
+
+            console.log(`Optimized ${slug}/${file} -> optimized/projects/${slug}/${name}.{png,webp}`);
+        }
     }
 }
 
@@ -52,7 +68,7 @@ async function optimizeHeroBackground() {
 }
 
 (async () => {
-    await optimizePortfolioThumbnails();
+    await optimizeProjectImages();
     await optimizeHeroBackground();
     console.log('Image optimization complete.');
 })().catch(err => {

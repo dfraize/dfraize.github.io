@@ -151,15 +151,8 @@ img.lazy-loaded.error {
 }
 
 /* ===== UTILITY CLASSES ===== */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
 
 /* ===== RESPONSIVE UTILITIES ===== */
-.container {
-    max-width: 100%;
-    overflow-x: hidden;
-}
 
 main {
     max-width: 100vw;
@@ -635,6 +628,21 @@ main > :last-child {
     position: relative;
     height: 500px;
     background-color: var(--color-white);
+    box-shadow: var(--shadow-light);
+    margin-top: 0;
+    padding-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+/* Hero illustration lives on a pseudo-element (rather than directly on .hero)
+   so it can be sized/positioned independently of .hero-text. */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image: url('../images/optimized/hero-bg.png');
     background-image: image-set(
         url('../images/optimized/hero-bg.webp') type('image/webp'),
@@ -644,13 +652,7 @@ main > :last-child {
     /* Nudge background down to counter inner whitespace in SVG so it sits on the bottom edge */
     background-position: center calc(100% + 18px);
     background-repeat: no-repeat;
-    box-shadow: var(--shadow-light);
-    margin-top: 0;
-    padding-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
-    overflow: hidden;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    pointer-events: none;
 }
 
 .hero-content {
@@ -674,6 +676,7 @@ main > :last-child {
     left: 0;
     top: 0;
     width: 290px;
+    animation: hero-text-in-left 0.7s ease-out both;
 }
 
 .designer-title {
@@ -702,6 +705,36 @@ main > :last-child {
     top: 0;
     width: 284px;
     text-align: right;
+    animation: hero-text-in-right 0.7s ease-out 0.1s both;
+}
+
+@keyframes hero-text-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes hero-text-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .designer-text,
+    .coder-text {
+        animation: none;
+    }
 }
 
 .coder-title {
@@ -765,12 +798,6 @@ main > :last-child {
     margin-bottom: var(--spacing-lg);
 }
 
-.title-line {
-    width: 370px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-gray-border), transparent);
-}
-
 .section-title h2 {
     font-family: var(--font-family-primary);
     font-size: 16px;
@@ -804,6 +831,8 @@ main > :last-child {
     margin-bottom: 50px;
     flex-wrap: wrap;
     justify-content: center;
+    list-style: none;
+    padding: 0;
 }
 
 .work-card, .portfolio-card {
@@ -843,12 +872,6 @@ main > :last-child {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-fast);
-}
-
-.portfolio-card:hover .card-image img,
-.work-card:hover .card-image img {
-    transform: scale(1.05);
 }
 
 .work-card h3, .portfolio-card h3 {
@@ -1006,14 +1029,6 @@ main > :last-child {
     margin-bottom: 0;
 }
 
-.portfolio-row.single {
-    justify-content: flex-start;
-}
-
-.portfolio-row.triple {
-    justify-content: space-between;
-}
-
 .portfolio-row.flow {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -1030,11 +1045,6 @@ main > :last-child {
 /* (removed unused project-views, views-container, views-title, desktop-grid, mobile-grid, and view-card styles) */
 
 /* ===== PROJECT DETAILS ===== */
-.project-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-}
 
 .info-item {
     display: flex;
@@ -1104,16 +1114,6 @@ main > :last-child {
     color: var(--color-black);
     line-height: 1;
     margin: 0 0 32px 0;
-    text-align: left;
-}
-
-.factory-mutual-description {
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-text-body);
-    line-height: 1.75;
-    margin: 0 0 64px 0;
     text-align: left;
 }
 
@@ -1275,10 +1275,6 @@ main > :last-child {
         gap: var(--spacing-sm);
         align-items: center;
     }
-
-    .title-line {
-        width: 200px;
-    }
 }
 /* ===== PAGE-SPECIFIC STYLES ===== */
 
@@ -1328,9 +1324,6 @@ main > :last-child {
 
 /* Ensure image sits on the bottom edge of the intro section on row layouts */
 /* Center content vertically at md+; adjust at smaller in media queries */
-.about-intro-container .hero-image {
-    align-self: center;
-}
 
 .intro-content {
     width: auto;
@@ -1375,26 +1368,17 @@ main > :last-child {
     text-align: left;
 }
 
+.intro-description + .intro-description,
+.about-intro .intro-description + .intro-description {
+    margin-top: var(--spacing-md);
+}
+
 /* Ensure About intro text elements have no fixed widths */
 .about-intro .intro-content h1,
 .about-intro .intro-content p {
     width: auto;
     max-width: 100%;
     flex: 1 1 auto;
-}
-
-.hero-image {
-    width: 400px;
-    height: 350px;
-    flex-shrink: 1;
-    min-width: 0;
-    max-width: 100%;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* ===== DESIGN CODER SECTION ===== */
@@ -1417,16 +1401,6 @@ main > :last-child {
 .left-column,
 .right-column {
     flex: 1;
-    text-align: left;
-}
-
-.section-title-large {
-    font-family: var(--font-family-primary);
-    font-size: 36px;
-    font-weight: 400;
-    color: var(--color-black);
-    line-height: 1;
-    margin: 0 0 var(--spacing-md) 0;
     text-align: left;
 }
 
@@ -1481,10 +1455,6 @@ main > :last-child {
     max-width: 100%;
 }
 
-.facts-content .section-title-large {
-    margin-bottom: var(--spacing-lg);
-}
-
 .facts-list p {
     font-family: var(--font-family-primary);
     font-size: 18px;
@@ -1508,39 +1478,6 @@ main > :last-child {
     height: 100%;
     object-fit: cover;
     border-radius: 40px;
-}
-
-/* ===== DESIGNER DEVELOPER SECTION ===== */
-.designer-developer-section {
-    background-color: #f1f1f1;
-    padding: 96px 0;
-}
-
-.designer-developer-container {
-    width: var(--max-width-content);
-    margin: 0 auto;
-    text-align: left;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-.designer-developer-container .section-title-large {
-    margin-bottom: var(--spacing-md);
-    text-align: left;
-}
-
-.developer-content {
-    margin-bottom: var(--spacing-lg);
-}
-
-.developer-content p {
-    font-family: var(--font-family-primary);
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-text-body);
-    line-height: 1.5;
-    text-align: left;
-    margin: 0 0 16px 0;
 }
 
 /* ===== PORTFOLIO PAGE ===== */
@@ -1730,41 +1667,6 @@ main > :last-child {
     padding: 64px 0 0;
 }
 
-.resume-section {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-}
-
-.resume-section p {
-    font-family: var(--font-family-primary);
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-text-body);
-    line-height: 1.5;
-    text-align: left;
-    margin: 0 0 16px 0;
-}
-
-.resume-section h3 {
-    font-family: var(--font-family-primary);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--color-black);
-    margin: 0 0 var(--spacing-xs) 0;
-    text-align: left;
-}
-
-.resume-section h4 {
-    font-family: var(--font-family-primary);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--color-black);
-    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
-    text-align: left;
-}
-
-.resume-main .resume-list,
 .resume-main .achievement-list {
     margin: 0 0 16px 0;
     padding-left: 28px;
@@ -1780,7 +1682,6 @@ main > :last-child {
     margin-left: 0;
 }
 
-.resume-list li,
 .achievement-list li {
     margin: 0 0 8px 0;
     line-height: 1.5;
@@ -1818,19 +1719,6 @@ main > :last-child {
     color: var(--color-black);
     margin: var(--spacing-md) 0 var(--spacing-sm) 0;
     text-align: left;
-}
-
-.resume-skills {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.resume-skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    align-items: start;
 }
 
 /* ===== EXPERIENCE SECTION ===== */
@@ -2086,13 +1974,6 @@ main > :last-child {
         gap: 24px;
     }
 
-    .desktop-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-    }
-
     /* Latest work section */
     .latest-work-container,
     .portfolio-grid,
@@ -2165,49 +2046,13 @@ main > :last-child {
         min-width: 0;
     }
 
-    /* Designer developer section */
-    .designer-developer-container {
-        text-align: left;
-    }
-
-    .designer-developer-container .section-title-large {
-        text-align: left;
-    }
-
-    .designer-developer-section .section-title-large {
-        text-align: left;
-    }
-
-    .designer-developer-section h2 {
-        text-align: left;
-    }
-
-    .designer-developer-section .section-title {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    .designer-developer-section .section-title h2 {
-        text-align: left;
-    }
-
-    .developer-content {
-        text-align: left;
-    }
-
-    .developer-content p {
-        text-align: left;
-    }
-
     /* About page: reduce vertical section spacing to 32px at small breakpoint */
     .design-coder-section,
-    .random-facts-section,
-    .designer-developer-section {
+    .random-facts-section {
         padding: 32px 0;
     }
 
     /* Resume: ensure list bullets are indented and visible at md */
-    .resume-main .resume-list,
     .resume-main .achievement-list {
         padding-left: 28px;
         list-style: disc;
@@ -2224,12 +2069,15 @@ main > :last-child {
 
     /* Hero section */
     .hero {
-        height: 400px;
+        height: 340px;
         margin-top: 0;
         padding-top: 0;
         margin-left: 0;
         width: 100%;
         margin-right: 0;
+    }
+    .hero::before {
+        background-size: 95%;
     }
 
     body {
@@ -2246,11 +2094,6 @@ main > :last-child {
         text-align: center;
     }
 
-    .title-line {
-        width: 100%;
-        max-width: 200px;
-    }
-
     .work-card,
     .portfolio-card {
         width: 100%;
@@ -2259,7 +2102,7 @@ main > :last-child {
 
     .hero-text {
         position: absolute;
-        top: 120px;
+        top: 50px;
         left: 20px;
         right: 20px;
         height: auto;
@@ -2370,19 +2213,6 @@ main > :last-child {
         text-align: center;
     }
 
-    .designer-developer-section .section-title {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    .designer-developer-section .section-title h2 {
-        text-align: left;
-    }
-
-    .title-line {
-        width: 200px;
-    }
-
     /* About page */
     .about-main {
         margin: 0;
@@ -2403,12 +2233,6 @@ main > :last-child {
     }
 
     .random-facts-container {
-        padding: 0 20px;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
-    .designer-developer-container {
         padding: 0 20px;
         max-width: 100%;
         overflow: hidden;
@@ -2445,22 +2269,7 @@ main > :last-child {
         text-align: left;
     }
 
-    .hero-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        flex-shrink: 1;
-    }
-
     /* Ensure image centers at sm breakpoint, overriding base bottom-align */
-    .about-intro-container .hero-image {
-        align-self: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     /* Removed global margin already; no extra override needed */
 
@@ -2480,12 +2289,6 @@ main > :last-child {
         font-size: 16px;
         line-height: 1.5;
         margin: 0;
-    }
-
-    .hero-image {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
     }
 
     /* Design coder section */
@@ -2539,10 +2342,6 @@ main > :last-child {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-    }
-
-    .section-title-large {
-        text-align: left;
     }
 
     .design-coder-section .skills-list {
@@ -2618,41 +2417,6 @@ main > :last-child {
         margin: var(--spacing-sm) auto 0 auto;
     }
 
-    /* Designer developer section */
-    .designer-developer-container {
-        text-align: left;
-        max-width: 100%;
-    }
-
-    .designer-developer-container .section-title-large {
-        text-align: left;
-    }
-
-    .designer-developer-section .section-title-large {
-        text-align: left;
-    }
-
-    .designer-developer-section h2 {
-        text-align: left;
-    }
-
-    .designer-developer-section .section-title {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    .designer-developer-section .section-title h2 {
-        text-align: left;
-    }
-
-    .developer-content {
-        text-align: left;
-    }
-
-    .developer-content p {
-        text-align: left;
-    }
-
     /* Portfolio page */
     .portfolio-header {
         padding: 0;
@@ -2721,11 +2485,6 @@ main > :last-child {
         font-size: 16px;
     }
 
-    .project-info {
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-
     .factory-mutual-container {
         padding: 0 20px;
     }
@@ -2735,43 +2494,35 @@ main > :last-child {
         gap: 24px;
     }
 
-    .views-container {
-        padding: 0 20px;
-    }
-
-    .views-title {
-        font-size: 24px;
-    }
-
     /* Resume page */
     .resume-title {
         font-size: 64px;
         margin-top: 0;
-    }
-
-    .resume-skills-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
     }
 }
 
 /* ===== MOBILE LARGE (480px to 599px) ===== */
 @media (max-width: 599px) {
     /* Resume: ensure bullets remain visibly indented on small screens */
-    .resume-main .resume-list,
     .resume-main .achievement-list {
         padding-left: 28px;
         list-style: disc;
         list-style-position: outside;
     }
-    .resume-main .resume-list li,
     .resume-main .achievement-list li {
         margin-left: 0;
     }
     /* Hero section */
     .hero {
-        height: 350px;
+        height: 300px;
         margin-top: 0;
+    }
+    .hero::before {
+        background-size: 110%;
+    }
+    /* Bring headline closer to the nav and closer to the illustration below it */
+    .hero-text {
+        top: 40px;
     }
 
     .designer-title,
@@ -2840,9 +2591,6 @@ main > :last-child {
 /* ===== MOBILE SMALL (320px to 479px) ===== */
 @media (max-width: 479px) {
     /* Base responsive utilities */
-    .container {
-        padding: 0 15px;
-    }
 
     /* Fix horizontal overflow issues */
     body {
@@ -2859,11 +2607,6 @@ main > :last-child {
         text-align: center;
     }
 
-    .title-line {
-        width: 100%;
-        max-width: 200px;
-    }
-
     .work-card,
     .portfolio-card {
         width: 100%;
@@ -2875,14 +2618,16 @@ main > :last-child {
         height: 220px;
         margin-top: 0;
         padding-top: 0;
-        background-size: 100%;
         width: 100%;
         margin-left: 0;
         margin-right: 0;
     }
-    /* Bring headline closer when hero height is reduced */
+    .hero::before {
+        background-size: 130%;
+    }
+    /* Bring headline closer to the nav and closer to the illustration below it */
     .hero-text {
-        top: 60px;
+        top: 24px;
     }
 
     .designer-title,
@@ -2960,12 +2705,6 @@ main > :last-child {
         overflow: hidden;
     }
 
-    .designer-developer-container {
-        padding: 0 15px;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
     .about-intro-container {
         flex-direction: column;
         gap: var(--spacing-md);
@@ -2995,16 +2734,6 @@ main > :last-child {
         text-align: left;
     }
 
-    .hero-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 300px;
-        height: 250px;
-        flex-shrink: 0;
-    }
-
     .about-header {
         font-size: 36px;
     }
@@ -3019,10 +2748,6 @@ main > :last-child {
 
     .intro-description {
         font-size: 14px;
-    }
-
-    .section-title-large {
-        font-size: 28px;
     }
 
     /* Design coder section */
@@ -3179,42 +2904,6 @@ main > :last-child {
         align-items: center;
         order: 2;
         flex-shrink: 0;
-    }
-
-    .designer-developer-container {
-        text-align: left;
-        max-width: 100%;
-    }
-
-    .designer-developer-container .section-title-large {
-        text-align: left;
-    }
-
-    .designer-developer-section .section-title-large {
-        text-align: left;
-    }
-
-    .designer-developer-section h2 {
-        text-align: left;
-    }
-
-    .designer-developer-section .section-title {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    .designer-developer-section .section-title h2 {
-        text-align: left;
-    }
-
-    .developer-content {
-        text-align: left;
-    }
-
-    .developer-content p {
-        text-align: left;
-        font-size: 14px;
-        line-height: 1.4;
     }
 
     /* Cards and grids */
@@ -3440,9 +3129,6 @@ main > :last-child {
         align-self: center;
     }
     /* Pin the headshot to the bottom of the intro row */
-    .about-intro-container .hero-image {
-        align-self: end;
-    }
     /* Restore spacing to the next section since about-main bottom padding is 0 */
     .design-coder-section {
         margin-top: 0;

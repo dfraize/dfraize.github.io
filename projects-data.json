@@ -3,7 +3,7 @@
   "_schema": {
     "id": "unique slug, used only for your own reference while editing this file",
     "href": "link to the project page, relative to the site root",
-    "image": "basename under images/optimized/portfolio/ (no extension), or null for a card with no thumbnail (e.g. Other Projects)",
+    "image": "true if images/projects/<id>/thumbnail.png exists and should be used as the card image, or null for a card with no thumbnail (e.g. Other Projects)",
     "alt": "img alt text",
     "title": "short card title shown on the portfolio grid",
     "description": "short category/label shown under the title on the portfolio grid, e.g. 'Design System'",
@@ -17,7 +17,7 @@
     {
       "id": "hsa-landing-page",
       "href": "projects/hsa-landing-page.html",
-      "image": "hsa-landing-page",
+      "image": true,
       "alt": "Fidelity - HSA Landing Page",
       "title": "Fidelity - HSA Landing Page",
       "description": "Landing Page",
@@ -28,7 +28,7 @@
     {
       "id": "factory-mutual",
       "href": "projects/factory-mutual.html",
-      "image": "fm-global",
+      "image": true,
       "alt": "FM Global - Enterprise insurance platform redesign",
       "title": "FM Global",
       "description": "Full Work",
@@ -41,7 +41,7 @@
     {
       "id": "fidelity-spark",
       "href": "projects/fidelity-spark.html",
-      "image": "fidelity-spark",
+      "image": true,
       "alt": "Fidelity Spark",
       "title": "Fidelity Spark",
       "description": "Website",
@@ -51,7 +51,7 @@
     {
       "id": "fidelity-salesforce",
       "href": "projects/fidelity-salesforce.html",
-      "image": "fidelity-salesforce",
+      "image": true,
       "alt": "Fidelity Salesforce - Financial services application interface",
       "title": "Fidelity - Salesforce",
       "description": "Salesforce application",
@@ -64,7 +64,7 @@
     {
       "id": "fidelity-design-system",
       "href": "projects/fidelity-design-system.html",
-      "image": "fidelity-design-system",
+      "image": true,
       "alt": "Fidelity Design System - Comprehensive design system for enterprise applications",
       "title": "Fidelity - Design System",
       "description": "Design System",
@@ -77,7 +77,7 @@
     {
       "id": "fidelity-dashboards",
       "href": "projects/fidelity-dashboards.html",
-      "image": "fidelity-dashboard",
+      "image": true,
       "alt": "Fidelity - Dashboard",
       "title": "Fidelity - Dashboard",
       "description": "Internal dashboard",
@@ -87,7 +87,7 @@
     {
       "id": "picasso",
       "href": "projects/picasso.html",
-      "image": "picasso-design-system",
+      "image": true,
       "alt": "Picasso Design System",
       "title": "Picasso Design System",
       "description": "Design System",
@@ -97,7 +97,7 @@
     {
       "id": "mercer-evolution",
       "href": "projects/mercer-evolution.html",
-      "image": "evolution-ui-framework",
+      "image": true,
       "alt": "Evolution: UI Framework",
       "title": "Evolution: UI Framework",
       "description": "Framework & Design Guide",
@@ -107,7 +107,7 @@
     {
       "id": "mercer-worklife",
       "href": "projects/mercer-worklife.html",
-      "image": "mercer-worklife",
+      "image": true,
       "alt": "Mercer Worklife",
       "title": "Mercer Worklife",
       "description": "Website",
@@ -117,7 +117,7 @@
     {
       "id": "mercer-fsmpro",
       "href": "projects/mercer-fsmpro.html",
-      "image": "fsm-pro",
+      "image": true,
       "alt": "FSM Pro",
       "title": "FSM Pro",
       "description": "Web Application",
@@ -127,7 +127,7 @@
     {
       "id": "choice-auto",
       "href": "projects/choice-auto.html",
-      "image": "choice-auto-redesign",
+      "image": true,
       "alt": "Choice Auto Redesign",
       "title": "Choice Auto Redesign",
       "description": "Web Application",
@@ -137,7 +137,7 @@
     {
       "id": "balance-sheet-calc",
       "href": "projects/balance-sheet-calc.html",
-      "image": "balance-sheet-calculator",
+      "image": true,
       "alt": "Balance Sheet Calculator",
       "title": "Balance Sheet Calculator",
       "description": "Application",
@@ -147,7 +147,7 @@
     {
       "id": "simpletuition",
       "href": "projects/simpletuition.html",
-      "image": "simpletuition",
+      "image": true,
       "alt": "SimpleTuition",
       "title": "SimpleTuition",
       "description": "Website design",

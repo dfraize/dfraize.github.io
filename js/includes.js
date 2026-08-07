@@ -58,10 +58,18 @@ document.addEventListener('DOMContentLoaded', function() {
     setActiveNavItem();
     initializeHamburgerMenu();
     initializeSmoothScrollToTop();
+    initializeFooterYear();
     // initializePageFadeLeave(); // disabled: added a 250ms delay before every
     // internal navigation, which read as sluggish. Function kept below in case
     // we want to re-enable it later.
 });
+
+// Keep footer copyright year current without needing a yearly edit
+function initializeFooterYear() {
+    const yearEl = document.getElementById('footer-year');
+    if (!yearEl) return;
+    yearEl.textContent = new Date().getFullYear();
+}
 
 // Initialize hamburger menu functionality
 function initializeHamburgerMenu() {
@@ -93,7 +101,7 @@ function initializeHamburgerMenu() {
     }
 }
 
-// Initialize smooth scroll behavior for footer back-to-top link
+// Initialize back-to-top link: jumps instantly, no animation
 function initializeSmoothScrollToTop() {
     const scrollLink = document.getElementById('scroll-to-top');
     if (!scrollLink) return;
@@ -104,30 +112,8 @@ function initializeSmoothScrollToTop() {
 
     fresh.addEventListener('click', function(event) {
         event.preventDefault();
-        smoothScrollToTop(1200);
+        window.scrollTo(0, 0);
     });
-}
-
-// Smoothly scrolls to the top with configurable duration (ms)
-function smoothScrollToTop(duration) {
-    const startY = window.scrollY || document.documentElement.scrollTop || 0;
-    if (startY === 0) return;
-
-    const startTime = performance.now();
-    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-
-    function step(now) {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOutCubic(progress);
-        const currentY = Math.round(startY * (1 - eased));
-        window.scrollTo(0, currentY);
-        if (elapsed < duration) {
-            requestAnimationFrame(step);
-        }
-    }
-
-    requestAnimationFrame(step);
 }
 
 // Apply initial fade-in on page load
