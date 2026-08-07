@@ -9,6 +9,8 @@ Running list of outstanding work on the portfolio site. Add to this whenever som
   - Benefit Hub — what did this centralize/simplify?
   - (Agent Desktop and Design System process documentation already have their one-liners ready, provided earlier.)
   - Note: this page intentionally does NOT get the full case-study template (Challenge/Meta/Methodology/Goals/Closing) — it's a multi-project gallery, not a single project.
+- [ ] **GitHub Dependabot vulnerabilities** — flagged 2 vulnerabilities on the default branch (1 high, 1 moderate) after the 2026-08-07 deploy push. Not yet investigated; likely in a devDependency chain (`puppeteer`, `live-server`, or `sharp`), same territory as the npm audit cleanup already done below. Check `https://github.com/dfraize/dfraize.github.io/security/dependabot` for specifics.
+
 ## Done
 
 - [x] npm dependency vulnerabilities — was 38 (2 critical, 22 high, 14 moderate), now 8 (0 critical, 4 high, 4 moderate). Removed `imagemin`/`imagemin-mozjpeg`/`imagemin-pngquant`/`imagemin-webp`: completely unused dead packages (`optimize-images.js` only ever used `sharp` directly), responsible for most of the vulnerable dependency chain. Ran `npm audit fix` (closed the 1 critical + a moderate, no breaking changes). Upgraded `sharp` 0.34.5 → 0.35.3 directly (real upgrade, not npm's suggested downgrade path); verified `optimize-images.js` still runs cleanly. Remaining 8 all trace to `live-server`'s own bundled deps (`braces`/`chokidar`, `uuid`/`http-auth`) — `1.2.2` is live-server's latest release, no newer version exists, and force-fixing would downgrade it to `1.2.0`. Left as-is: local dev-server only, never in production (`npm audit --production` = 0 vulnerabilities).
