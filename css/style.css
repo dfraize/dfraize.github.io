@@ -1158,6 +1158,15 @@ main > :last-child {
     text-align: left;
 }
 
+.other-work-description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: -8px 0 16px 0;
+    text-align: left;
+}
+
 /* ===== RESPONSIVE COMPONENTS ===== */
 @media (max-width: 1199px) {
     .latest-work-container,

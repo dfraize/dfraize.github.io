@@ -29,6 +29,9 @@ const OTHER_IMAGES = [
     // portfolio.html header image: source is a 2360x1760 photo shown at a
     // much smaller column width; 1200w covers 2x retina at that size.
     { src: 'images/design-portfolio.jpg', outName: 'design-portfolio', width: 1200, height: null },
+    // portfolio.html header image: SVG embeds a raster pattern at native
+    // 496x389 display size; render at 2x for retina.
+    { src: 'images/portfolio-header-image.svg', outName: 'portfolio-header-image', width: 992, height: 778, density: 150 },
 ];
 
 async function optimizeProjectImages() {

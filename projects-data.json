@@ -157,7 +157,7 @@
     {
       "id": "other-work",
       "href": "projects/other-work.html",
-      "image": null,
+      "image": true,
       "alt": "Other Projects",
       "title": "Other Projects",
       "description": "Various items",
