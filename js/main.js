@@ -19,7 +19,7 @@ window.PortfolioApp = {
             console.log('Portfolio App initializing...');
         }
 
-        // All initialization is handled by includes.js and lazy-loading.js
+        // All initialization is handled by includes.js
         // This serves as the main entry point for future enhancements
     }
 };

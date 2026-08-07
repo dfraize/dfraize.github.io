@@ -25,10 +25,10 @@
     <div class="nav-container">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img data-src="images/logo.svg" loading="lazy" alt="DF Logo" class="logo-img">
+                <img src="images/logo.svg" alt="DF Logo" class="logo-img">
             </a>
         </div>
-
+        
         <!-- Desktop Navigation -->
         <div class="nav-menu">
             <a href="index.html" class="nav-item" data-page="home">Home</a>
@@ -36,7 +36,7 @@
             <a href="about.html" class="nav-item" data-page="about">About</a>
             <a href="resume.html" class="nav-item" data-page="resume">Resume</a>
         </div>
-
+        
         <!-- Mobile Hamburger Button -->
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
             <span class="hamburger-line"></span>
@@ -44,7 +44,7 @@
             <span class="hamburger-line"></span>
         </button>
     </div>
-
+    
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <div class="mobile-nav-links">
@@ -68,7 +68,10 @@
                     <p class="portfolio-desc-small">I've been hands-on with AI across both professional and personal work: piloting new workflows in my day-to-day design practice, and personally designing and building this site using Claude Code, Cursor, and an MCP server.</p>
                 </div>
                 <div class="portfolio-header-image">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/ai-hero-section.svg" alt="AI in my design practice" loading="lazy">
+                    <picture>
+                        <source srcset="images/optimized/ai-hero-section.webp" type="image/webp">
+                        <img src="images/optimized/ai-hero-section.png" alt="AI in my design practice" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </section>
@@ -104,19 +107,19 @@
     <a href="#" class="footer-logo" aria-label="Scroll to top" id="scroll-to-top">
         <img src="images/ui/footer-logo.svg" loading="lazy" alt="Scroll to top" class="footer-logo-img">
     </a>
-
+    
     <div class="footer-bar"></div>
-
+    
     <div class="footer-copyright">
         <p>@ <span id="footer-year">2024</span> Douglas Fraize</p>
     </div>
-
+    
             <div class="footer-links">
             <a href="about.html">About</a>
             <a href="portfolio.html">Portfolio</a>
             <a href="resume.html">Resume</a>
         </div>
-
+    
     <div class="footer-contact">
         <a href="https://www.linkedin.com/in/dfraize" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
     </div>
@@ -125,7 +128,6 @@
 
     <!-- JavaScript -->
     <script src="js/includes.js"></script>
-    <script src="js/lazy-loading.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

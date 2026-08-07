@@ -14,7 +14,7 @@ const path = require('path');
 
 const ROOT = __dirname;
 
-const ROOT_PAGES = ['index.html', 'portfolio.html', 'about.html', 'resume.html'];
+const ROOT_PAGES = ['index.html', 'portfolio.html', 'about.html', 'resume.html', 'ai-in-design.html'];
 const NESTED_DIRS = ['projects', 'workouts'];
 
 const PARTIALS = {

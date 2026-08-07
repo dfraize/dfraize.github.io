@@ -1,2 +1,8 @@
 node_modules/
 .DS_Store
+
+# Source images: optimize-images.js reads these and writes the served
+# versions to images/optimized/, which is the only copy pages reference.
+# Kept locally so the pipeline has something to run against, not deployed.
+images/projects/
+images/about/

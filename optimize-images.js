@@ -19,6 +19,18 @@ const HERO_OUT_DIR = path.join(__dirname, 'images', 'optimized');
 const HERO_WIDTH = 1440;
 const HERO_HEIGHT = 612;
 
+// Other one-off page images that embed raster art at source resolution far
+// beyond their display size. Each entry is rasterized/resized down to a
+// compressed WebP+PNG pair, same treatment as the hero background above.
+const OTHER_IMAGES = [
+    // ai-in-design.html header image: SVG embeds a raster pattern at native
+    // 524x311 display size; render at 2x for retina.
+    { src: 'images/ai-hero-section.svg', outName: 'ai-hero-section', width: 1048, height: 622, density: 150 },
+    // portfolio.html header image: source is a 2360x1760 photo shown at a
+    // much smaller column width; 1200w covers 2x retina at that size.
+    { src: 'images/design-portfolio.jpg', outName: 'design-portfolio', width: 1200, height: null },
+];
+
 async function optimizeProjectImages() {
     if (!fs.existsSync(PROJECTS_SRC_DIR)) return;
 
@@ -67,9 +79,30 @@ async function optimizeHeroBackground() {
     console.log('Optimized hero-bg.svg -> optimized/hero-bg.{png,webp}');
 }
 
+async function optimizeOtherImages() {
+    for (const { src, outName, width, height, density } of OTHER_IMAGES) {
+        const srcPath = path.join(__dirname, src);
+        if (!fs.existsSync(srcPath)) continue;
+
+        const outDir = path.join(__dirname, 'images', 'optimized');
+        fs.mkdirSync(outDir, { recursive: true });
+
+        const pngOut = path.join(outDir, `${outName}.png`);
+        const webpOut = path.join(outDir, `${outName}.webp`);
+        const resize = { width, ...(height ? { height, fit: 'inside' } : {}) };
+        const sharpOpts = density ? { density } : {};
+
+        await sharp(srcPath, sharpOpts).resize(resize).png({ quality: 85, compressionLevel: 9 }).toFile(pngOut);
+        await sharp(srcPath, sharpOpts).resize(resize).webp({ quality: 82 }).toFile(webpOut);
+
+        console.log(`Optimized ${src} -> optimized/${outName}.{png,webp}`);
+    }
+}
+
 (async () => {
     await optimizeProjectImages();
     await optimizeHeroBackground();
+    await optimizeOtherImages();
     console.log('Image optimization complete.');
 })().catch(err => {
     console.error('Image optimization failed:', err);

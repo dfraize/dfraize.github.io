@@ -24,7 +24,7 @@
     <div class="nav-container">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img data-src="images/logo.svg" loading="lazy" alt="DF Logo" class="logo-img">
+                <img src="images/logo.svg" alt="DF Logo" class="logo-img">
             </a>
         </div>
         
@@ -84,7 +84,10 @@
                     </div>
                 </div>
                 <div class="pie-chart">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/about/pie-chart.png" alt="Skills pie chart" loading="lazy">
+                    <picture>
+                        <source srcset="images/optimized/about/pie-chart.webp" type="image/webp">
+                        <img src="images/optimized/about/pie-chart.png" alt="Skills pie chart" loading="lazy">
+                    </picture>
                 </div>
                 <div class="right-column">
                     <h2 class="section-title">Part coder</h2>
@@ -103,7 +106,10 @@
             <section class="random-facts-section">
                 <div class="random-facts-container">
                     <div class="facts-image">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/about/random-facts-image.png" alt="Random facts" loading="lazy">
+                        <picture>
+                            <source srcset="images/optimized/about/random-facts-image.webp" type="image/webp">
+                            <img src="images/optimized/about/random-facts-image.png" alt="Random facts" loading="lazy">
+                        </picture>
                     </div>
                     <div class="facts-content">
                         <h2 class="section-title">Random facts</h2>
@@ -161,7 +167,6 @@
 
     <!-- JavaScript -->
     <script src="js/includes.js"></script>
-    <script src="js/lazy-loading.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

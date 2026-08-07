@@ -4,7 +4,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const PLACEHOLDER_SRC = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 const FEATURED_COUNT = 3;
 
 function loadProjects() {
@@ -19,8 +18,8 @@ function cardImageHtml(project, indent) {
   }
   return `${indent}<div class="card-image">
 ${indent}    <picture>
-${indent}        <source data-srcset="images/optimized/projects/${project.id}/thumbnail.webp" type="image/webp">
-${indent}        <img src="${PLACEHOLDER_SRC}" data-src="images/optimized/projects/${project.id}/thumbnail.png" alt="${project.alt}" loading="lazy" decoding="async" width="330" height="184">
+${indent}        <source srcset="images/optimized/projects/${project.id}/thumbnail.webp" type="image/webp">
+${indent}        <img src="images/optimized/projects/${project.id}/thumbnail.png" alt="${project.alt}" loading="lazy" decoding="async" width="330" height="184">
 ${indent}    </picture>
 ${indent}</div>`;
 }
