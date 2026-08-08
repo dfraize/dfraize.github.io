@@ -26,7 +26,8 @@ Ask for (or extract from a pasted brief) all of this in one pass — don't inter
 
 - **Page title** — shown in `<title>` and the big intro heading (e.g. "Mercer - Picasso Design System")
 - **Slug** — derive a kebab-case filename from the title if not given (e.g. `picasso`, `fidelity-spark`). Confirm it doesn't already exist in `projects/`.
-- **Project description (intro)** — 2-4 sentences, lead with impact: state what you did AND the outcome/metric in the same paragraph, don't save the payoff for the end
+- **Project description (intro)** — 2-4 sentences, lead with impact: state what you did AND the outcome in the same paragraph, don't save the payoff for the end. If the project has real quantifiable stats (see below), don't restate those exact numbers here too — describe the qualitative outcome in prose and let the stat cards carry the numbers, so the two don't repeat each other back-to-back.
+- **Impact stats** — 2-4 short, real, quantifiable outcomes (e.g. "85% / Adoption across teams", "40% / Faster UI development"), each a number/value plus a few-word label. Optional — most projects won't have these. Ask if the user has real metrics; **never invent or estimate a number to fill this in**, and never reuse another project's stats. If there's nothing concrete, skip the section entirely rather than forcing it.
 - **The Challenge** — 1-3 sentences on what was broken/fragmented/slow/inconsistent before this project. Required on every page going forward.
 - **My Role** (e.g. "UX/UI Designer")
 - **Project Team** (e.g. "1 Art Director, 1 UX/UI Designer and 2 UI Developers")
@@ -47,14 +48,27 @@ Copy `projects/_template.html` to `projects/<slug>.html` and fill in the placeho
 
 1. Title (`{{PAGE_TITLE}}`)
 2. Intro (`{{PROJECT_DESCRIPTION}}`)
-3. The Challenge (`{{CHALLENGE}}`)
-4. Meta Block — My Role / Project Team / Duration / Project Status (unchanged format)
-5. Design Methodology (`{{METHODOLOGY}}`)
-6. Business Goals (`{{BUSINESS_GOALS}}`)
-7. Visuals — Desktop Views, then Mobile Views only if real mobile screenshots exist for this project
-8. Closing/Impact Note (`{{CLOSING_NOTE}}`) — if the user skipped this, delete the whole `<section class="project-closing">` block rather than leaving an empty paragraph
+3. Impact Stats (`{{IMPACT_STATS_SECTION}}`) — only if the project has real stats (see step 1)
+4. The Challenge (`{{CHALLENGE}}`)
+5. Meta Block — My Role / Project Team / Duration / Project Status (unchanged format)
+6. Design Methodology (`{{METHODOLOGY}}`)
+7. Business Goals (`{{BUSINESS_GOALS}}`)
+8. Visuals — Desktop Views, then Mobile Views only if real mobile screenshots exist for this project
+9. Closing/Impact Note (`{{CLOSING_NOTE}}`) — if the user skipped this, delete the whole `<section class="project-closing">` block rather than leaving an empty paragraph
 
-Placeholders: `{{PAGE_TITLE}}`, `{{PROJECT_DESCRIPTION}}`, `{{CHALLENGE}}`, `{{MY_ROLE}}`, `{{PROJECT_TEAM}}`, `{{DURATION}}`, `{{PROJECT_STATUS}}`, `{{METHODOLOGY}}`, `{{BUSINESS_GOALS}}`, `{{CLOSING_NOTE}}`
+Placeholders: `{{PAGE_TITLE}}`, `{{PROJECT_DESCRIPTION}}`, `{{IMPACT_STATS_SECTION}}`, `{{CHALLENGE}}`, `{{MY_ROLE}}`, `{{PROJECT_TEAM}}`, `{{DURATION}}`, `{{PROJECT_STATUS}}`, `{{METHODOLOGY}}`, `{{BUSINESS_GOALS}}`, `{{CLOSING_NOTE}}`
+
+- `{{IMPACT_STATS_SECTION}}` — only insert this if the project has real, user-supplied quantifiable stats (2-4 of them). If not, delete the placeholder entirely, leaving nothing (same rule as `{{MOBILE_VIEWS_SECTION}}` below) — don't leave an empty `<div class="project-stats">` and don't invent numbers to fill it:
+
+```html
+<div class="project-stats">
+    <div class="project-stat">
+        <span class="project-stat-value">85%</span>
+        <span class="project-stat-label">Adoption across teams</span>
+    </div>
+    <!-- repeat .project-stat per stat, 2-4 total -->
+</div>
+```
 
 - `{{DESKTOP_IMAGE_CARDS}}` — repeat this block per desktop screenshot (numbered `desktop-1`, `desktop-2`, ...):
 
@@ -90,23 +104,28 @@ Reference an existing page like `projects/picasso.html` or `projects/choice-auto
 
 ## 3. Process and place the images
 
-Run `node optimize-images.js` from the repo root (or `npm run optimize-images`) — it reads every file in `images/portfolio/` and generates resized WebP+PNG pairs into `images/optimized/portfolio/`, sized for the 330x184 card display. So: place the thumbnail source at `images/portfolio/<slug>.png` first, then run the script.
+Every image for a project, thumbnail and gallery screenshots alike, lives in one source folder: `images/projects/<slug>/`. Place the thumbnail there as `thumbnail.png` (or `.jpg`), and any gallery screenshots alongside it as `desktop-1.png`, `desktop-2.png`, `mobile-1.png`, etc. Then run `node optimize-images.js` from the repo root (or `npm run optimize-images`) **once** — it walks every project folder under `images/projects/` and processes every `.png`/`.jpg` file it finds automatically, producing a WebP+PNG pair for each in `images/optimized/projects/<slug>/`:
 
-For the project-page gallery images (`images/optimized/projects/<slug>/desktop-1.png` + `.webp`, and `mobile-N` if applicable), generate them directly with `sharp` (already a devDependency), since those aren't part of the generic thumbnail pipeline:
+- `thumbnail.*` is resized/cropped to 660x368 (2x retina for the 330x184 `.card-image` display, `fit: 'cover'`, center-cropped).
+- Every other file (`desktop-N`, `mobile-N`) is compressed at its native size, uncropped.
+
+You don't need to invoke `sharp` manually for gallery screenshots — that only happens automatically as part of this one script run. A manual `sharp` one-liner is only needed for the exception below.
+
+The project-page gallery cards (`.factory-mutual-card`) scale to each image's own aspect ratio and never crop — screenshots display in full, whatever their shape. The **portfolio thumbnail** is different: it's always cropped to a fixed size. `optimize-images.js` center-crops by default, which is right most of the time. If the thumbnail source is unusually tall (e.g. a full-page scrolling capture) rather than a normal single-viewport screenshot, a center crop will likely cut off the header entirely — ask the user, or override just that one file with a manual top-crop before running the script:
 
 ```bash
 node -e "
 const sharp = require('sharp');
-const src = 'PATH_TO_SOURCE_IMAGE';
-const out = 'images/optimized/projects/SLUG/desktop-1';
-sharp(src).png({ quality: 85 }).toFile(out + '.png');
-sharp(src).webp({ quality: 85 }).toFile(out + '.webp');
+sharp('images/projects/SLUG/thumbnail.png')
+  .extract({ left: 0, top: 0, width: W, height: H })
+  .resize(660, 368)
+  .toFile('images/optimized/projects/SLUG/thumbnail.png');
 "
 ```
 
-The project-page gallery cards (`.factory-mutual-card`) scale to each image's own aspect ratio and never crop — screenshots display in full, whatever their shape. The **portfolio thumbnail** (330x184, `.card-image`, used on `portfolio.html`/`index.html`) is different: it's a fixed-size crop (`object-fit: cover`). If the source screenshot is unusually tall (e.g. a full-page scrolling capture) rather than a normal single-viewport screenshot, don't resize that one naively — ask the user, or default to cropping from the top (`sharp().extract({ left: 0, top: 0, width, height })` before resizing) so the hero/header area is what shows in the thumbnail, not a random middle section. If a gallery screenshot itself is extremely tall or narrow (well beyond a typical screen capture), flag it to the user too — nothing will crop it, but an extreme aspect ratio will still look ungainly stretched across a ~500px-wide card.
+If a gallery screenshot itself is extremely tall or narrow (well beyond a typical screen capture), flag it to the user too — nothing will crop it, but an extreme aspect ratio will still look ungainly stretched across a ~500px-wide card.
 
-**Clean up after**: verify no stray copies of the raw source screenshot ended up inside `images/portfolio/` under an unexpected filename — `optimize-images.js` processes everything in that directory, so an accidental duplicate will get silently "optimized" into unwanted output. `ls images/portfolio/ | wc -l` before and after should only grow by exactly one (the new thumbnail).
+**Clean up after**: verify no stray copies of the raw source screenshot ended up inside `images/projects/<slug>/` under an unexpected filename — `optimize-images.js` processes every `.png`/`.jpg` in that folder, so an accidental duplicate will get silently "optimized" into unwanted output. `ls images/projects/<slug>/ | wc -l` before and after should only grow by exactly the number of files you intentionally added.
 
 ## 4. Add the card to `projects-data.json`
 
@@ -116,7 +135,7 @@ Portfolio cards on both `portfolio.html` and `index.html` are generated from `pr
 {
   "id": "<slug>",
   "href": "projects/<slug>.html",
-  "image": "<slug>",
+  "image": true,
   "alt": "<Card Title>",
   "title": "<Card Title>",
   "description": "<Card Category>",
@@ -124,7 +143,7 @@ Portfolio cards on both `portfolio.html` and `index.html` are generated from `pr
 }
 ```
 
-- `image` is the basename under `images/optimized/portfolio/` (no extension) — the WebP/PNG pair produced in step 3.
+- `image` is `true` if `images/optimized/projects/<slug>/thumbnail.png` exists (produced in step 3) and should be used as the card image, or `false`/omitted for a card with no thumbnail (e.g. "Other Projects", which renders a flat background instead). The actual image path is always derived from `id`, not a separate filename field.
 - Leave `date` as `null` if the actual year isn't known yet; ask the user for it if they have one, since it drives sort order on both the grid (newest first) and which 3 projects appear as the homepage's featured cards (most recent by date). A project without a date sorts to the bottom of the grid and is never auto-featured.
 - Only set `featured: true` if the user explicitly wants this project pinned to the homepage as a manual override before it has a real date (rare — normally just let the date drive it once known).
 - `featuredTitle`/`featuredDescription` are optional overrides used only when this project becomes one of the homepage's 3 featured cards, if you want different copy there than the terse grid title/description (see existing entries like `factory-mutual` for the pattern).
@@ -150,7 +169,7 @@ Add `<url><loc>https://dfraize.github.io/projects/<slug>.html</loc></url>` along
 If a local preview server is running, load `http://localhost:<port>/projects/<slug>.html` and `http://localhost:<port>/portfolio.html` in the browser pane and confirm:
 
 - The new project page renders with header/footer, intro content, and images loading correctly
-- Sections appear in order: Title, Intro, The Challenge, Meta Block, Design Methodology, Business Goals, Visuals, Closing note (if present)
+- Sections appear in order: Title, Intro, Impact Stats (if present), The Challenge, Meta Block, Design Methodology, Business Goals, Visuals, Closing note (if present)
 - The new card appears on the portfolio grid (position depends on its `date` relative to other projects) and links to the right page
 - The nav bar highlights "Portfolio" as active on the new project page
 - No console errors

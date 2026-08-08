@@ -10,6 +10,22 @@
     <link rel="stylesheet" href="css/style.css">
 <!-- BEGIN:head -->
 <!-- Head partial limited to fonts only to avoid duplicate CSS/meta -->
+<!-- Gate the nav intro animation to once per browser session, before the nav
+     paints, so there's no flash of a visible nav before it snaps hidden.
+     See html.nav-intro-hidden in css/style.css and initializeNavIntro() in
+     js/includes.js. -->
+<script>
+(function() {
+    try {
+        if (!sessionStorage.getItem('df-nav-intro-played')) {
+            sessionStorage.setItem('df-nav-intro-played', '1');
+            document.documentElement.classList.add('nav-intro-hidden');
+        }
+    } catch (e) {
+        // sessionStorage unavailable (e.g. private browsing) -- skip the intro, nav just renders normally
+    }
+})();
+</script>
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,7 +92,7 @@
                         <p class="skill-list">HTML5, CSS, SASS, JavaScript, Web Component, StencilJS, Polymer, React, jQuery, jQuery UI, PHP, WordPress, SVN, CVS, Git, Bitbucket, Visual Studio Code, Grunt, Gulp, Bower, Node.js, NPM, Foundation, Bootstrap, Ionic</p>
                     </div>
                 </div>
-                <a href="Douglas-Fraize-Resume.pdf?v=2e823d8b" class="portfolio-btn resume-download-btn" download aria-label="Download resume as PDF">Download PDF</a>
+                <a href="Douglas-Fraize-Resume.pdf?v=cd943278" class="portfolio-btn resume-download-btn" download aria-label="Download resume as PDF">Download PDF</a>
             </div>
         </section>
 
@@ -259,7 +275,7 @@
     <div class="footer-bar"></div>
     
     <div class="footer-copyright">
-        <p>@ <span id="footer-year">2024</span> Douglas Fraize</p>
+        <p>© <span id="footer-year">2024</span> Douglas Fraize</p>
     </div>
     
             <div class="footer-links">

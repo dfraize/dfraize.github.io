@@ -10,6 +10,22 @@
     <link rel="stylesheet" href="../css/style.css">
 <!-- BEGIN:head -->
 <!-- Head partial limited to fonts only to avoid duplicate CSS/meta -->
+<!-- Gate the nav intro animation to once per browser session, before the nav
+     paints, so there's no flash of a visible nav before it snaps hidden.
+     See html.nav-intro-hidden in css/style.css and initializeNavIntro() in
+     js/includes.js. -->
+<script>
+(function() {
+    try {
+        if (!sessionStorage.getItem('df-nav-intro-played')) {
+            sessionStorage.setItem('df-nav-intro-played', '1');
+            document.documentElement.classList.add('nav-intro-hidden');
+        }
+    } catch (e) {
+        // sessionStorage unavailable (e.g. private browsing) -- skip the intro, nav just renders normally
+    }
+})();
+</script>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,7 +154,7 @@
     <div class="footer-bar"></div>
     
     <div class="footer-copyright">
-        <p>@ <span id="footer-year">2024</span> Douglas Fraize</p>
+        <p>© <span id="footer-year">2024</span> Douglas Fraize</p>
     </div>
     
             <div class="footer-links">

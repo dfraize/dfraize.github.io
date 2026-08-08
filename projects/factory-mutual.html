@@ -10,6 +10,22 @@
     <link rel="stylesheet" href="../css/style.css">
 <!-- BEGIN:head -->
 <!-- Head partial limited to fonts only to avoid duplicate CSS/meta -->
+<!-- Gate the nav intro animation to once per browser session, before the nav
+     paints, so there's no flash of a visible nav before it snaps hidden.
+     See html.nav-intro-hidden in css/style.css and initializeNavIntro() in
+     js/includes.js. -->
+<script>
+(function() {
+    try {
+        if (!sessionStorage.getItem('df-nav-intro-played')) {
+            sessionStorage.setItem('df-nav-intro-played', '1');
+            document.documentElement.classList.add('nav-intro-hidden');
+        }
+    } catch (e) {
+        // sessionStorage unavailable (e.g. private browsing) -- skip the intro, nav just renders normally
+    }
+})();
+</script>
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +78,26 @@
             <div class="project-intro">
                 <a href="../portfolio.html" class="back-to-portfolio">← Back to Portfolio</a>
                 <div class="project-title">FM Global - Enterprise Design System</div>
-                <div class="project-description">I led the creation of FM Global's first enterprise design system: a unified component library and set of design patterns that took engineering adoption from scattered, one-off UI builds to an 85% adoption rate across teams, cutting UI development time by 40%. It now supports 5 product lines and 300+ developers.</div>
+                <div class="project-description">I led the creation of FM Global's first enterprise design system: a unified component library and set of design patterns that took engineering adoption from scattered, one-off UI builds to a consistent, scalable standard used across the organization.</div>
+            </div>
+
+            <div class="project-stats">
+                <div class="project-stat">
+                    <span class="project-stat-value">85%</span>
+                    <span class="project-stat-label">Adoption across teams</span>
+                </div>
+                <div class="project-stat">
+                    <span class="project-stat-value">40%</span>
+                    <span class="project-stat-label">Faster UI development</span>
+                </div>
+                <div class="project-stat">
+                    <span class="project-stat-value">5</span>
+                    <span class="project-stat-label">Product lines supported</span>
+                </div>
+                <div class="project-stat">
+                    <span class="project-stat-value">300+</span>
+                    <span class="project-stat-label">Developers using the system</span>
+                </div>
             </div>
 
             <div class="project-challenge">
@@ -213,7 +248,7 @@
     <div class="footer-bar"></div>
     
     <div class="footer-copyright">
-        <p>@ <span id="footer-year">2024</span> Douglas Fraize</p>
+        <p>© <span id="footer-year">2024</span> Douglas Fraize</p>
     </div>
     
             <div class="footer-links">

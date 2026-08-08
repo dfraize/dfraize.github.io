@@ -79,37 +79,6 @@ body {
     max-width: 100vw;
 }
 
-/* ===== PAGE FADE TRANSITIONS (Option A) ===== */
-/* Enter (JS applies classes on load) */
-.page-fade-enter {
-    opacity: 0;
-}
-
-.page-fade-enter-active {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-}
-
-/* Leave */
-.page-fade-leave {
-    opacity: 1;
-}
-
-.page-fade-leave-active {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .page-fade-enter,
-    .page-fade-enter-active,
-    .page-fade-leave,
-    .page-fade-leave-active {
-        transition: none;
-        opacity: 1;
-    }
-}
-
 /* ===== GLOBAL HEADING STYLES ===== */
 h1, h2, h3, h4, h5, h6 {
     color: var(--color-black);
@@ -245,6 +214,29 @@ main > :last-child {
     background-color: var(--color-nav-bg);
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.15);
     z-index: 1000;
+}
+
+/* Nav intro animation: plays once per browser session. The `nav-intro-hidden`
+   class is added to <html> synchronously in <head> (before the nav paints) so
+   there's no flash of a visible nav before it snaps into the hidden state --
+   see the inline script in partials/head.html and initializeNavIntro() in
+   js/includes.js. */
+html.nav-intro-hidden .nav {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.nav-intro-transition {
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.nav-intro-hidden .nav {
+        transition: none;
+    }
+    .nav-intro-transition {
+        transition: none;
+    }
 }
 
 .nav-container {
@@ -546,6 +538,42 @@ main > :last-child {
     min-width: 0;
 }
 
+/* ===== PROJECT IMPACT STATS (optional, only rendered when a project has
+   real quantifiable outcomes -- never fabricated to fill the section) ===== */
+.project-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    width: 100%;
+}
+
+.project-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 140px;
+    border: 1px solid var(--color-gray-border);
+    border-radius: 4px;
+    padding: var(--spacing-sm);
+}
+
+.project-stat-value {
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1;
+}
+
+.project-stat-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-body);
+    line-height: 1.3;
+}
+
 /* ===== PROJECT CHALLENGE & CLOSING NOTE ===== */
 .project-challenge {
     display: flex;
@@ -825,12 +853,50 @@ main > :last-child {
     height: 184px;
     overflow: hidden;
     flex-shrink: 0;
+    position: relative;
+}
+
+/* Uniform "browser chrome" frame over every thumbnail (real screenshots and
+   illustrated/graphic ones alike), so mismatched source material reads as
+   one consistent card family instead of clashing. Pure CSS, no markup or
+   per-project work required -- applies automatically to every current and
+   future .card-image. */
+.card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 3;
+}
+
+.card-image::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 14px 0 0 #ffbd2e, 28px 0 0 #27c93f;
+    z-index: 4;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: saturate(0.55) contrast(0.97);
+    transition: filter var(--transition-fast);
+}
+
+.work-card:hover .card-image img,
+.portfolio-card:hover .card-image img {
+    filter: saturate(1) contrast(1);
 }
 
 .work-card h3, .portfolio-card h3 {
@@ -1982,20 +2048,6 @@ main > :last-child {
 
 /* ===== DESKTOP MEDIUM (1200px to 1439px) ===== */
 @media (max-width: 1439px) {
-    /* Navigation */
-    .nav-menu {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-container {
-        justify-content: space-between;
-        padding: 0 50px;
-    }
-
     /* Portfolio page */
     .portfolio-header {
         padding: 0;
@@ -2035,6 +2087,20 @@ main > :last-child {
 
 /* ===== TABLET LANDSCAPE (768px to 1199px) ===== */
 @media (max-width: 1199px) {
+    /* Navigation */
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        justify-content: space-between;
+        padding: 0 50px;
+    }
+
     /* Hero section */
     .hero {
         height: 450px;
@@ -2481,8 +2547,7 @@ main > :last-child {
     }
 
     .portfolio-header-image {
-        margin-top: 32px;
-        max-width: 100%;
+        display: none;
     }
 
     /* Match resume top spacing with About/Portfolio at sm */

@@ -54,14 +54,11 @@ function setActiveNavItem() {
 // sync-partials.js (source of truth: partials/*.html), so there's no
 // runtime fetch here anymore -- just wire up behavior once the DOM is ready.
 document.addEventListener('DOMContentLoaded', function() {
-    initializePageFadeEnter();
+    initializeNavIntro();
     setActiveNavItem();
     initializeHamburgerMenu();
     initializeSmoothScrollToTop();
     initializeFooterYear();
-    // initializePageFadeLeave(); // disabled: added a 250ms delay before every
-    // internal navigation, which read as sluggish. Function kept below in case
-    // we want to re-enable it later.
 });
 
 // Keep footer copyright year current without needing a yearly edit
@@ -116,48 +113,26 @@ function initializeSmoothScrollToTop() {
     });
 }
 
-// Apply initial fade-in on page load
-function initializePageFadeEnter() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const body = document.body;
-    body.classList.add('page-fade-enter');
-    // Next frame, activate transition class
+// Animate the nav sliding down + fading in, once per browser session. The
+// `nav-intro-hidden` class + sessionStorage flag are both set synchronously
+// in <head> (see partials/head.html) before the nav paints, so this only
+// ever has to remove the class to trigger the reveal transition -- it never
+// decides on its own whether the intro should play.
+function initializeNavIntro() {
+    const html = document.documentElement;
+    if (!html.classList.contains('nav-intro-hidden')) return;
+
+    const nav = document.querySelector('.nav');
+    if (!nav) {
+        html.classList.remove('nav-intro-hidden');
+        return;
+    }
+
+    nav.classList.add('nav-intro-transition');
     requestAnimationFrame(() => {
-        body.classList.add('page-fade-enter-active');
-        // Clean up after transition
+        html.classList.remove('nav-intro-hidden');
         setTimeout(() => {
-            body.classList.remove('page-fade-enter');
-            body.classList.remove('page-fade-enter-active');
-        }, 350);
+            nav.classList.remove('nav-intro-transition');
+        }, 1000);
     });
-}
-
-// Intercept internal links to apply fade-out before navigation
-function initializePageFadeLeave() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    document.addEventListener('click', function(e) {
-        // Only handle left-clicks on anchor tags without modifiers
-        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        const anchor = e.target.closest('a[href]');
-        if (!anchor) return;
-
-        const href = anchor.getAttribute('href');
-        // Ignore anchors that are hashes, mailto, tel, external, or open in new tab
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-        if (anchor.target === '_blank') return;
-        const url = new URL(prefixIfRelative(href), window.location.origin);
-        if (url.origin !== window.location.origin) return;
-
-        // Perform leave transition
-        e.preventDefault();
-        const body = document.body;
-        body.classList.add('page-fade-leave');
-        // Next frame to trigger transition
-        requestAnimationFrame(() => {
-            body.classList.add('page-fade-leave-active');
-            setTimeout(() => {
-                window.location.href = href;
-            }, 250);
-        });
-    }, { capture: true });
 }
