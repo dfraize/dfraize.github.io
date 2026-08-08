@@ -2367,7 +2367,7 @@ html.nav-intro-hidden .nav {
         text-align: left;
         align-self: flex-start;
         margin-top: 32px;
-        margin-bottom: 0;
+        margin-bottom: 32px;
     }
 
     .about-header {
@@ -2865,152 +2865,104 @@ html.nav-intro-hidden .nav {
         box-sizing: border-box;
     }
 
+    /* Design coder section: 2-column layout ONLY at this smallest
+       breakpoint, copy centered within each column -- explicitly overrides
+       the stacked/centered treatment the 767px tier applies above this
+       width, since that tier's rules would otherwise cascade down and
+       stack this too. */
     .design-coder-container {
-        flex-direction: column;
-        gap: var(--spacing-lg);
-        text-align: center;
-        align-items: center;
-        justify-content: flex-start;
-        display: flex;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
+        flex-direction: row;
+        gap: 16px;
         padding: 0 15px;
-        box-sizing: border-box;
+        text-align: center;
+        align-items: flex-start;
+        justify-content: space-between;
     }
 
-    .left-column {
-        order: 1;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
-        flex: 1 1 100%;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0 15px;
-    }
-
+    .left-column,
     .right-column {
-        order: 2;
+        order: initial;
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
-        flex: 1 1 100%;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0 15px;
-    }
-
-    .design-coder-section .left-column .skills-list,
-    .design-coder-section .right-column .skills-list {
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-        box-sizing: border-box;
-        flex: 1 1 100%;
-        padding: 0;
-    }
-
-    .design-coder-section .left-column .skills-list p,
-    .design-coder-section .right-column .skills-list p {
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 0 8px 0;
-        box-sizing: border-box;
-    }
-
-    .pie-chart {
-        order: 3;
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-        margin: var(--spacing-sm) auto 0 auto;
-    }
-
-    .design-coder-section .left-column .section-title,
-    .design-coder-section .right-column .section-title {
-        text-align: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-        box-sizing: border-box;
-        flex: 1 1 100%;
-        padding: 0;
-        gap: 0;
-    }
-
-    .design-coder-section .left-column .section-title h2,
-    .design-coder-section .right-column .section-title h2 {
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 0 var(--spacing-md) 0;
-        box-sizing: border-box;
-        flex: 1 1 100%;
         display: block;
+        width: auto;
+        flex: 1;
     }
 
-    /* Ensure h2 with class section-title spans full width on smallest breakpoint */
+    /* Chart only drops out at this smallest breakpoint; every wider tier
+       keeps it (see the base rule and the 1199px/767px tiers). */
+    .pie-chart {
+        display: none;
+    }
+
+    .design-coder-section .skills-list,
+    .design-coder-section .skills-list p {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        text-align: center;
+        margin: 0 0 8px 0;
+    }
+
+    .design-coder-section .section-title,
     .design-coder-section h2.section-title {
         display: block;
-        width: 100%;
+        width: auto;
         max-width: 100%;
         text-align: center;
+        flex-direction: row;
+        justify-content: center;
         margin: 0 0 var(--spacing-md) 0;
-        box-sizing: border-box;
     }
 
-    /* Random facts section */
-    .random-facts-container {
-        flex-direction: column;
-        gap: var(--spacing-lg);
+    .design-coder-section .section-title h2 {
         text-align: center;
+        width: auto;
+    }
+
+    /* Random facts: left column (heading + bullets) / right column (photo)
+       ONLY at this smallest breakpoint -- same reasoning as above, this
+       explicitly undoes the 767px tier's stacked/centered treatment. */
+    .random-facts-container {
+        flex-direction: row;
+        gap: 16px;
         align-items: center;
-        justify-content: center;
+        text-align: left;
+        justify-content: flex-start;
     }
 
     .facts-content {
-        width: 100%;
+        width: auto;
         height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: block;
         order: 1;
-        flex-shrink: 1;
+        flex: 1;
+    }
+
+    .facts-content h2.section-title {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        text-align: left;
+        margin: 0 0 var(--spacing-md) 0;
     }
 
     .facts-list p {
-        text-align: center;
+        text-align: left;
     }
 
     .facts-image {
-        width: 100%;
-        max-width: 300px;
+        width: auto;
+        max-width: 100%;
         height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: block;
         order: 2;
-        flex-shrink: 0;
+        flex: 1;
+        margin: 0;
+    }
+
+    .facts-image img {
+        height: auto;
+        object-fit: contain;
     }
 
     /* Cards and grids */
