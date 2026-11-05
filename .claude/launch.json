@@ -4,7 +4,7 @@
     {
       "name": "portfolio-dev",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "3000", "."],
+      "runtimeArgs": ["--no-install", "live-server", "--port=3000", "--no-browser", "--watch=index.html,about.html,portfolio.html,resume.html,projects,workouts,css,js,partials", "--ignore=.git,node_modules,images/optimized"],
       "port": 3000
     }
   ]
