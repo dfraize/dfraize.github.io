@@ -9,7 +9,9 @@ npm install
 npm run dev
 ```
 
-Opens `http://localhost:3000` with live-reload on the top-level pages, `projects/`, `workouts/`, `css/`, `js/`, and `partials/`.
+Serves the site at `http://localhost:3000` with live-reload on every page, `css/`, and `js/`. The dev server is [Vite](https://vite.dev) (config in `vite.config.mjs`), used only for local development: the site itself is still plain static files deployed as-is to GitHub Pages, and Vite never builds or bundles anything.
+
+The port is fixed. If something else is already using 3000, `npm run dev` stops with "Port 3000 is already in use" instead of silently picking another port. Free it with `lsof -nP -iTCP:3000 -sTCP:LISTEN` to find the process, then stop it.
 
 ## Project Structure
 

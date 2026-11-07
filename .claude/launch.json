@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio-dev",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["--no-install", "live-server", "--port=3000", "--no-browser", "--watch=index.html,about.html,portfolio.html,resume.html,projects,workouts,css,js,partials", "--ignore=.git,node_modules,images/optimized"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 3000
     }
   ]
