@@ -4,7 +4,14 @@ Running list of outstanding work on the portfolio site. Add to this whenever som
 
 ## Pending
 
-_(none)_
+- [x] **DONE (uncommitted, awaiting Doug's review): replace hardcoded colors in `css/style.css` with tokens** (from the dark-mode audit, see [AUDIT.md](AUDIT.md) section 1.1). Added 6 tokens (`--color-footer-bar`, `--color-gray-band`, `--color-text-secondary`, `--color-chrome-bar`, `--color-chrome-border`, `--shadow-nav`) at their exact old values. Verified zero computed-style diffs (4,944 element states, 11 pages, 375/768/1280/1500px). Only the traffic-light dots remain hardcoded, by design. Original plan:
+  1. Exact swaps, no visual change: `#666666`/`#000000`/`#ffffff`/`#e0e0e0` to their existing tokens (lines 307, 327, 373, 508, 517, 526, 1129, 1138, 1178-1179, 1222), and the two inline copies of `--shadow-header` (lines 1614, 1700).
+  2. Near-duplicates (`#f5f5f5` line 148, `#f1f1f1` line 1502, `#4a4a4a` line 1231, card chrome `rgba(255,255,255,.92)` line 871): add a token for each at its **exact current value**. Do not merge shades yet.
+  3. Leave the traffic-light dots (lines 884-885) as fixed colors.
+  4. Verify in-browser before/after at a few widths; no commit until reviewed.
+- [ ] **Fix contrast failures** (AUDIT.md section 4.1): card subtitle `#aaa`, card meta and testimonial title `#999`, nav hover/active `#666` on `#111`, mobile menu hover `#666` on `#333`, footer `#757575`. Independent of dark mode.
+- [ ] **Undecided: rename/split color tokens by role** (AUDIT.md section 6, step 3). Only needed for dark mode; Doug hasn't decided whether to do it. Smaller option: split just `--color-white` and `--color-black`.
+- [ ] Other audit items not yet scheduled: add `<main>` and `<h1>` to the project template and 14 project pages (High), OG/Twitter/canonical tags (High), image `width`/`height`, recompress the 33 WebP files larger than their PNG, align card titles with page titles. Confirm whether `noindex` on `ai-in-design.html` is still wanted.
 
 ## Done
 
