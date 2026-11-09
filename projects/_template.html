@@ -72,75 +72,77 @@
 </nav>
 <!-- END:header -->
 
-    <!-- Main Section -->
-    <section class="project-main">
-        <div class="project-content">
-            <div class="project-intro">
-                <a href="../portfolio.html" class="back-to-portfolio">← Back to Portfolio</a>
-                <div class="project-title">{{PAGE_TITLE}}</div>
-                <div class="project-description">{{PROJECT_DESCRIPTION}}</div>
-            </div>
-
-            {{IMPACT_STATS_SECTION}}
-
-            <div class="project-challenge">
-                <h3>The Challenge</h3>
-                <p>{{CHALLENGE}}</p>
-            </div>
-
-            <div class="project-details">
-                <div class="project-info-column">
-                    <div class="info-item">
-                        <h3>My Role</h3>
-                        <p>{{MY_ROLE}}</p>
-                    </div>
-                    <div class="info-item">
-                        <h3>Project Team</h3>
-                        <p>{{PROJECT_TEAM}}</p>
-                    </div>
-                    <div class="info-item">
-                        <h3>Duration</h3>
-                        <p>{{DURATION}}</p>
-                    </div>
-                    <div class="info-item">
-                        <h3>Project Status</h3>
-                        <p>{{PROJECT_STATUS}}</p>
-                    </div>
+    <main>
+        <!-- Main Section -->
+        <section class="project-main">
+            <div class="project-content">
+                <div class="project-intro">
+                    <a href="../portfolio.html" class="back-to-portfolio">← Back to Portfolio</a>
+                    <h1 class="project-title">{{PAGE_TITLE}}</h1>
+                    <div class="project-description">{{PROJECT_DESCRIPTION}}</div>
                 </div>
 
-                <div class="project-methodology-column">
-                    <h3>Design Methodology</h3>
-                    <p>{{METHODOLOGY}}</p>
+                {{IMPACT_STATS_SECTION}}
+
+                <div class="project-challenge">
+                    <h3>The Challenge</h3>
+                    <p>{{CHALLENGE}}</p>
                 </div>
 
-                <div class="project-results-column">
-                    <div class="results-item">
-                        <h3>Business Goals</h3>
-                        <p>{{BUSINESS_GOALS}}</p>
+                <div class="project-details">
+                    <div class="project-info-column">
+                        <div class="info-item">
+                            <h3>My Role</h3>
+                            <p>{{MY_ROLE}}</p>
+                        </div>
+                        <div class="info-item">
+                            <h3>Project Team</h3>
+                            <p>{{PROJECT_TEAM}}</p>
+                        </div>
+                        <div class="info-item">
+                            <h3>Duration</h3>
+                            <p>{{DURATION}}</p>
+                        </div>
+                        <div class="info-item">
+                            <h3>Project Status</h3>
+                            <p>{{PROJECT_STATUS}}</p>
+                        </div>
+                    </div>
+
+                    <div class="project-methodology-column">
+                        <h3>Design Methodology</h3>
+                        <p>{{METHODOLOGY}}</p>
+                    </div>
+
+                    <div class="project-results-column">
+                        <div class="results-item">
+                            <h3>Business Goals</h3>
+                            <p>{{BUSINESS_GOALS}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Desktop Views Section -->
-    <section class="factory-mutual-work">
-        <div class="factory-mutual-container">
-            <h2 class="factory-mutual-title">Desktop Views</h2>
-            <div class="factory-mutual-grid">
-                {{DESKTOP_IMAGE_CARDS}}
+        <!-- Desktop Views Section -->
+        <section class="factory-mutual-work">
+            <div class="factory-mutual-container">
+                <h2 class="factory-mutual-title">Desktop Views</h2>
+                <div class="factory-mutual-grid">
+                    {{DESKTOP_IMAGE_CARDS}}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{MOBILE_VIEWS_SECTION}}
+        {{MOBILE_VIEWS_SECTION}}
 
-    <!-- Closing / Impact Note -->
-    <section class="project-closing">
-        <div class="project-closing-content">
-            <p>{{CLOSING_NOTE}}</p>
-        </div>
-    </section>
+        <!-- Closing / Impact Note -->
+        <section class="project-closing">
+            <div class="project-closing-content">
+                <p>{{CLOSING_NOTE}}</p>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer Include -->
     <!-- BEGIN:footer -->
